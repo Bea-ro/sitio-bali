@@ -1,0 +1,49 @@
+.secondary-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 38px;
+  background-color: var(--color-light);
+}
+
+.secondary-header > li {
+  display: flex;
+  gap: 3px;
+}
+
+.fa-solid {
+  height: 18px;
+}
+
+.secondary-header-text {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 766px) {
+  .address {
+    display: none;
+  }
+
+  :host {
+    flex-direction: column;
+    white-space: nowrap;
+    width: 100vw;
+    gap: 0;
+    height: 4vh;
+  }
+
+  app-header-navbar {
+    display: none;
+  }
+
+  app-header-navbar.active {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .phones {
+    display: none;
+  }
+}

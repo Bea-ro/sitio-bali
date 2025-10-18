@@ -1,0 +1,14 @@
+<main>
+  <app-home-banner></app-home-banner>
+  <section class="middle-section">
+    <h2 class="centered-text">Nuestros servicios</h2>
+    <ul class="service-cards">
+      @if (services) { @for(service of services; track service.name) {
+      <li class="service-card-container"><app-card [cardElement]="service"></app-card></li>
+      }}
+    </ul>
+  </section>
+  <section><p>a quién</p></section>
+  <section><p>cómo trabaja BA</p></section>
+  <section><p>cards con noticias</p></section>
+</main>

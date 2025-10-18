@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-black: rgb(2, 21, 38);
+  --color-white: #ffffff;
+  --color-main: #231473;
+
+  /* --color-sec: #5c4d7c;
+  --color-light: #f9ebff;
+  --color-sec-dos: #66baa8; */
+
+  /* --color-light: #e0edf2; 
+  --color-light: #d7cdcb;*/
+  --color-light: #f8f3ff;
+  --color-sec: #3b889d;
+
+  /*--color-sec: #9989b4;
+  --color-light: #fbf8ff;
+  --color-sec-2: #e8d5b5; */
+
+  --white-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  --black-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  --main-shadow: 2px 2px 4px rgba(35, 20, 15, 0.5);
+  --hover-scale: scale(1.025);
+  --smooth-scale: transform 0.3s ease;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+
+  font-family: 'Lato', serif;
+  font-optical-sizing: auto;
+  /* font-weight: 400; */
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: auto;
+}
+
+main {
+  padding-top: 118px;
+  min-height: 70vw;
+}
+
+h1 {
+  font-size: 38px;
+  padding: 16px 0;
+}
+
+h2 {
+  font-size: 24px;
+  padding: 14px 0;
+}
+
+.middle-section {
+  padding: 48px 0;
+}
+
+.centered-text {
+  text-align: center;
+}

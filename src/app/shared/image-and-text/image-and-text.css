@@ -1,0 +1,12 @@
+.article-image {
+  border-radius: 12px;
+  margin: 0 20px;
+  max-width: 45%;
+}
+
+.article-text {
+  padding: 0 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

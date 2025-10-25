@@ -1,18 +1,30 @@
 :host {
   display: flex;
   flex-direction: column;
+  max-width: 30%;
+  background-color: var(--color-extra-light);
+  border-radius: 8px;
 }
 
-.card-text {
-  padding: 20px;
+.service-card-container:hover {
+  background-color: var(--color-light);
 }
 
 .card-image {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  max-width: 100%;
 }
 
 .card-title {
   color: var(--color-main);
   padding: 12px 0;
+}
+
+.service-card-container:hover .card-title {
+  color: var(--color-sec);
+}
+
+.card-text {
+  padding: 20px;
 }

@@ -2,6 +2,7 @@
   --color-black: rgb(2, 21, 38);
   --color-white: #ffffff;
   --color-main: #231473;
+  --color-light: #dedeff;
 
   /* --color-sec: #5c4d7c;
   --color-light: #f9ebff;
@@ -9,7 +10,7 @@
 
   /* --color-light: #e0edf2; 
   --color-light: #d7cdcb;*/
-  --color-light: #f8f3ff;
+  --color-extra-light: #f8f3ff;
   --color-sec: #3b889d;
 
   /*--color-sec: #9989b4;
@@ -70,17 +71,26 @@ main {
 }
 
 h1 {
-  font-size: 38px;
-  padding: 16px 0;
+  font-size: 42px;
+  margin-bottom: 16px;
 }
 
 h2 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+h3 {
   font-size: 24px;
-  padding: 14px 0;
+  margin-bottom: 28px;
 }
 
 .middle-section {
-  padding: 48px 0;
+  padding: 80px 0;
+}
+
+.coloured-section {
+  background-color: var(--color-extra-light);
 }
 
 .centered-text {

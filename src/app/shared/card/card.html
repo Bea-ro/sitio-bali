@@ -1,7 +1,9 @@
 @if(cardElement) {
-<img class="card-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" />
-<div class="card-text">
-  <h3 class="card-title">{{ cardElement.name }}</h3>
-  <p class="card-description">{{ cardElement.description }}</p>
-</div>
+<li class="service-card-container">
+  <img class="card-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" />
+  <div class="card-text">
+    <h3 class="card-title">{{ cardElement.name }}</h3>
+    <p class="card-description">{{ cardElement.description }}</p>
+  </div>
+</li>
 }

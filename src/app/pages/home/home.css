@@ -3,8 +3,38 @@
   justify-content: space-around;
   padding: 16px 0;
 }
-.service-card-container {
-  max-width: 30%;
+
+.customer-list {
+  display: flex;
+  gap: 40px;
+  padding: 30px 12px 0 12px;
+}
+
+.customer-card {
+  padding: 10px;
+}
+
+.customer-icon {
+  color: var(--color-main);
+  height: 50px;
+}
+
+.icon-wrapper {
   background-color: var(--color-light);
-  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 30px;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+.oneone {
+  display: flex;
+  flex-direction: row;
+  padding: 50px 12px;
+}
+
+.twotwo {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 50px 12px;
 }

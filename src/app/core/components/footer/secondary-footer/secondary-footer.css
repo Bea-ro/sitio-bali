@@ -1,0 +1,15 @@
+.secondary-footer-text {
+  font-size: 14px;
+  padding: 8px;
+  text-align: center;
+}
+
+.developer-link {
+  color: var(--color-main);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.developer-link:hover {
+  color: var(--color-sec);
+}

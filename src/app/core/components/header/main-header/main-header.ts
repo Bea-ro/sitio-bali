@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { Burguer } from '../burguer/burguer';
-import { Navbar } from '../navbar/navbar';
-import { Button } from '../button/button';
+import { Navbar } from '../../../../shared/navbar/navbar';
+import { Burguer } from '../../../../shared/burguer/burguer';
+import { Button } from '../../../../shared/button/button';
 
 @Component({
   selector: 'app-main-header',

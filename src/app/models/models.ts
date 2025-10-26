@@ -24,3 +24,22 @@ export interface UserRegister {
   password: FormControl<string>;
   repeatPassword: FormControl<string>;
 }
+
+export interface Noticia {
+  title: string;
+  date: string;
+  text: string;
+  category: string;
+  id: string;
+}
+
+export interface Customer {
+  name: string;
+  path: string;
+  description: string;
+}
+export interface Paragraph {
+  title: string;
+  text: string;
+  image: string;
+}

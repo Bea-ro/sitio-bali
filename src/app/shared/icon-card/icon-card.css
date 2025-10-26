@@ -1,0 +1,22 @@
+.icon-card {
+  padding: 10px;
+}
+
+.icon-wrapper {
+  background-color: var(--color-light);
+  padding: 16px;
+  margin-bottom: 30px;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+.icon {
+  color: var(--color-main);
+  height: 50px;
+}
+
+.icon path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
+}

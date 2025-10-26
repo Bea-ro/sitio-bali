@@ -1,9 +1,8 @@
-:host {
+.service-card-container {
+  background-color: var(--color-extra-light);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  max-width: 30%;
-  background-color: var(--color-extra-light);
-  border-radius: 8px;
 }
 
 .service-card-container:hover {
@@ -11,8 +10,8 @@
 }
 
 .card-image {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   max-width: 100%;
 }
 

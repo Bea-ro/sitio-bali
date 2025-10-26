@@ -1,0 +1,35 @@
+:host {
+  background-color: var(--color-main);
+  color: var(--color-white);
+  padding: 58px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-logo {
+  height: 50px;
+}
+
+.footer-claim {
+  margin-left: 20px;
+  font-weight: 300;
+}
+
+nav {
+  display: flex;
+}
+
+a {
+  color: var(--color-white);
+  font-size: 16px;
+}
+
+a:hover {
+  color: var(--color-sec);
+}
+
+@media screen and (max-width: 766px) {
+  nav {
+    display: none;
+  }
+}

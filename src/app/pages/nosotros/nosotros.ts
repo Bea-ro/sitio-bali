@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { ImageAndText } from '../../shared/image-and-text/image-and-text';
 
 @Component({
   selector: 'app-nosotros',
-  imports: [],
+  imports: [ImageAndText],
   templateUrl: './nosotros.html',
-  styleUrl: './nosotros.css'
+  styleUrl: './nosotros.css',
 })
-export class Nosotros {
-
-}
+export class Nosotros {}

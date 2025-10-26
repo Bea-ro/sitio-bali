@@ -1,16 +1,13 @@
-<img
-  class="article-image"
-  [src]="`${imagePrefix}/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg`"
-  alt="bali-asociados-presentation"
-/>
-<div class="article-text">
-  <h3>Lorem ipsum dolor sit amet</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
-  </p>
-</div>
+@if(paragraphElement) {
+<article [ngClass]="paragraphIndex % 2 === 0 ? 'even' : 'odd'">
+  <img
+    class="article-image"
+    [src]="`${imagePrefix}${paragraphElement.image}`"
+    alt="bali-asociados-presentation"
+  />
+  <div class="article-text">
+    <h3>{{ paragraphElement.title }}</h3>
+    <p>{{ paragraphElement.text }}</p>
+  </div>
+</article>
+}

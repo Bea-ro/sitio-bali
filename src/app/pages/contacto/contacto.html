@@ -1,1 +1,19 @@
-<p>contacto works!</p>
+<main>
+  <section class="coloured-section">
+    <h2 class="page-title centered-text">¿Hablamos?</h2>
+    <ul class="contact-methods">
+      @for(contact of contactMethods; track contact.name) {
+      <app-icon-card [cardElement]="contact"></app-icon-card>
+      }
+    </ul>
+  </section>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6072.948020053539!2d-3.6986176252634997!3d40.44264455406377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228f093e60f53%3A0xa10f901690e8d47f!2sCalle%20de%20Modesto%20Lafuente%2C%2041%2C%20Chamber%C3%AD%2C%2028003%20Madrid!5e0!3m2!1ses!2ses!4v1761491418792!5m2!1ses!2ses"
+    width="500"
+    height="350"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+  <!-- <app-contact-form></app-contact-form> -->
+</main>

@@ -1,0 +1,15 @@
+section {
+  padding-bottom: 80px;
+}
+
+.contact-methods {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+  padding: 30px 12px 0 12px;
+}
+
+iframe {
+  width: 100%;
+  display: block;
+}

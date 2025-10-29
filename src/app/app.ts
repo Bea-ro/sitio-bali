@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './core/components/header/header';
 import { Footer } from './core/components/footer/footer';
 import { ScrollTopButton } from './core/components/scroll-top-button/scroll-top-button';
+import { ShowScrollButton } from './core/directives/show-scroll-button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, ScrollTopButton],
+  imports: [RouterOutlet, Header, Footer, ScrollTopButton, ShowScrollButton],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

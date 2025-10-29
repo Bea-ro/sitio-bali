@@ -5,6 +5,9 @@
   opacity: 0;
   transition: all 0.3s ease;
   pointer-events: none;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: var(--color-light);
 }
 
 :host.visible {
@@ -16,21 +19,25 @@
   opacity: 1;
 }
 
-.fa-arrow-up {
-  background-color: var(--color-main);
-  padding: 12px;
-  height: 52px;
-  border-radius: 150px;
-  color: var(--color-white);
-  transition: transform 0.3s ease;
+:host:hover .arrow-icon path {
+  stroke: var(--color-sec);
 }
 
-.fa-arrow-up:hover {
-  transform: var(--hover-scale);
+.arrow-icon {
+  color: var(--color-main);
+  height: 30px;
+  display: flex;
+  align-self: flex-end;
+}
+
+.arrow-icon path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
 }
 
 @media screen and (max-width: 524px) {
-  .fa-arrow-up {
+  :host {
     opacity: 0.7;
   }
 }

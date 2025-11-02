@@ -1,7 +1,6 @@
 .noticias-cards {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
   gap: 35px;
-  padding: 16px 16px 80px 16px;
+  padding: 16px;
 }

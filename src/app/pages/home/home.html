@@ -25,12 +25,5 @@
     ></app-image-and-text>
     }
   </section>
-  <section class="middle-section">
-    <h2 class="centered-text">Actualidad</h2>
-    <ul class="noticias-cards">
-      @for(noticia of noticias; track noticia.id) {
-      <app-noticia-card [noticia]="noticia"></app-noticia-card>
-      }
-    </ul>
-  </section>
+  <app-noticias-recientes></app-noticias-recientes>
 </main>

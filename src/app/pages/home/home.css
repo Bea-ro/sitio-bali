@@ -1,5 +1,4 @@
-.service-cards,
-.noticias-cards {
+.service-cards {
   display: flex;
   justify-content: space-around;
   gap: 35px;

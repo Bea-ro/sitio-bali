@@ -1,7 +1,10 @@
 @if(noticia) {
-<li class="noticia-card-container">
+<li class="noticia-card-container" (click)="selectNoticia(noticia.slug)">
   <h4 class="noticia-title">{{ noticia.title }}</h4>
-  <p>{{ noticia.date }}</p>
+  <div class="noticia-date-and-category">
+    <p>{{ noticia.date }}</p>
+    <p class="noticia-category">{{ noticia.category.toUpperCase() }}</p>
+  </div>
   <p class="noticia-intro">{{ noticiaIntro }}...</p>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="arrow-icon">
     <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->

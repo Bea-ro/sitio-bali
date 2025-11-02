@@ -1,1 +1,9 @@
-<p>noticias works!</p>
+<main class="centered-main">
+  <h1 class="page-title centered-text">Noticias Bali Asociados</h1>
+  <h2 class="page-subtitle centered-text">Al día en normativa y todo lo que te interesa</h2>
+  <ul class="noticias-cards">
+    @for(noticia of noticias; track noticia.id) {
+    <app-noticia-card [noticia]="noticia"></app-noticia-card>
+    }
+  </ul>
+</main>

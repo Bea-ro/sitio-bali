@@ -25,12 +25,13 @@ export interface UserRegister {
   repeatPassword: FormControl<string>;
 }
 
-export interface Noticia {
+export interface INoticia {
   title: string;
   date: string;
   text: string;
   category: string;
   id: string;
+  slug: string;
 }
 
 export interface Customer {

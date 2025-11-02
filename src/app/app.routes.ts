@@ -64,15 +64,15 @@ export const routes: Routes = [
     title: 'Aviso legal | Bali Asociados',
   },
   {
-    path: 'admin-login',
-    loadComponent: () => import('./pages/admin-login/admin-login').then((c) => c.AdminLogin),
-    title: 'Panel administración | Bali Asociados',
-  },
-  {
     path: 'admin-panel',
     loadComponent: () => import('./pages/admin-panel/admin-panel').then((c) => c.AdminPanel),
     // canActivate: [authGuard],
     title: 'Panel administración | Bali Asociados',
+  },
+  {
+    path: ':noticia',
+    loadComponent: () => import('./pages/noticia/noticia').then((c) => c.Noticia),
+    title: 'Actualidad | Bali Asociados',
   },
   {
     path: '**',

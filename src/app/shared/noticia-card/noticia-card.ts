@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Noticia } from '../../models/models';
+import { INoticia } from '../../models/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticia-card',
@@ -8,12 +9,18 @@ import { Noticia } from '../../models/models';
   styleUrl: './noticia-card.css',
 })
 export class NoticiaCard implements OnInit {
-  @Input() noticia?: Noticia;
+  @Input() noticia?: INoticia;
   public noticiaIntro: string = '';
+
+  constructor(private router: Router) {}
 
   public ngOnInit() {
     if (this.noticia) {
       this.noticiaIntro = this.noticia.text.slice(0, 100);
     }
+  }
+
+  public selectNoticia(slug: string) {
+    this.router.navigateByUrl(`/${slug}`);
   }
 }

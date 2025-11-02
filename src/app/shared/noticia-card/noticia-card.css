@@ -1,3 +1,7 @@
+:host {
+  max-width: 30%;
+}
+
 .noticia-card-container {
   display: flex;
   flex-direction: column;
@@ -17,6 +21,30 @@
 
 .noticia-card-container:hover .noticia-title {
   color: var(--color-sec);
+}
+
+.noticia-category {
+  color: var(--color-main);
+  background-color: var(--color-light);
+  width: fit-content;
+  font-weight: 800;
+  padding: 8px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.noticia-category:hover {
+  background-color: var(--color-sec);
+}
+
+.noticia-date-and-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.noticia-intro {
+  margin-top: 10px;
 }
 
 .arrow-icon {

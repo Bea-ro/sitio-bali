@@ -1,0 +1,11 @@
+<main class="centered-main">
+  @if(noticiadData) {
+  <section>
+    <h1>{{ noticiadData.title }}</h1>
+    <p>{{ noticiadData.date }}</p>
+    <p>{{ noticiadData.category }}</p>
+    <p>{{ noticiadData.text }}</p>
+  </section>
+  }
+  <app-noticias-recientes></app-noticias-recientes>
+</main>

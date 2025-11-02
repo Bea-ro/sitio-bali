@@ -74,6 +74,10 @@ main {
   min-height: 40vw;
 }
 
+.main-admin-layout {
+  padding-top: 48px;
+}
+
 .centered-main {
   display: flex;
   flex-direction: column;

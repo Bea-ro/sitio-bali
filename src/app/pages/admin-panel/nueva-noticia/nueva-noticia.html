@@ -1,0 +1,42 @@
+<main>
+  <form #newNoticiaForm="ngForm" (submit)="onSubmit(); newNoticiaForm.resetForm()">
+    <input
+      placeholder="Título"
+      class="form-field"
+      type="text"
+      id="title"
+      name="title"
+      required
+      [(ngModel)]="newNoticia.name"
+      #titleField="ngModel"
+    />
+    <p *ngIf="nameField.touched && nameField.errors?.['required']" class="error-message">
+      Por favor, introduce un título para la nueva noticia.
+    </p>
+    <p
+      *ngIf="nameField.invalid && nameField.dirty && nameField.errors?.['existingName']"
+      class="error-message"
+    >
+      Ya existe una noticia con este título Por favor, introduce un título distinto.
+    </p>
+
+    <input
+      placeholder="Introduce aquí el texto de la noticia"
+      class="form-field"
+      type="text"
+      id="content"
+      name="content"
+      required
+      [(ngModel)]="newNoticia.content"
+      #contentField="ngModel"
+    />
+    <p *ngIf="contentField.touched && contentField.errors?.['required']" class="error-message">
+      Por favor, introduce contenido para la nueva nooticia.
+    </p>
+
+    <div class="buttons-container">
+      <button class="button" type="submit" [disabled]="newNoticiaForm.invalid">Añadir</button>
+      <button class="button" type="reset">Cancelar</button>
+    </div>
+  </form>
+</main>

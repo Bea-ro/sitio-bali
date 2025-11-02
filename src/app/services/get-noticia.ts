@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GetNoticia {
   // public API_URL = environment.API_URL || '';
-  public API_URL = '';
+  public API_URL = 'http://localhost:3001/api/';
 
   constructor(private http: HttpClient) {}
 

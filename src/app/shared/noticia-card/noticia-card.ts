@@ -21,6 +21,6 @@ export class NoticiaCard implements OnInit {
   }
 
   public selectNoticia(slug: string) {
-    this.router.navigateByUrl(`/${slug}`);
+    this.router.navigateByUrl(`/noticias/${slug}`);
   }
 }

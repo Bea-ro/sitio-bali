@@ -24,7 +24,8 @@ export class Noticia implements OnInit {
 
   public ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      const noticiaSlug = params.get('noticia') ?? '';
+      const noticiaSlug = params.get('slug') ?? '';
+      console.log(noticiaSlug);
       this.getNoticiaService.getNoticiaBySlug(noticiaSlug).subscribe((noticia) => {
         this.noticiadData = noticia;
       });

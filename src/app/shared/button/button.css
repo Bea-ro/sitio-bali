@@ -5,12 +5,23 @@
   border-radius: 12px;
 }
 
+:host-context(body.admin) {
+  padding: 8px 14px;
+  background-color: var(--color-light);
+  border-radius: 10px;
+}
+
 .button {
   font-size: 16px;
   font-weight: 500;
   color: var(--color-white);
 }
 
-:host:hover {
+:host-context(body.admin) .button {
+  color: var(--color-black);
+}
+
+:host:hover,
+:host-context(body.admin):hover {
   background-color: var(--color-sec);
 }

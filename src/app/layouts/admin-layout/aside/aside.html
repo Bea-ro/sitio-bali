@@ -1,16 +1,21 @@
-<ul>
-  <li>Noticias</li>
+<aside class="aside-menu">
   <nav>
+    <h3 class="aside-menu-title">Noticias</h3>
     <ul class="nav-links">
       <li><a class="nav-link" [routerLink]="['/admin-panel/admin-noticias']">Ver Noticias</a></li>
-      <li><a class="nav-link" [routerLink]="['/admin-panel/nueva-noticia']">Añadir Noticia</a></li>
+      <li>
+        <a class="nav-link" [routerLink]="['/admin-panel/nueva-noticia']">Añadir Noticia</a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/admin-panel/nueva-noticia']">Categorías</a>
+      </li>
     </ul>
   </nav>
-  <li>Clientes</li>
   <nav>
+    <h3 class="aside-menu-title">Clientes</h3>
     <ul class="nav-links">
       <li><a class="nav-link" [routerLink]="['/admin-clientes']">Ver clientes</a></li>
       <li><a class="nav-link" [routerLink]="['/nuevo-cliente']">Añadir Ciente</a></li>
     </ul>
   </nav>
-</ul>
+</aside>

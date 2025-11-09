@@ -1,0 +1,23 @@
+form {
+  padding: 28px 18px;
+  border-radius: 10px;
+  background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  background-color: var(--color-white);
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+#content {
+  height: 50vh;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 12px;
+}

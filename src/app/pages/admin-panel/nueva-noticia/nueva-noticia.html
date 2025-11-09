@@ -1,38 +1,36 @@
 <main>
   <form #newNoticiaForm="ngForm" (submit)="onSubmit(); newNoticiaForm.resetForm()">
     <input
-      placeholder="Título"
+      placeholder="Escribe un título"
       class="form-field"
       type="text"
       id="title"
       name="title"
       required
-      [(ngModel)]="newNoticia.name"
+      [(ngModel)]="newNoticia.title"
       #titleField="ngModel"
     />
-    <p *ngIf="nameField.touched && nameField.errors?.['required']" class="error-message">
-      Por favor, introduce un título para la nueva noticia.
-    </p>
-    <p
-      *ngIf="nameField.invalid && nameField.dirty && nameField.errors?.['existingName']"
-      class="error-message"
-    >
+    @if (titleField.touched && titleField.errors?.['required']) {
+    <p class="error-message">Por favor, introduce un título para la nueva noticia.</p>
+    } @if (titleField.invalid && titleField.dirty && titleField.errors?.['existingName']) {
+    <p class="error-message">
       Ya existe una noticia con este título Por favor, introduce un título distinto.
     </p>
+    }
 
     <input
-      placeholder="Introduce aquí el texto de la noticia"
+      placeholder="Introduce el texto de la noticia"
       class="form-field"
       type="text"
       id="content"
       name="content"
       required
-      [(ngModel)]="newNoticia.content"
+      [(ngModel)]="newNoticia.text"
       #contentField="ngModel"
     />
-    <p *ngIf="contentField.touched && contentField.errors?.['required']" class="error-message">
-      Por favor, introduce contenido para la nueva nooticia.
-    </p>
+    @if(contentField.touched && contentField.errors?.['required']){
+    <p class="error-message">Por favor, introduce contenido para la nueva nooticia.</p>
+    }
 
     <div class="buttons-container">
       <button class="button" type="submit" [disabled]="newNoticiaForm.invalid">Añadir</button>

@@ -69,34 +69,55 @@ button:disabled {
   cursor: auto;
 }
 
-main {
-  padding-top: 118px;
-  min-height: 40vw;
+body.admin button {
+  transition: background-color 0.25s ease-out;
+  padding: 8px 14px;
+  background-color: var(--color-light);
+  border-radius: 10px;
 }
 
-.main-admin-layout {
-  padding-top: 48px;
+body.admin button:hover {
+  background-color: var(--color-sec);
+}
+
+body.public main {
+  padding-top: 118px;
+  min-height: 40vw;
+  background-color: var(--color-extra-light);
+}
+
+body.admin main {
+  padding: 42px 38px;
+  min-height: 100vh;
+  min-width: 80vw;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+body.public h1 {
+  font-size: 42px;
+}
+
+body.admin h1 {
+  font-size: 26px;
+}
+
+body.public h2 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+body.public h3 {
+  font-size: 24px;
+  margin-bottom: 28px;
 }
 
 .centered-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
-}
-
-h2 {
-  font-size: 36px;
-  margin-bottom: 12px;
-}
-
-h3 {
-  font-size: 24px;
-  margin-bottom: 28px;
 }
 
 .page-title {

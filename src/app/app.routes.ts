@@ -3,6 +3,7 @@ import { Home } from './pages/home/home';
 import { PublicLayout } from './layouts/public-layout/public-layout';
 import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { AdminLogin } from './pages/admin-login/admin-login';
+import { AdminPanel } from './pages/admin-panel/admin-panel';
 
 export const routes: Routes = [
   {
@@ -78,6 +79,11 @@ export const routes: Routes = [
     // canActivate: [AuthGuard],
     title: 'Panel administración | Bali Asociados',
     children: [
+      {
+        path: '',
+        component: AdminPanel,
+        title: 'Bali Asociados · Panel Administración',
+      },
       {
         path: 'admin-noticias',
         loadComponent: () =>

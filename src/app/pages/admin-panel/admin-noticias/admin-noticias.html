@@ -1,6 +1,6 @@
-<main class="main-admin-layout">
+<main>
   <h1>Administrador de Noticias</h1>
-  <button>Añadir nueva</button>
+  <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/nueva-noticia"></app-button>
   <ul class="noticias-list">
     @for(noticia of noticias$ | async; track noticia.id) {
     <li class="noticia-listed">

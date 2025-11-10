@@ -9,12 +9,28 @@ form {
 
 .form-field {
   background-color: var(--color-white);
-  padding: 10px 12px;
   border-radius: 6px;
 }
 
-#content {
-  height: 50vh;
+#title {
+  padding: 10px 12px;
+}
+
+.category-fields {
+  display: flex;
+  gap: 10px;
+}
+
+#newCategory,
+#existingCategory {
+  padding: 8px 12px;
+  flex: 1;
+}
+
+#text {
+  min-height: 50vh;
+  field-sizing: content;
+  padding: 16px 20px 40px 20px;
 }
 
 .buttons-container {

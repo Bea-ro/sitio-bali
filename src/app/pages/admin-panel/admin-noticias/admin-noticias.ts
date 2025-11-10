@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { INoticia } from '../../../models/models';
 import { Observable } from 'rxjs';
-import { GetNoticia } from '../../../services/get-noticia';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Button } from '../../../shared/button/button';
+import { GetNoticias } from '../../../core/services/get-noticias';
 
 @Component({
   selector: 'app-admin-noticias',
@@ -15,9 +15,9 @@ import { Button } from '../../../shared/button/button';
 export class AdminNoticias {
   public noticias$?: Observable<INoticia[]>;
 
-  constructor(private getNoticia: GetNoticia) {}
+  constructor(private getNoticias: GetNoticias) {}
 
   ngOnInit() {
-    this.noticias$ = this.getNoticia.getNoticias();
+    this.noticias$ = this.getNoticias.getNoticias();
   }
 }

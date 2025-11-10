@@ -34,6 +34,13 @@ export interface INoticia {
   slug: string;
 }
 
+export interface NoticiaForm {
+  title: FormControl<string>;
+  text: FormControl<string>;
+  newCategory?: FormControl<string>;
+  existingCategory?: FormControl<string>;
+}
+
 export interface Customer {
   name: string;
   path: string;

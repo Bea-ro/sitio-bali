@@ -1,40 +1,58 @@
 <main>
-  <form #newNoticiaForm="ngForm" (submit)="onSubmit(); newNoticiaForm.resetForm()">
+  @if(noticiaFields){
+  <form [formGroup]="noticiaFields" (submit)="onSubmit(); noticiaFields.reset()">
     <input
       placeholder="Escribe un título"
       class="form-field"
       type="text"
       id="title"
-      name="title"
-      required
-      [(ngModel)]="newNoticia.title"
-      #titleField="ngModel"
+      formControlName="title"
     />
-    @if (titleField.touched && titleField.errors?.['required']) {
+    @if (noticiaFields.get('title')?.touched && noticiaFields.get('title')?.errors?.['required']) {
     <p class="error-message">Por favor, introduce un título para la nueva noticia.</p>
-    } @if (titleField.invalid && titleField.dirty && titleField.errors?.['existingName']) {
+    } @if (noticiaFields.get('title')?.invalid && noticiaFields.get('title')?.dirty &&
+    noticiaFields.get('title')?.errors?.['existingTitle'] ) {
     <p class="error-message">
       Ya existe una noticia con este título Por favor, introduce un título distinto.
     </p>
+    } @if (categories$) {
+    <p>Añade una nueva categoría o selecciona una existente</p>
+    } @else {
+    <p>No hya ninguna categoría creada todavía. Añade una nueva categoría.</p>
     }
+    <div class="category-fields">
+      @if (categories$) {
+      <select class="form-field" formControlName="existingCategory" id="existingCategory">
+        <option value="">Selecciona una categoría</option>
+        @for(category of categories$ | async; track $index) {
+        <option [value]="category">{{ category }}</option>
+        }
+      </select>
+      }
+      <input
+        placeholder="Escribe una nueva categoría"
+        class="form-field"
+        type="text"
+        id="newCategory"
+        name="newCategory"
+      />
+    </div>
 
-    <input
+    <textarea
+      formControlName="text"
+      id="text"
       placeholder="Introduce el texto de la noticia"
       class="form-field"
-      type="text"
-      id="content"
-      name="content"
-      required
-      [(ngModel)]="newNoticia.text"
-      #contentField="ngModel"
-    />
-    @if(contentField.touched && contentField.errors?.['required']){
+    ></textarea>
+    @if(noticiaFields.get('text')?.touched && noticiaFields.get('text')?.errors?.['required']){
     <p class="error-message">Por favor, introduce contenido para la nueva nooticia.</p>
     }
 
     <div class="buttons-container">
-      <button class="button" type="submit" [disabled]="newNoticiaForm.invalid">Añadir</button>
+      <button class="button" type="submit" [disabled]="noticiaFields.invalid">Añadir</button>
       <button class="button" type="reset">Cancelar</button>
     </div>
   </form>
+
+  }
 </main>

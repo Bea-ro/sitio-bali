@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { INoticia } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
-import { GetNoticia } from '../../services/get-noticia';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
+import { GetNoticias } from '../../core/services/get-noticias';
 
 @Component({
   selector: 'app-noticia',
@@ -20,13 +20,13 @@ export class Noticia implements OnInit {
     slug: '',
   };
 
-  constructor(private route: ActivatedRoute, private getNoticiaService: GetNoticia) {}
+  constructor(private route: ActivatedRoute, private getNoticias: GetNoticias) {}
 
   public ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const noticiaSlug = params.get('slug') ?? '';
       console.log(noticiaSlug);
-      this.getNoticiaService.getNoticiaBySlug(noticiaSlug).subscribe((noticia) => {
+      this.getNoticias.getNoticiaBySlug(noticiaSlug).subscribe((noticia) => {
         this.noticiadData = noticia;
       });
     });

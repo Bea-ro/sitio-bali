@@ -1,4 +1,5 @@
 <main>
+  <h1>Añadir nueva noticia</h1>
   @if(noticiaFields){
   <form [formGroup]="noticiaFields" (submit)="onSubmit(); noticiaFields.reset()">
     <input
@@ -48,10 +49,7 @@
     <p class="error-message">Por favor, introduce contenido para la nueva nooticia.</p>
     }
 
-    <div class="buttons-container">
-      <button class="button" type="submit" [disabled]="noticiaFields.invalid">Añadir</button>
-      <button class="button" type="reset">Cancelar</button>
-    </div>
+    <button class="button" type="submit" [disabled]="noticiaFields.invalid">Publicar</button>
   </form>
 
   }

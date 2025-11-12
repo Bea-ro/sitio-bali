@@ -63,21 +63,36 @@ li {
 
 button {
   cursor: pointer;
+  width: fit-content;
 }
 
-button:disabled {
+button:disabled,
+button:disabled:hover {
   cursor: auto;
-}
-
-body.admin button {
-  transition: background-color 0.25s ease-out;
-  padding: 8px 14px;
   background-color: var(--color-light);
-  border-radius: 10px;
 }
 
-body.admin button:hover {
+.button {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-white);
+  background-color: var(--color-main);
+  transition: background-color 0.25s ease-out;
+}
+
+.button:hover {
   background-color: var(--color-sec);
+  color: var(--color-white);
+}
+
+body.public .button {
+  padding: 14px 26px;
+  border-radius: 12px;
+}
+
+body.admin .button {
+  padding: 8px 14px;
+  border-radius: 10px;
 }
 
 body.public main {

@@ -1,27 +1,2 @@
-:host {
-  padding: 14px 26px;
-  transition: background-color 0.25s ease-out;
-  background-color: var(--color-main);
-  border-radius: 12px;
-}
 
-:host-context(body.admin) {
-  padding: 8px 14px;
-  background-color: var(--color-light);
-  border-radius: 10px;
-}
 
-.button {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--color-white);
-}
-
-:host-context(body.admin) .button {
-  color: var(--color-black);
-}
-
-:host:hover,
-:host-context(body.admin):hover {
-  background-color: var(--color-sec);
-}

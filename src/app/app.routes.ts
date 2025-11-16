@@ -42,11 +42,6 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'contacto',
-        loadComponent: () => import('./pages/contacto/contacto').then((c) => c.Contacto),
-        title: 'Contacto Bali Asociados',
-      },
-      {
         path: 'politica-de-cookies',
         loadComponent: () =>
           import('./pages/politica-cookies/politica-cookies').then((c) => c.PoliticaCookies),

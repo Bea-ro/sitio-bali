@@ -14,7 +14,8 @@ html {
 
   /* --color-light: #e0edf2; 
   --color-light: #d7cdcb;*/
-  --color-extra-light: #f8f3ff;
+  /* --color-extra-light: #f8f3ff; */
+  --color-extra-light: #efedfb;
   --color-sec: #3b889d;
 
   /*--color-sec: #9989b4;
@@ -41,7 +42,7 @@ html {
   outline: none;
   text-decoration: none;
 
-  font-family: 'Lato', serif;
+  font-family: 'EB+Garamond', serif;
   font-optical-sizing: auto;
   /* font-weight: 400; */
   font-style: normal;
@@ -98,13 +99,13 @@ body.admin .button {
 body.public main {
   padding-top: 118px;
   min-height: 40vw;
-  background-color: var(--color-extra-light);
 }
 
 body.admin main {
   padding: 42px 38px;
   min-height: 100vh;
   min-width: 80vw;
+  background-color: var(--color-extra-light);
 }
 
 h1 {

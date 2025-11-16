@@ -21,3 +21,15 @@
   flex-direction: column;
   gap: 6px;
 }
+
+.aside-icon {
+  color: var(--color-main);
+  height: 18px;
+  margin-bottom: 8px;
+}
+
+.aside-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

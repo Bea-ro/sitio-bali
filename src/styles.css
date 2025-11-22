@@ -74,8 +74,9 @@ button:disabled:hover {
 }
 
 .button {
+  font-family: 'Lato', sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-white);
   background-color: var(--color-main);
   transition: background-color 0.25s ease-out;
@@ -113,7 +114,7 @@ h1 {
 }
 
 body.public h1 {
-  font-size: 42px;
+  font-size: 40px;
 }
 
 body.admin h1 {
@@ -121,7 +122,7 @@ body.admin h1 {
 }
 
 body.public h2 {
-  font-size: 36px;
+  font-size: 34px;
   margin-bottom: 12px;
 }
 

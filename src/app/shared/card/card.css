@@ -3,6 +3,8 @@
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  min-width: 250px;
+  height: 100%;
 }
 
 .service-card-container:hover {

@@ -1,7 +1,7 @@
 .service-cards {
-  display: flex;
-  justify-content: space-around;
-  gap: 35px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 45px;
   padding: 16px;
 }
 

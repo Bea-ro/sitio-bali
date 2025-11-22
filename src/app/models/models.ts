@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 export interface Service {
   name: string;
   image: string;
+  intro: string;
   description: string;
 }
 

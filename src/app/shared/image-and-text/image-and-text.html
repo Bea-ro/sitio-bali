@@ -1,5 +1,5 @@
 @if(paragraphElement) {
-<article [ngClass]="paragraphIndex % 2 === 0 ? 'even' : 'odd'" [id]="paragraphIndex.toString()">
+<article [ngClass]="paragraphIndex % 2 === 0 ? 'even' : 'odd'">
   <img
     class="article-image"
     [src]="`${imagePrefix}${paragraphElement.image}`"

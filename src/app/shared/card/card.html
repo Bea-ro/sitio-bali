@@ -1,7 +1,7 @@
 @if(cardElement) {
 <li class="service-card-container">
   <!-- <a [routerLink]="['/servicios']" [fragment]="indexElement?.toString()"> -->
-  <a [routerLink]="['/servicios']" [fragment]="indexElement?.toString()">
+  <a routerLink="/servicios" [fragment]="`service-${indexElement?.toString()}`">
     <img class="card-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" />
     <div class="card-text">
       <h3 class="card-title">{{ cardElement.name }}</h3>

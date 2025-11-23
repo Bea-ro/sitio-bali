@@ -4,6 +4,10 @@
     Asesoría <span>{{ asesoria$ | async }}</span> y consultoría para empresas y autónomos
   </h2>
   @for(service of services; track service.name; let idx = $index) {
-  <app-image-and-text [paragraphIndex]="idx" [paragraphElement]="service"></app-image-and-text>
+  <app-image-and-text
+    [paragraphIndex]="idx"
+    [paragraphElement]="service"
+    [id]="`service-${idx.toString()}`"
+  ></app-image-and-text>
   }
 </main>

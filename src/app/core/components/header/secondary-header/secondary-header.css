@@ -1,13 +1,26 @@
-.secondary-header {
+:host {
+  height: 38px;
+  background-color: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-main);
+  padding: 0 20px;
+}
+
+.header-cta {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contact-details {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  height: 38px;
-  background-color: var(--color-light);
 }
 
-.secondary-header > li {
+.contact-details > li {
   display: flex;
   gap: 3px;
   align-items: center;
@@ -19,7 +32,7 @@
 }
 
 .secondary-header-text {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @media screen and (max-width: 766px) {

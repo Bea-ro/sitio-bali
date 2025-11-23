@@ -2,3 +2,12 @@ h2 > span {
   font-size: 34px;
   color: var(--color-main);
 }
+
+#service-0,
+#service-1,
+#service-2,
+#service-3,
+#service-4,
+#service-5 {
+  scroll-margin-top: 124px;
+}

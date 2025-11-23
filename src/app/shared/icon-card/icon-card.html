@@ -1,12 +1,19 @@
 @if(cardElement) {
-<li class="icon-card">
+<li class="icon-card" [ngClass]="{ horizontal: horizontal }">
   <div class="icon-wrapper">
     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
       <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
       <path [attr.d]="cardElement.path" />
     </svg>
   </div>
-  <h3>{{ cardElement.name }}</h3>
-  <p>{{ cardElement.description }}</p>
+  <div class="texts-wrapper">
+    @if (horizontal) {
+    <p class="diferencia-name">{{ cardElement.name }}</p>
+    } @else {
+    <h3>{{ cardElement.name }}</h3>
+    }
+
+    <p>{{ cardElement.description }}</p>
+  </div>
 </li>
 }

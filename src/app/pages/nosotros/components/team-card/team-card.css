@@ -1,0 +1,23 @@
+.team-card-container {
+  background-color: var(--color-extra-light);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.member-image {
+  border-radius: 12px;
+  margin-top: 12px;
+  max-width: 90%;
+  align-self: center;
+}
+
+.member-name {
+  color: var(--color-main);
+  padding: 12px 0;
+}
+
+.card-text {
+  padding: 20px;
+}

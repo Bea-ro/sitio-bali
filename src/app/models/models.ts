@@ -52,3 +52,12 @@ export interface Paragraph {
   description: string;
   image: string;
 }
+export interface Result {
+  number: string;
+  description: string;
+}
+export interface Member {
+  name: string;
+  position: string;
+  image: string;
+}

@@ -1,0 +1,16 @@
+:host {
+  max-width: 30%;
+}
+
+.number-card {
+  padding: 10px;
+  background-color: var(--color-extra-light);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.number {
+  color: var(--color-main);
+  font-size: 44px;
+  font-weight: 600;
+}

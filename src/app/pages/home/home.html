@@ -18,12 +18,6 @@
   </section>
   <section class="middle-section">
     <h2 class="centered-text">Nuestro trabajo</h2>
-    @for(homweParagraph of homeParagraphs; track homweParagraph.name; let idx = $index) {
-    <app-image-and-text
-      [paragraphIndex]="idx"
-      [paragraphElement]="homweParagraph"
-    ></app-image-and-text>
-    }
   </section>
   <app-noticias-recientes></app-noticias-recientes>
 </main>

@@ -1,0 +1,9 @@
+@if(cardElement) {
+<li class="team-card-container">
+  <img class="member-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" />
+  <div class="card-text">
+    <h4 class="member-name">{{ cardElement.name }}</h4>
+    <p class="member-position">{{ cardElement.position }}</p>
+  </div>
+</li>
+}

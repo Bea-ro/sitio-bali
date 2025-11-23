@@ -1,4 +1,4 @@
-import { ContactDetails, Customer, Paragraph, Service } from '../models/models';
+import { ContactDetails, Customer, Member, Paragraph, Result, Service } from '../models/models';
 
 export const contactDetails: ContactDetails = {
   url: 'https://baliasociados.com',
@@ -86,37 +86,105 @@ export const customers: Customer[] = [
   },
 ];
 
-export const homeParagraphs: Paragraph[] = [
+export const nuestroTrabajo: Paragraph = {
+  name: '¿Cómo trabajamos?',
+  description:
+    'Lo primero que hace el equipo de Bali Asociados es elaborar un mapa de riesgos y oportunidades a partir de la información recopilada, obteniendo un diagnóstico preciso de la situación de cada negocio.\n\nCon dicho diagnóstico, se diseña e implementa un plan personalizado con calendario, responsables y KPIs, realizando un seguimiento y reporting adaptado mensual y trimestral.\n\nAdemás, cada trimestre se realizan los ajustes necesarios, revisando próximos objetivos y alertas. Siempre con la máxima del cumplimiento.',
+  image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+};
+
+export const results: Result[] = [
   {
-    name: 'Un equipo cualificado',
-    description:
-      'El criterio técnico y ejecución. Diseñamos el plan y lo implementamos con calendario, KPIs y reporting adaptado',
+    number: '−12%',
+    description: 'reducción de la carga fiscal efectiva en doce meses',
+  },
+  {
+    number: '0',
+    description: 'sanciones en el ejercicio gracias a cierres y reporting D+5',
+  },
+  {
+    number: '+8%',
+    description: 'mejora de cash flow gracias a recuperación de IVA intracomunitario',
+  },
+];
+
+export const team: Member[] = [
+  {
+    name: 'Alfonso Carmona',
+    position: 'Director del DESPACHO',
     image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
   },
   {
-    name: 'Cumplimiento primero',
-    description: 'Decisiones basadas en datos y normativa, minimizando riesgos y sanciones.',
+    name: 'Santiago Arellano',
+    position: 'DPO e INTERNACIONALES',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Lorena Pérez',
+    position: 'Administración',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Inmaculada Romero',
+    position: 'Responsable Área Laboral',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Mercedes Sánchez',
+    position: 'Departamento Laboral',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Belén García',
+    position: 'Responsable Área Contable',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Álvaro Tejero',
+    position: 'Departamento Contable',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Marta García',
+    position: 'Departamento Contable',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Carolina Pérez',
+    position: 'Departamento Contable',
+    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  },
+  {
+    name: 'Antonio Cabrejas',
+    position: 'Responsable Área Fiscal',
     image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
   },
 ];
 
-export const nosotrosParagraphs: Paragraph[] = [
+export const diferencias: Customer[] = [
   {
-    name: 'Metodología de trabajo',
-    description:
-      '1) Diagnóstico (0–30 días): recopilación de información, mapa de riesgos y oportunidades. 2) Plan (día 30): fiscal/contable/laboral + negocio, KPIs, calendario y responsables. 3) Ejecución (mes a mes): cumplimiento, reporting y seguimiento en fechas. 4) Revisión (trimestral): ajustes, alertas y objetivos siguientes.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    name: 'Reporting D+5',
+    path: 'M64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM384 416C384 399.8 378 384.9 368 373.7L437.5 234.8C443.4 222.9 438.6 208.5 426.8 202.6C415 196.7 400.5 201.5 394.6 213.3L325.1 352.2C323.4 352.1 321.7 352 320 352C284.7 352 256 380.7 256 416C256 451.3 284.7 480 320 480C355.3 480 384 451.3 384 416z',
+    description: 'Reporting financiero mensual antes del día 5 ',
   },
   {
-    name: 'Diferenciales',
-    description:
-      'Reporting financiero mensualmente antes del día 5. • Calendario fiscal-laboral y avisos proactivos. • Cuadro de mando con KPIs clave (margen, cash-flow, coste de personal, periodos medios). • Defensa y representación ante AEAT y TGSS.• Integración contable con bancos y ERPs habituales.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    name: 'Proactividad',
+    path: 'M216 64C229.3 64 240 74.7 240 88L240 128L400 128L400 88C400 74.7 410.7 64 424 64C437.3 64 448 74.7 448 88L448 128L480 128C515.3 128 544 156.7 544 192L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 192C96 156.7 124.7 128 160 128L192 128L192 88C192 74.7 202.7 64 216 64zM216 176L160 176C151.2 176 144 183.2 144 192L144 240L496 240L496 192C496 183.2 488.8 176 480 176L216 176zM144 288L144 480C144 488.8 151.2 496 160 496L480 496C488.8 496 496 488.8 496 480L496 288L144 288z',
+    description: 'Calendario fiscal-laboral y avisos proactivos',
   },
   {
-    name: 'Resultados',
-    description:
-      'Distribución: reducción de carga fiscal efectiva −12% en 12 meses.• Servicios técnicos: cierres y reporting en D+5; cero sanciones en el ejercicio.• E‑commerce: recuperación de IVA intracomunitario; mejora de cash‑flow +8%.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    name: 'Cuadro de mando',
+    path: 'M576 160C576 210.2 516.9 285.1 491.4 315C487.6 319.4 482 321.1 476.9 320L384 320C366.3 320 352 334.3 352 352C352 369.7 366.3 384 384 384L480 384C533 384 576 427 576 480C576 533 533 576 480 576L203.6 576C212.3 566.1 222.9 553.4 233.6 539.2C239.9 530.8 246.4 521.6 252.6 512L480 512C497.7 512 512 497.7 512 480C512 462.3 497.7 448 480 448L384 448C331 448 288 405 288 352C288 299 331 256 384 256L423.8 256C402.8 224.5 384 188.3 384 160C384 107 427 64 480 64C533 64 576 107 576 160zM181.1 553.1C177.3 557.4 173.9 561.2 171 564.4L169.2 566.4L169 566.2C163 570.8 154.4 570.2 149 564.4C123.8 537 64 466.5 64 416C64 363 107 320 160 320C213 320 256 363 256 416C256 446 234.9 483 212.5 513.9C201.8 528.6 190.8 541.9 181.7 552.4L181.1 553.1zM192 416C192 398.3 177.7 384 160 384C142.3 384 128 398.3 128 416C128 433.7 142.3 448 160 448C177.7 448 192 433.7 192 416zM480 192C497.7 192 512 177.7 512 160C512 142.3 497.7 128 480 128C462.3 128 448 142.3 448 160C448 177.7 462.3 192 480 192z',
+    description: 'KPIs clave (margen, cash-flow, coste de personal, períodos medios)',
+  },
+  {
+    name: 'Defensa y representación',
+    path: 'M320 64C324.6 64 329.2 65 333.4 66.9L521.8 146.8C543.8 156.1 560.2 177.8 560.1 204C559.6 303.2 518.8 484.7 346.5 567.2C329.8 575.2 310.4 575.2 293.7 567.2C121.3 484.7 80.6 303.2 80.1 204C80 177.8 96.4 156.1 118.4 146.8L306.7 66.9C310.9 65 315.4 64 320 64z',
+    description: 'Defensa y representación ante AEAT y TGSS',
+  },
+  {
+    name: 'Integración',
+    path: 'M415.9 274.5C428.1 271.2 440.9 277 446.4 288.3L465 325.9C475.3 327.3 485.4 330.1 494.9 334L529.9 310.7C540.4 303.7 554.3 305.1 563.2 314L582.4 333.2C591.3 342.1 592.7 356.1 585.7 366.5L562.4 401.4C564.3 406.1 566 411 567.4 416.1C568.8 421.2 569.7 426.2 570.4 431.3L608.1 449.9C619.4 455.5 625.2 468.3 621.9 480.4L614.9 506.6C611.6 518.7 600.3 526.9 587.7 526.1L545.7 523.4C539.4 531.5 532.1 539 523.8 545.4L526.5 587.3C527.3 599.9 519.1 611.3 507 614.5L480.8 621.5C468.6 624.8 455.9 619 450.3 607.7L431.7 570.1C421.4 568.7 411.3 565.9 401.8 562L366.8 585.3C356.3 592.3 342.4 590.9 333.5 582L314.3 562.8C305.4 553.9 304 540 311 529.5L334.3 494.5C332.4 489.8 330.7 484.9 329.3 479.8C327.9 474.7 327 469.6 326.3 464.6L288.6 446C277.3 440.4 271.6 427.6 274.8 415.5L281.8 389.3C285.1 377.2 296.4 369 309 369.8L350.9 372.5C357.2 364.4 364.5 356.9 372.8 350.5L370.1 308.7C369.3 296.1 377.5 284.7 389.6 281.5L415.8 274.5zM448.4 404C424.1 404 404.4 423.7 404.5 448.1C404.5 472.4 424.2 492 448.5 492C472.8 492 492.5 472.3 492.5 448C492.4 423.6 472.7 404 448.4 404zM224.9 18.5L251.1 25.5C263.2 28.8 271.4 40.2 270.6 52.7L267.9 94.5C276.2 100.9 283.5 108.3 289.8 116.5L331.8 113.8C344.3 113 355.7 121.2 359 133.3L366 159.5C369.2 171.6 363.5 184.4 352.2 190L314.5 208.6C313.8 213.7 312.8 218.8 311.5 223.8C310.2 228.8 308.4 233.8 306.5 238.5L329.8 273.5C336.8 284 335.4 297.9 326.5 306.8L307.3 326C298.4 334.9 284.5 336.3 274 329.3L239 306C229.5 309.9 219.4 312.7 209.1 314.1L190.5 351.7C184.9 363 172.1 368.7 160 365.5L133.8 358.5C121.6 355.2 113.5 343.8 114.3 331.3L117 289.4C108.7 283 101.4 275.6 95.1 267.4L53.1 270.1C40.6 270.9 29.2 262.7 25.9 250.6L18.9 224.4C15.7 212.3 21.4 199.5 32.7 193.9L70.4 175.3C71.1 170.2 72.1 165.2 73.4 160.1C74.8 155 76.4 150.1 78.4 145.4L55.1 110.5C48.1 100 49.5 86.1 58.4 77.2L77.6 58C86.5 49.1 100.4 47.7 110.9 54.7L145.9 78C155.4 74.1 165.5 71.3 175.8 69.9L194.4 32.3C200 21 212.7 15.3 224.9 18.5zM192.4 148C168.1 148 148.4 167.7 148.4 192C148.4 216.3 168.1 236 192.4 236C216.7 236 236.4 216.3 236.4 192C236.4 167.7 216.7 148 192.4 148z',
+    description: 'Integración contable con bancos y ERPs habituales',
   },
 ];

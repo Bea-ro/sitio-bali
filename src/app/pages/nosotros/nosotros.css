@@ -1,3 +1,29 @@
+.members-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
+  padding: 16px;
+}
+
+.diferencias-section {
+  display: flex;
+  padding-right: 16px;
+  padding-left: 16px;
+  gap: 62px;
+  align-items: center;
+}
+
+.diferencias-section > ul {
+  width: 100%;
+}
+
+.results-list {
+  display: flex;
+  gap: 40px;
+  padding: 30px 12px 0 12px;
+  justify-content: center;
+}
+
 iframe {
   width: 100%;
   display: block;

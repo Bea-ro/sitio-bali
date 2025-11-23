@@ -9,4 +9,5 @@
   display: flex;
   gap: 40px;
   padding: 30px 12px 0 12px;
+  justify-content: center;
 }

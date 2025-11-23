@@ -132,6 +132,10 @@ body.public h3 {
   margin-bottom: 28px;
 }
 
+body.public h4 {
+  font-size: 20px;
+}
+
 .centered-main {
   display: flex;
   flex-direction: column;
@@ -148,6 +152,10 @@ body.public h3 {
 
 .middle-section {
   padding: 80px 0;
+}
+
+.bottom-section {
+  padding-bottom: 80px;
 }
 
 .coloured-section {

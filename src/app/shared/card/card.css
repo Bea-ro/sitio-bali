@@ -26,12 +26,12 @@
   color: var(--color-sec);
 }
 
+.service-card-container:hover .arrow-icon path {
+  stroke: var(--color-sec);
+}
+
 .card-text {
   padding: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.service-card-container:hover .arrow-icon path {
-  stroke: var(--color-sec);
 }

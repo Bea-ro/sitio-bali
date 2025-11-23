@@ -3,8 +3,8 @@
   <section class="middle-section">
     <h2 class="centered-text">Nuestros servicios</h2>
     <ul class="service-cards">
-      @if (services) { @for(service of services; track service.name) {
-      <app-card [cardElement]="service"></app-card>
+      @if (services) { @for(service of services; track service.name; let idx = $index) {
+      <app-card [cardElement]="service" [indexElement]="idx"></app-card>
       }}
     </ul>
   </section>
@@ -18,7 +18,7 @@
   </section>
   <section class="middle-section">
     <h2 class="centered-text">Nuestro trabajo</h2>
-    @for(homweParagraph of homeParagraphs; track homweParagraph.title; let idx = $index) {
+    @for(homweParagraph of homeParagraphs; track homweParagraph.name; let idx = $index) {
     <app-image-and-text
       [paragraphIndex]="idx"
       [paragraphElement]="homweParagraph"

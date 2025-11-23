@@ -19,8 +19,6 @@
   height: 50px;
 }
 
-.icon path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
+h3 {
+  color: var(--color-main);
 }

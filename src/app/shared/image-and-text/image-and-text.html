@@ -1,13 +1,13 @@
 @if(paragraphElement) {
-<article [ngClass]="paragraphIndex % 2 === 0 ? 'even' : 'odd'">
+<article [ngClass]="paragraphIndex % 2 === 0 ? 'even' : 'odd'" [id]="paragraphIndex.toString()">
   <img
     class="article-image"
     [src]="`${imagePrefix}${paragraphElement.image}`"
     alt="bali-asociados-presentation"
   />
   <div class="article-text">
-    <h3>{{ paragraphElement.title }}</h3>
-    <p>{{ paragraphElement.text }}</p>
+    <h3>{{ paragraphElement.name }}</h3>
+    <p class="paragraph">{{ paragraphElement.description }}</p>
   </div>
 </article>
 }

@@ -18,12 +18,6 @@
   height: 18px;
 }
 
-.header-icon path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
-}
-
 .secondary-header-text {
   font-size: 14px;
 }

@@ -1,7 +1,7 @@
 <main class="centered-main">
   <h1 class="page-title centered-text">Bali Asociados</h1>
   <h2 class="page-subtitle centered-text">Facilitando tu día a día</h2>
-  @for(nosotrosParagraph of nosotrosParagraphs; track nosotrosParagraph.title; let idx = $index) {
+  @for(nosotrosParagraph of nosotrosParagraphs; track nosotrosParagraph.name; let idx = $index) {
   <app-image-and-text
     [paragraphIndex]="idx"
     [paragraphElement]="nosotrosParagraph"

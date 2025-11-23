@@ -19,21 +19,8 @@
   opacity: 1;
 }
 
-:host:hover .arrow-icon path {
+:host:hover .arrow-scroll path {
   stroke: var(--color-sec);
-}
-
-.arrow-icon {
-  color: var(--color-main);
-  height: 30px;
-  display: flex;
-  align-self: flex-end;
-}
-
-.arrow-icon path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
 }
 
 @media screen and (max-width: 524px) {

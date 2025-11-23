@@ -20,3 +20,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.paragraph {
+  white-space: pre-line;
+}

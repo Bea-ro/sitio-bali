@@ -52,6 +52,7 @@ html {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 ul {
@@ -155,4 +156,18 @@ body.public h3 {
 
 .centered-text {
   text-align: center;
+}
+
+.arrow-icon {
+  color: var(--color-main);
+  height: 30px;
+  display: flex;
+  align-self: flex-end;
+  margin-top: 6px;
+}
+
+path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
 }

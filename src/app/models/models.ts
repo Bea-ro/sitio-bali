@@ -48,7 +48,7 @@ export interface Customer {
   description: string;
 }
 export interface Paragraph {
-  title: string;
-  text: string;
+  name: string;
+  description: string;
   image: string;
 }

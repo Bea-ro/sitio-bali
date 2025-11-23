@@ -33,8 +33,12 @@
   font-size: 14px;
 }
 
+.noticia-card-container:hover .noticia-category {
+  background-color: var(--color-extra-light);
+}
+
 .noticia-category:hover {
-  background-color: var(--color-sec);
+  background-color: var(--color-sec) !important;
 }
 
 .noticia-date-and-category {
@@ -45,19 +49,6 @@
 
 .noticia-intro {
   margin-top: 10px;
-}
-
-.arrow-icon {
-  color: var(--color-main);
-  height: 30px;
-  display: flex;
-  align-self: flex-end;
-}
-
-.arrow-icon path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
 }
 
 .noticia-card-container:hover .arrow-icon path {

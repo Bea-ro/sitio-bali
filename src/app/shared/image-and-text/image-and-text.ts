@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IMAGEPREURL } from '../../data/data';
-import { Paragraph } from '../../models/models';
+import { Paragraph, Service } from '../../models/models';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ImageAndText {
   public imagePrefix: string = IMAGEPREURL;
-  @Input() paragraphElement?: Paragraph;
+  @Input() paragraphElement?: Paragraph | Service;
   @Input() paragraphIndex: number = 0;
 }

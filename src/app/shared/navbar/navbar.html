@@ -1,9 +1,31 @@
 <nav>
   <ul class="nav-links">
     <li>
-      <a class="nav-link" (click)="closeBurguer()" [routerLink]="['/servicios']">Servicios</a>
+      <a
+        class="nav-link"
+        (click)="closeBurguer()"
+        [routerLink]="['/servicios']"
+        routerLinkActive="active"
+        >Servicios</a
+      >
     </li>
-    <li><a class="nav-link" (click)="closeBurguer()" [routerLink]="['/nosotros']">Nosotros</a></li>
-    <li><a class="nav-link" (click)="closeBurguer()" [routerLink]="['/noticias']">Noticias</a></li>
+    <li>
+      <a
+        class="nav-link"
+        (click)="closeBurguer()"
+        [routerLink]="['/nosotros']"
+        routerLinkActive="active"
+        >Nosotros</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        (click)="closeBurguer()"
+        [routerLink]="['/noticias']"
+        routerLinkActive="active"
+        >Noticias</a
+      >
+    </li>
   </ul>
 </nav>

@@ -19,8 +19,12 @@
   opacity: 1;
 }
 
-:host:hover .arrow-scroll path {
+:host:hover svg path {
   stroke: var(--color-sec);
+}
+
+svg {
+  margin-top: 0;
 }
 
 @media screen and (max-width: 524px) {

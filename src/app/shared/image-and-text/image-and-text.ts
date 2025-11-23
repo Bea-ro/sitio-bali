@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IMAGEPREURL } from '../../data/data';
 import { Paragraph, Service } from '../../models/models';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-image-and-text',
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './image-and-text.css',
 })
 export class ImageAndText {
-  public imagePrefix: string = IMAGEPREURL;
   @Input() paragraphElement?: Paragraph | Service;
   @Input() paragraphIndex: number = 0;
+  public imagePrefix = environment.imagePrefix;
 }

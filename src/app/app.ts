@@ -1,15 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-// import { ScrollTopButton } from './core/components/scroll-top-button/scroll-top-button';
-// import { ShowScrollButton } from './core/directives/show-scroll-button';
+import { ShowScrollButton } from './core/directives/show-scroll-button';
+import { ScrollTopButton } from './core/components/scroll-top-button/scroll-top-button';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    RouterOutlet,
-    // ScrollTopButton, ShowScrollButton
-  ],
+  imports: [RouterOutlet, ScrollTopButton, ShowScrollButton],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

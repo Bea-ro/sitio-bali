@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Member } from '../../../../models/models';
-import { IMAGEPREURL } from '../../../../data/data';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-team-card',
@@ -10,5 +10,5 @@ import { IMAGEPREURL } from '../../../../data/data';
 })
 export class TeamCard {
   @Input() cardElement?: Member;
-  public imagePrefix = IMAGEPREURL;
+  public imagePrefix = environment.imagePrefix;
 }

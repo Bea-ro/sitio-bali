@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { interval, map } from 'rxjs';
-import { IMAGEPREURL } from '../../../../data/data';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-home-banner',
@@ -11,7 +11,7 @@ import { IMAGEPREURL } from '../../../../data/data';
 })
 export class HomeBanner {
   public asesorias: string[] = ['fiscal', 'contable', 'laboral', 'mercantil'];
-  public imagePrefix: string = IMAGEPREURL;
+  public imagePrefix = environment.imagePrefix;
 
   asesoria$ = interval(2000).pipe(map((i) => this.asesorias[i % this.asesorias.length]));
 }

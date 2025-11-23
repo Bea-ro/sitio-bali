@@ -6,27 +6,19 @@ html {
   --color-black: rgb(2, 21, 38);
   --color-white: #ffffff;
   --color-main: #231473;
+  --color-sec: #3b889d;
   --color-light: #dedeff;
+  --color-extra-light: #efedfb;
 
   /* --color-sec: #5c4d7c;
   --color-light: #f9ebff;
-  --color-sec-dos: #66baa8; */
-
-  /* --color-light: #e0edf2; 
-  --color-light: #d7cdcb;*/
-  /* --color-extra-light: #f8f3ff; */
-  --color-extra-light: #efedfb;
-  --color-sec: #3b889d;
-
-  /*--color-sec: #9989b4;
+  --color-sec-dos: #66baa8; 
+  --color-light: #e0edf2; 
+  --color-light: #d7cdcb;
+  --color-extra-light: #f8f3ff;
+--color-sec: #9989b4;
   --color-light: #fbf8ff;
   --color-sec-2: #e8d5b5; */
-
-  --white-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
-  --black-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  --main-shadow: 2px 2px 4px rgba(35, 20, 15, 0.5);
-  --hover-scale: scale(1.025);
-  --smooth-scale: transform 0.3s ease;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -44,7 +36,6 @@ html {
 
   font-family: 'EB+Garamond', serif;
   font-optical-sizing: auto;
-  /* font-weight: 400; */
   font-style: normal;
   font-size: 18px;
   line-height: 1.5em;
@@ -61,6 +52,24 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+body.public main {
+  padding-top: 118px;
+  min-height: 40vw;
+}
+
+body.admin main {
+  padding: 42px 38px;
+  min-height: 100vh;
+  min-width: 80vw;
+  background-color: var(--color-extra-light);
+}
+
+.centered-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -98,18 +107,6 @@ body.admin .button {
   border-radius: 10px;
 }
 
-body.public main {
-  padding-top: 118px;
-  min-height: 40vw;
-}
-
-body.admin main {
-  padding: 42px 38px;
-  min-height: 100vh;
-  min-width: 80vw;
-  background-color: var(--color-extra-light);
-}
-
 h1 {
   margin-bottom: 16px;
 }
@@ -134,12 +131,7 @@ body.public h3 {
 
 body.public h4 {
   font-size: 20px;
-}
-
-.centered-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
 .page-title {
@@ -178,4 +170,8 @@ path {
   stroke: currentColor;
   stroke-width: 20;
   fill: none;
+}
+
+.paragraph {
+  white-space: pre-line;
 }

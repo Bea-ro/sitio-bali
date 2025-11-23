@@ -12,8 +12,6 @@ export const contactDetails: ContactDetails = {
   cif: 'B84133586',
 };
 
-export const IMAGEPREURL = 'https://res.cloudinary.com/dnlceaase/image/upload/f_auto,q_auto';
-
 export const services: Service[] = [
   {
     name: 'Asesoría integral',
@@ -21,7 +19,7 @@ export const services: Service[] = [
       'Nos encargamos de la dirección financiera y fiscal, la coordinación contable-laboral y el seguimiento estratégico del negocio.',
     description:
       'El servicio de asesoría integral parte del estudio de las necesidades del negocio para identificar la mejor manera de optimizar recursos.\n\nIncluye dirección financiera y fiscal externa, coordinación contable-laboral, elaboración de cuadro de mando y participación en comité mensual para el seguimiento estratégico del negocio.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763924773/bali/asesoria-inrtegral-ba_ul1xsj.webp',
   },
   {
     name: 'Contable',
@@ -29,7 +27,7 @@ export const services: Service[] = [
       'Llevamos tu contabilidad al día y proporcionamos toda la información financiera que necesitas de forma precisa y ágil.',
     description:
       'Nuestro equipo lleva la contabilidad de cada cliente al día, realizando conciliaciones, cierres mensuales y anuales, libros y depósitos de cuentas. El servicio incluye reporting D+5 para la toma de decisiones más ágil.\n\nIdentificamos los mejores métodos y procesos en función de cada tipo de cliente y adaptamos nuestras herramientas a los sistemas de gestión de cada empresa, garantizando una comunicación fluida en todo momento.\n\nContamos con sistemas de lectura OCR de facturas físicas, importación directa desde procesadores de texto u hojas de cálculo y traslado de bancos desde la web de cada entidad.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763921631/bali/asesoria-contable-ba_nu1dcp.webp',
   },
   {
     name: 'Fiscal',
@@ -37,7 +35,7 @@ export const services: Service[] = [
       'Gestionamos y optimizamos todo tipo de obligaciones fiscales con seguridad y anticipación.',
     description:
       'Partiendo del encuadre fiscal de las actividades de cada negocio, planificamos y presentamos todos los modelos tributarios (IS, IVA, IRPF y retenciones), asegurado el cumplimiento con las obligaciones locales, autonómicas o internacionales.\n\nDeterminamos la tributación en operaciones singulares, gestionamos pagos fraccionados y te acompañamos en inspecciones y recursos. Además, nuestro equipo se mantiene actualizado en normativa tribuataria para facilitarte su conocimiento y evolución.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763923977/bali/asesoria-fiscal-ba_vrrxug.webp',
   },
   {
     name: 'Laboral',
@@ -45,7 +43,7 @@ export const services: Service[] = [
       'Tras un estudio detallado de las necesidades en el ámbito laboral o de Recursos Humanos de cada negocio, gestionamos todo lo necesario.',
     description:
       'El equipo de Bali Asociados analiza cada negocio para diagnosticar y tramitar todo lo necesario en el ámbito laboral.\n\nAltas de autónomos (RETA), elaboración de contratos o subtontrataciones, nóminas y seguros sociales, sanciones o despidos y conciliaciones. Elaboración de convenios y políticas retributivas.\n\nPolíticas de igualdad: análisis de brecha salarial, protocolos antiacoso, canales de denuncias y planes de igualdad.\n\nTambién se da cobertura a la coordinación de Prevención de Riesgos Laborales y ERTE. Y se realizan auditorías de costes y laborales.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763922698/bali/asesoria-laboral-ba_e7aux2.webp',
   },
   {
     name: 'Constitución de empresas',
@@ -53,7 +51,7 @@ export const services: Service[] = [
       'Identificamos las vías más sencillas y seguras para crear empresas o iniciar actividades económicas a título personal.',
     description:
       'Nuestro equipo te acompaña en la puesta en marcha de tu negocio, ya sea como autónomo o sociedad.\n\nElegimos la forma jurídica más adecuada, elaboramos los estatutos, gestionamos altas censales, IAE y cuentas bancarias y ponemos en marcha compliant.\n\nNos enfocamos en simplificar y agilizar todos los trámites con garantía de seguridad.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763924292/bali/constitucion-empresas-ba_oupmkt.webp',
   },
   {
     name: 'Estrategia y marketing',
@@ -61,7 +59,7 @@ export const services: Service[] = [
       'Analizando el punto de partida del negocio y su sector, nuestro equipo elabora un plan de Marketing 360 con resultados medibles.',
     description:
       'A partir de un diagnóstico completo de la situación del negocio y el mercado, identificamos tu propuesta de valor y diseñamos la estrategia de pricing más efectiva.\n\nDesarrollamos un plan comercial integral, incluyendo embudos de conversión y un calendario de acciones. Cada iniciativa está alineada con los objetivos de tu negocio para ganartizar resultados medibles.',
-    image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+    image: '/v1763922225/bali/estrategia-y-marketing-ba_zf7kjo.webp',
   },
 ];
 
@@ -90,7 +88,14 @@ export const nuestroTrabajo: Paragraph = {
   name: '¿Cómo trabajamos?',
   description:
     'Lo primero que hace el equipo de Bali Asociados es elaborar un mapa de riesgos y oportunidades a partir de la información recopilada, obteniendo un diagnóstico preciso de la situación de cada negocio.\n\nCon dicho diagnóstico, se diseña e implementa un plan personalizado con calendario, responsables y KPIs, realizando un seguimiento y reporting adaptado mensual y trimestral.\n\nAdemás, cada trimestre se realizan los ajustes necesarios, revisando próximos objetivos y alertas. Siempre con la máxima del cumplimiento.',
-  image: '/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg',
+  image: '/v1763925408/bali/como-trabajamos-ba_p2nj4p.webp',
+};
+
+export const trabajoHome: Paragraph = {
+  name: '',
+  description:
+    'Tenemos un equipo de especialistas dedicado a facilitar tu día a día. Asesores permanentemente actualizados para que cuentes con toda la información que necesitas en tiempo real.\n\nTomarás decisiones ágiles basadas en datos y normativa.',
+  image: '/v1763924893/bali/reporting-ba_meqhhy.webp',
 };
 
 export const results: Result[] = [

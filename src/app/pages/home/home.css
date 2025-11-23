@@ -11,3 +11,44 @@
   padding: 30px 12px 0 12px;
   justify-content: center;
 }
+
+.trabajo-section {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.trabajo-section article {
+  display: flex;
+  padding: 50px 12px;
+}
+
+.trabajo-section ul {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--color-extra-light);
+  padding: 14px;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+
+.trabajo-section li {
+  flex: 0;
+}
+
+.trabajo-section img {
+  border-radius: 12px;
+  margin: 0 20px;
+  max-width: 45%;
+}
+
+.trabajo-section .article-text {
+  padding: 0 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.trabajo-section .paragraph {
+  margin-bottom: 36px;
+}

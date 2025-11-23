@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Service } from '../../models/models';
 import { CommonModule } from '@angular/common';
-import { IMAGEPREURL } from '../../data/data';
 import { RouterModule } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-card',
@@ -13,5 +13,5 @@ import { RouterModule } from '@angular/router';
 export class Card {
   @Input() cardElement?: Service;
   @Input() indexElement?: number;
-  public imagePrefix = IMAGEPREURL;
+  public imagePrefix = environment.imagePrefix;
 }

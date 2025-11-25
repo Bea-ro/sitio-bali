@@ -1,0 +1,25 @@
+<p>categories-menu works!</p>
+<nav>
+  <ul>
+    <li>
+      <button
+        class="category-button"
+        [class.active]="selectedCategoryIndex === null"
+        (click)="updateFilterCategory('', null)"
+      >
+        Todas
+      </button>
+    </li>
+    @for(category of categories$ | async; track $index){
+    <li>
+      <button
+        class="category-button"
+        [class.active]="$index === selectedCategoryIndex"
+        (click)="updateFilterCategory(category, $index)"
+      >
+        {{ category }}
+      </button>
+    </li>
+    }
+  </ul>
+</nav>

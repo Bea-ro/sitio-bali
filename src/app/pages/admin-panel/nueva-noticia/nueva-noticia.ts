@@ -61,7 +61,9 @@ export class NuevaNoticia implements OnInit {
         text: this.noticiaFields.value.text || '',
         category: noticiaCategory || '',
         slug: noticiaSlug || '',
-        date: Intl.DateTimeFormat('es-ES').format(new Date()),
+        date: new Intl.DateTimeFormat('es-ES', {
+          dateStyle: 'medium',
+        }).format(new Date()),
       };
       this.adminNoticias.createNoticia(newNoticia);
     }

@@ -31,7 +31,7 @@ export interface INoticia {
   date: string;
   text: string;
   category: string;
-  id?: string;
+  _id?: string;
   slug: string;
 }
 

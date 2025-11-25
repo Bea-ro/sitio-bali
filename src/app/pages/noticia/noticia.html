@@ -1,9 +1,9 @@
-<main class="centered-main">
+<main>
   @if(noticiadData) {
   <section>
     <h1>{{ noticiadData.title }}</h1>
     <p>{{ noticiadData.date }}</p>
-    <p>{{ noticiadData.category }}</p>
+    <p class="noticia-category">{{ noticiadData.category.toUpperCase() }}</p>
     <p>{{ noticiadData.text }}</p>
   </section>
   }

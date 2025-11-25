@@ -16,7 +16,7 @@ export class Noticia implements OnInit {
     date: '',
     text: '',
     category: '',
-    id: '',
+    _id: '',
     slug: '',
   };
 

@@ -2,16 +2,19 @@ main {
   padding: 0 12px;
 }
 
-.noticia-category {
-  color: var(--color-main);
-  background-color: var(--color-light);
-  width: fit-content;
-  font-weight: 800;
-  padding: 8px 20px;
-  border-radius: 12px;
-  font-size: 14px;
+.noticia-section {
+  padding: 0px 16px 80px 16px;
 }
 
-.noticia-category:hover {
-  background-color: var(--color-sec);
+.date-and-category-conotainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.date {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-main);
 }

@@ -1,5 +1,6 @@
 .noticias-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-around;
   gap: 35px;
   padding: 16px;

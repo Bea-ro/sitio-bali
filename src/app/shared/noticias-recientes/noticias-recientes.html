@@ -1,5 +1,5 @@
 <section class="bottom-section">
-  <h2 class="centered-text">Lo último</h2>
+  <h2 class="centered-text">Últimas novedades</h2>
   <ul class="noticias-cards">
     @for(noticia of noticias$ | async; track noticia._id) {
     <app-noticia-card [noticia]="noticia"></app-noticia-card>

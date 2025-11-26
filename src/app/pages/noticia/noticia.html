@@ -1,11 +1,20 @@
 <main>
-  @if(noticiadData) {
-  <section>
-    <h1>{{ noticiadData.title }}</h1>
-    <p>{{ noticiadData.date }}</p>
-    <p class="noticia-category">{{ noticiadData.category.toUpperCase() }}</p>
-    <p>{{ noticiadData.text }}</p>
-  </section>
-  }
+  <div class="noticias-content-container">
+    @if(noticiadData) {
+    <section class="noticia-section">
+      <h1>{{ noticiadData.title }}</h1>
+      <div class="date-and-category-conotainer">
+        <p class="date">{{ noticiadData.date }}</p>
+        <p class="noticia-category">{{ noticiadData.category }}</p>
+      </div>
+      <p>{{ noticiadData.text }}</p>
+    </section>
+    }
+    <aside class="noticias-aside">
+      <app-categories-menu
+        (selectedCategory)="onSelectedCategoryChange($event)"
+      ></app-categories-menu>
+    </aside>
+  </div>
   <app-noticias-recientes></app-noticias-recientes>
 </main>

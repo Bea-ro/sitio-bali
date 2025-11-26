@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GetNoticias } from '../../../../core/services/get-noticias';
 import { CommonModule } from '@angular/common';
+import { GetNoticias } from '../../core/services/get-noticias';
 
 @Component({
   selector: 'app-categories-menu',

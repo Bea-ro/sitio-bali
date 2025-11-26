@@ -4,8 +4,8 @@ import { INoticia } from '../../models/models';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
-import { CategoriesMenu } from './components/categories-menu/categories-menu';
 import { FilterPipe } from '../../pipes/filter-pipe';
+import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
 
 @Component({
   selector: 'app-noticias',

@@ -1,7 +1,7 @@
 .noticias-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-around;
-  flex-wrap: wrap;
   gap: 35px;
   padding: 16px 16px 80px 16px;
 }

@@ -1,9 +1,9 @@
-<p>categories-menu works!</p>
+<h4>Buscar por categoría</h4>
 <nav>
-  <ul>
+  <ul class="categories-list">
     <li>
       <button
-        class="category-button"
+        class="noticia-category todas-noticias"
         [class.active]="selectedCategoryIndex === null"
         (click)="updateFilterCategory('', null)"
       >
@@ -13,7 +13,7 @@
     @for(category of categories$ | async; track $index){
     <li>
       <button
-        class="category-button"
+        class="aside-noticia-category"
         [class.active]="$index === selectedCategoryIndex"
         (click)="updateFilterCategory(category, $index)"
       >

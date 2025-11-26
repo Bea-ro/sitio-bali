@@ -3,10 +3,11 @@ import { INoticia } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
 import { GetNoticias } from '../../core/services/get-noticias';
+import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
 
 @Component({
   selector: 'app-noticia',
-  imports: [NoticiasRecientes],
+  imports: [NoticiasRecientes, CategoriesMenu],
   templateUrl: './noticia.html',
   styleUrl: './noticia.css',
 })
@@ -19,6 +20,7 @@ export class Noticia implements OnInit {
     _id: '',
     slug: '',
   };
+  public selectedCategory: string = '';
 
   constructor(private route: ActivatedRoute, private getNoticias: GetNoticias) {}
 
@@ -30,5 +32,9 @@ export class Noticia implements OnInit {
         this.noticiadData = noticia;
       });
     });
+  }
+
+  public onSelectedCategoryChange(category: string) {
+    this.selectedCategory = category;
   }
 }

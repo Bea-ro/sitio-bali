@@ -175,3 +175,33 @@ path {
 .paragraph {
   white-space: pre-line;
 }
+
+.noticia-category {
+  color: var(--color-main);
+  background-color: var(--color-light);
+  width: fit-content;
+  font-weight: 800;
+  padding: 8px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.noticia-category:hover {
+  background-color: var(--color-sec) !important;
+  color: var(--color-white);
+}
+
+.noticias-aside {
+  min-width: 20vw;
+  padding: 20px;
+  border: 1px solid var(--color-light);
+  border-radius: 12px;
+  margin: 16px 16px 0 0;
+  height: fit-content;
+}
+
+.noticias-content-container {
+  display: flex;
+  padding-top: 38px;
+}

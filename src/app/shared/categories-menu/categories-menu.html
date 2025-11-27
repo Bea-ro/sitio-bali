@@ -13,7 +13,7 @@
     @for(category of categories$ | async; track $index){
     <li>
       <button
-        class="aside-noticia-category"
+        class="noticia-category aside"
         [class.active]="$index === selectedCategoryIndex"
         (click)="updateFilterCategory(category, $index)"
       >

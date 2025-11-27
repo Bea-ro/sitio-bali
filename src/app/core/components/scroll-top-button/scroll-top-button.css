@@ -8,6 +8,7 @@
   padding: 12px;
   border-radius: 12px;
   background-color: var(--color-light);
+  cursor: pointer;
 }
 
 :host.visible {

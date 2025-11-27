@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { INoticia } from '../../models/models';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-noticia-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './noticia-card.html',
   styleUrl: './noticia-card.css',
 })
@@ -18,9 +18,5 @@ export class NoticiaCard implements OnInit {
     if (this.noticia) {
       this.noticiaIntro = this.noticia.text.slice(0, 100);
     }
-  }
-
-  public selectNoticia(slug: string) {
-    this.router.navigateByUrl(`/noticias/${slug}`);
   }
 }

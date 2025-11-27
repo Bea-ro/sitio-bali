@@ -3,11 +3,11 @@ import { INoticia } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
 import { GetNoticias } from '../../core/services/get-noticias';
-import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
+import { Pdf } from '../../core/services/pdf';
 
 @Component({
   selector: 'app-noticia',
-  imports: [NoticiasRecientes, CategoriesMenu],
+  imports: [NoticiasRecientes],
   templateUrl: './noticia.html',
   styleUrl: './noticia.css',
 })
@@ -22,12 +22,11 @@ export class Noticia implements OnInit {
   };
   public selectedCategory: string = '';
 
-  constructor(private route: ActivatedRoute, private getNoticias: GetNoticias) {}
+  constructor(private route: ActivatedRoute, private getNoticias: GetNoticias, private pdf: Pdf) {}
 
   public ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const noticiaSlug = params.get('slug') ?? '';
-      console.log(noticiaSlug);
       this.getNoticias.getNoticiaBySlug(noticiaSlug).subscribe((noticia) => {
         this.noticiadData = noticia;
       });
@@ -36,5 +35,12 @@ export class Noticia implements OnInit {
 
   public onSelectedCategoryChange(category: string) {
     this.selectedCategory = category;
+  }
+
+  public downloadPdf() {
+    const title = this.noticiadData.title;
+    const content = this.noticiadData.text;
+    console.log('title', title);
+    this.pdf.generatePdf(title, content);
   }
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-categories-menu',
@@ -11,17 +12,15 @@ import { GetNoticias } from '../../core/services/get-noticias';
 })
 export class CategoriesMenu {
   public categories$?: Observable<string[]>;
-  //public selectedCategory: string = '';
   @Output() selectedCategory = new EventEmitter<string>();
   public selectedCategoryIndex: number | null = null;
 
-  constructor(private getNoticias: GetNoticias) {}
+  constructor(private getNoticias: GetNoticias, private route: ActivatedRoute) {}
 
   public ngOnInit() {
     this.categories$ = this.getNoticias.getCategories();
   }
   public updateFilterCategory(category: string, index: number | null) {
-    // this.selectedCategory = category;
     this.selectedCategory.emit(category);
     this.selectedCategoryIndex = index;
   }

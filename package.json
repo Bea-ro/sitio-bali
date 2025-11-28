@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production && sed -i \"s|apiUrl: ''|apiUrl: '${NG_APP_API_URL}'|\" ./dist/*/browser/environments/environment.prod.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

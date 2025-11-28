@@ -6,8 +6,8 @@ import pdfMake from 'pdfmake/build/pdfmake';
 
 (pdfMake as any).fonts = {
   Garamond: {
-    normal: 'http://localhost:4200/assets/fonts/GARA.TTF',
-    bold: 'http://localhost:4200/assets/fonts/GARABD.TTF',
+    normal: 'https://sitio-bali.vercel.app/assets/fonts/GARA.TTF',
+    bold: 'https://sitio-bali.vercel.app/assets/fonts/GARABD.TTF',
   },
 };
 

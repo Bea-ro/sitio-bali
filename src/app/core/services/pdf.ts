@@ -9,8 +9,11 @@ import pdfMake from 'pdfmake/build/pdfmake';
     normal: 'https://sitio-bali.vercel.app/GARA.TTF',
     bold: 'https://sitio-bali.vercel.app/GARABD.TTF',
   },
+  Roboto: {
+    normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
+    bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
+  },
 };
-
 @Injectable({
   providedIn: 'root',
 })

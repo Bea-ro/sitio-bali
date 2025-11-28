@@ -40,7 +40,6 @@ export class Noticia implements OnInit {
   public downloadPdf() {
     const title = this.noticiadData.title;
     const content = this.noticiadData.text;
-    console.log('title', title);
     this.pdf.generatePdf(title, content);
   }
 }

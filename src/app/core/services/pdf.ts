@@ -1,19 +1,9 @@
 import { Injectable } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
-//import pdfFonts from 'pdfmake/build/vfs_fonts';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-//pdfMake.vfs = pdfFonts.vfs;
+pdfMake.vfs = pdfFonts.vfs;
 
-(pdfMake as any).fonts = {
-  Garamond: {
-    normal: 'https://sitio-bali.vercel.app/GARA.TTF',
-    bold: 'https://sitio-bali.vercel.app/GARABD.TTF',
-  },
-  Roboto: {
-    normal: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Regular.ttf',
-    bold: 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/fonts/Roboto/Roboto-Medium.ttf',
-  },
-};
 @Injectable({
   providedIn: 'root',
 })
@@ -35,8 +25,10 @@ export class Pdf {
 
     return canvas.toDataURL('image/png'); // <- PNG compatible
   }
+
   async generatePdf(title: string, content: string) {
     this.logoBase64 = await this.loadLogo();
+
     const documentDefinition: any = {
       pageSize: 'A4',
       pageMargins: [60, 110, 60, 70], // izq, top, der, bottom

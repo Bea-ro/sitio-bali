@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { INoticia } from '../models/models';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminNoticias {
-  //public API_URL = environment.API_URL;
-  public API_URL = 'http://localhost:3001/api/';
+  public API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 

@@ -35,10 +35,30 @@
   font-size: 15px;
 }
 
+.phone-icon {
+  display: none;
+}
+
 @media screen and (max-width: 375px) {
-  :host {
+  /* :host {
     flex-direction: column;
     height: auto;
     padding: 8px;
+  } */
+  .header-cta {
+    font-size: 16px;
+  }
+  .contact-details {
+    display: none;
+  }
+  .phone-icon {
+    display: block;
+    height: 16px;
+  }
+  .cta-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 }

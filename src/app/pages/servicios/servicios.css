@@ -11,3 +11,9 @@ h2 > span {
 #service-5 {
   scroll-margin-top: 124px;
 }
+
+@media screen and (max-width: 768px) {
+  h2 > span {
+    font-size: 24px;
+  }
+}

@@ -22,3 +22,15 @@
   background-color: var(--color-sec);
   color: var(--color-white);
 }
+
+@media screen and (max-width: 768px) {
+  .categories-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .categories-menu-title {
+    display: none;
+  }
+}

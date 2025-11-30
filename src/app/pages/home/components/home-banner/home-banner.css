@@ -39,3 +39,32 @@ li::before {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 768px) {
+  .home-banner-section {
+    flex-direction: column;
+  }
+
+  .home-banner-image,
+  .home-banner-text {
+    width: 100%;
+  }
+
+  .home-banner-text {
+    padding: 16px;
+    display: block;
+  }
+
+  h2 > span {
+    font-size: 20px;
+  }
+
+  li {
+    padding-left: 38px;
+  }
+
+  li::before {
+    height: 18px;
+    top: 8px;
+  }
+}

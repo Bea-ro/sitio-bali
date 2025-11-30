@@ -10,6 +10,6 @@ export class ShowScrollButton {
   onWindowScroll() {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    this.isVisible = scrollPosition > 200;
+    this.isVisible = scrollPosition > 250;
   }
 }

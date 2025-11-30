@@ -1,12 +1,14 @@
 .service-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 45px;
+  justify-content: space-around;
+  gap: 35px;
   padding: 16px;
 }
 
 .customer-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
   padding: 30px 12px 0 12px;
   justify-content: center;
@@ -42,7 +44,7 @@
   max-width: 45%;
 }
 
-.trabajo-section .article-text {
+.article-text {
   padding: 0 46px;
   display: flex;
   flex-direction: column;
@@ -51,4 +53,45 @@
 
 .trabajo-section .paragraph {
   margin-bottom: 36px;
+}
+
+@media screen and (min-width: 1300px) {
+  .service-cards,
+  .trabajo-section {
+    width: 80%;
+    margin: auto;
+  }
+  .trabajo-section li {
+    flex: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .service-cards,
+  .customer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .trabajo-section article,
+  .trabajo-section ul,
+  .customer-list {
+    flex-direction: column;
+  }
+
+  .trabajo-section article {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .trabajo-section img {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .article-text {
+    padding: 0 16px;
+  }
+  .trabajo-section ul {
+    padding: 14px 0;
+  }
 }

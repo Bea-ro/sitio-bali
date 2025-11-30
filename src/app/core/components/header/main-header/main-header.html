@@ -1,6 +1,13 @@
 <a class="logo" [routerLink]="['/']"
   ><img class="header-logo" src="/bali-asociados-logo.webp" alt="bali-asociados-logo"
 /></a>
-<app-navbar></app-navbar>
-<app-burguer></app-burguer>
+<app-navbar [ngClass]="{ 'burguer-close': !burguerIsOpen }"></app-navbar>
+
+<button (click)="openBurguer()" class="burguer-button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="burguer-icon">
+    <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+    <path [attr.d]="burguerPath" />
+  </svg>
+</button>
+
 <app-button buttonText="Área privada" buttonLink="/"></app-button>

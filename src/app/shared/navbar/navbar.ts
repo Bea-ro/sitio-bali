@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -7,9 +7,4 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar {
-  public burguerIsOpen: boolean = false;
-  public closeBurguer() {
-    this.burguerIsOpen = false;
-  }
-}
+export class Navbar {}

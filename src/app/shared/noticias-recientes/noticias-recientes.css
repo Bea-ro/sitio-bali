@@ -5,3 +5,9 @@
   gap: 35px;
   padding: 16px;
 }
+
+@media screen and (max-width: 374px) {
+  .noticias-cards {
+    grid-template-columns: 1fr;
+  }
+}

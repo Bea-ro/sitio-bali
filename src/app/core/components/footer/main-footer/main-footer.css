@@ -15,10 +15,6 @@
   font-weight: 300;
 }
 
-nav {
-  display: flex;
-}
-
 a {
   color: var(--color-white);
   font-size: 16px;
@@ -29,7 +25,21 @@ a:hover {
 }
 
 @media screen and (max-width: 766px) {
-  nav {
+  :host {
+    padding: 12px;
+  }
+
+  figure,
+  .footer-menu {
     display: none;
+  }
+  .legal-nav ul {
+    display: flex;
+    font-size: 14px;
+    width: 95vw;
+    justify-content: space-around;
+  }
+  a {
+    font-size: 15px;
   }
 }

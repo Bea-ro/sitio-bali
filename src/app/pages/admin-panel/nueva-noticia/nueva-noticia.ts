@@ -5,6 +5,7 @@ import { AdminNoticias } from '../../../services/admin-noticias';
 import { Observable, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../../core/services/get-noticias';
+import { AdminCategories } from '../../../services/admin-categories';
 
 @Component({
   selector: 'app-nueva-noticia',
@@ -36,7 +37,11 @@ export class NuevaNoticia implements OnInit {
     this.categories$ = this.getNoticias.getCategories();
   }
 
-  constructor(private adminNoticias: AdminNoticias, private getNoticias: GetNoticias) {}
+  constructor(
+    private adminNoticias: AdminNoticias,
+    private getNoticias: GetNoticias,
+    private adminCategories: AdminCategories
+  ) {}
 
   public generateSlug(title: string): string {
     return title
@@ -68,5 +73,9 @@ export class NuevaNoticia implements OnInit {
       this.adminNoticias.createNoticia(newNoticia);
     }
     //this.noticiaCreated.emit()
+  }
+
+  public addCategory(category: string | undefined) {
+    category && this.adminCategories.createCategory(category);
   }
 }

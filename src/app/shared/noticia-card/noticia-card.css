@@ -4,6 +4,7 @@
   background-color: var(--color-extra-light);
   padding: 20px;
   border-radius: 12px;
+  height: 100%;
 }
 
 .noticia-card-container:hover {

@@ -11,15 +11,33 @@
   height: 95%;
 }
 
-app-burguer {
+.burguer-button {
   display: none;
 }
 
-@media screen and (max-width: 766px) {
-  app-burguer {
-    display: block;
-    color: var(--color-white);
-    font-size: 26px;
-    width: 40px;
+@media screen and (max-width: 768px) {
+  .burguer-button {
+    display: flex;
+    opacity: 1;
+    border-radius: 6px;
+    justify-content: center;
+    padding: 12px;
+    background-color: var(--color-light);
+  }
+
+  .burguer-icon {
+    color: var(--color-main);
+    height: 30px;
+  }
+
+  app-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .burguer-close {
+    display: none;
   }
 }

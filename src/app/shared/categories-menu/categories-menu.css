@@ -23,7 +23,7 @@
   color: var(--color-white);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .categories-list {
     flex-direction: row;
     flex-wrap: wrap;

@@ -21,3 +21,15 @@
 .card-text {
   padding: 20px;
 }
+
+@media screen and (max-width: 375px) {
+  .member-position {
+    font-size: 15px;
+  }
+
+  .member-name {
+    color: var(--color-main);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

@@ -6,6 +6,12 @@
   padding: 16px;
 }
 
+@media screen and (min-width: 376px) and (max-width: 992px) {
+  .noticias-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media screen and (max-width: 374px) {
   .noticias-cards {
     grid-template-columns: 1fr;

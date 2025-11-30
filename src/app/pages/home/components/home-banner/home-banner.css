@@ -19,7 +19,7 @@
 }
 
 h2 > span {
-  font-size: 34px;
+  font-size: inherit;
   color: var(--color-sec);
 }
 
@@ -53,10 +53,6 @@ li::before {
   .home-banner-text {
     padding: 16px;
     display: block;
-  }
-
-  h2 > span {
-    font-size: 20px;
   }
 
   li {

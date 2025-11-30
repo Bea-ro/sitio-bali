@@ -39,12 +39,17 @@ span {
 
 @media screen and (max-width: 375px) {
   .noticia-section {
-    padding-top: 60px;
     padding-bottom: 40px;
   }
 
   .download {
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .noticia-section {
+    padding-top: 60px;
   }
 }

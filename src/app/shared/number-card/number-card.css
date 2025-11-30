@@ -1,12 +1,9 @@
-:host {
-  max-width: 30%;
-}
-
 .number-card {
   padding: 10px;
   background-color: var(--color-extra-light);
   border-radius: 12px;
   padding: 20px;
+  height: 100%;
 }
 
 .number {

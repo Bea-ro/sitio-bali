@@ -66,18 +66,14 @@
   }
 }
 
-@media screen and (max-width: 375px) {
-  .service-cards,
+@media screen and (max-width: 992px) {
+  .trabajo-section article,
+  .trabajo-section ul {
+    flex-direction: column;
+  }
   .customer-list {
     grid-template-columns: 1fr;
   }
-
-  .trabajo-section article,
-  .trabajo-section ul,
-  .customer-list {
-    flex-direction: column;
-  }
-
   .trabajo-section article {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -93,5 +89,17 @@
   }
   .trabajo-section ul {
     padding: 14px 0;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 992px) {
+  .service-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .service-cards {
+    grid-template-columns: 1fr;
   }
 }

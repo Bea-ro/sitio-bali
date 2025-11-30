@@ -18,13 +18,43 @@
 }
 
 .results-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
   padding: 30px 12px 0 12px;
   justify-content: center;
+  margin: auto;
+  max-width: 80%;
 }
 
 iframe {
   width: 100%;
   display: block;
+}
+
+@media screen and (min-width: 375px) and (max-width: 992px) {
+  .members-list {
+    grid-template-columns: 33% 33% 33%;
+    gap: 8px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .diferencias-section {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .members-list {
+    grid-template-columns: 50% 50%;
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .results-list {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
 }

@@ -42,13 +42,13 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'politica-de-cookies',
+        path: 'politica-cookies',
         loadComponent: () =>
           import('./pages/politica-cookies/politica-cookies').then((c) => c.PoliticaCookies),
         title: 'Política de cookies | Bali Asociados',
       },
       {
-        path: 'politica-de-privacidad',
+        path: 'politica-privacidad',
         loadComponent: () =>
           import('./pages/politica-privacidad/politica-privacidad').then(
             (c) => c.PoliticaPrivacidad

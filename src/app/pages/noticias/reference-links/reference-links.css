@@ -1,0 +1,42 @@
+:host {
+  padding-bottom: 80px;
+}
+
+.links-container {
+  width: 95vw;
+  overflow-x: hidden;
+}
+
+.reference-links-list {
+  display: flex;
+  gap: 98px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.reference-links-list::-webkit-scrollbar {
+  display: none;
+}
+
+.reference-link-container {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.reference-link-container p {
+  text-align: center;
+}
+
+.dot-icon {
+  height: 10px;
+}
+
+@media screen and (max-width: 374px) {
+  :host {
+    padding-bottom: 30px;
+  }
+}

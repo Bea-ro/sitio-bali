@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
+import { ReferenceLinks } from './reference-links/reference-links';
 
 @Component({
   selector: 'app-noticias',
-  imports: [NoticiaCard, CategoriesMenu, CommonModule, FilterPipe],
+  imports: [NoticiaCard, CategoriesMenu, CommonModule, FilterPipe, ReferenceLinks],
   templateUrl: './noticias.html',
   styleUrl: './noticias.css',
 })

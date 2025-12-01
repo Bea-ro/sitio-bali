@@ -55,6 +55,9 @@
     display: block;
     height: 16px;
   }
+  .phone-icon path {
+    fill: currentColor !important;
+  }
   .cta-container {
     display: flex;
     align-items: center;

@@ -21,7 +21,7 @@
     opacity: 1;
     border-radius: 6px;
     justify-content: center;
-    padding: 12px;
+    padding: 8px;
     background-color: var(--color-light);
   }
 
@@ -39,5 +39,11 @@
 
   .burguer-close {
     display: none;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  :host {
+    height: 60px;
   }
 }

@@ -61,3 +61,8 @@ export interface Member {
   position: string;
   image: string;
 }
+export interface ReferenceLink {
+  name: string;
+  url: string;
+  icon: string;
+}

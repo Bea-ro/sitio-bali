@@ -1,42 +1,24 @@
-:host {
-  padding-bottom: 80px;
-}
-
-.links-container {
-  width: 95vw;
-  overflow-x: hidden;
+.carousel-container {
+  display: flex;
+  padding: 0 16px 80px 16px;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .reference-links-list {
   display: flex;
   gap: 98px;
-  padding: 0 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 20px;
-  padding-bottom: 10px;
-  scrollbar-width: none;
-}
-
-.reference-links-list::-webkit-scrollbar {
-  display: none;
-}
-
-.reference-link-container {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
+  padding: 0 26px;
+  justify-content: space-around;
+  width: 80vw;
 }
 
 .reference-link-container p {
   text-align: center;
 }
 
-.dot-icon {
-  height: 10px;
-}
-
 @media screen and (max-width: 374px) {
-  :host {
+  .reference-links-list {
     padding-bottom: 30px;
   }
 }

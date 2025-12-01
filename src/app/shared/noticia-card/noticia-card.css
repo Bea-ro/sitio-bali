@@ -37,3 +37,7 @@
 .noticia-card-container:hover .arrow-icon path {
   stroke: var(--color-sec);
 }
+
+.noticia-arrow {
+  margin-left: 90%;
+}

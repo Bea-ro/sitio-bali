@@ -13,3 +13,9 @@
 .developer-link:hover {
   color: var(--color-sec);
 }
+
+@media screen and (max-width: 374px) {
+  .secondary-footer-text {
+    font-size: 12px;
+  }
+}

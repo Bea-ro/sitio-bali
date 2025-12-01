@@ -27,9 +27,9 @@
 .trabajo-section ul {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   background-color: var(--color-extra-light);
-  padding: 14px;
+  padding: 14px 20px;
   border-radius: 12px;
   justify-content: space-between;
 }
@@ -89,6 +89,9 @@
   }
   .trabajo-section ul {
     padding: 14px 0;
+  }
+  .rotation {
+    transform: rotate(90deg);
   }
 }
 

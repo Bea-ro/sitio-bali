@@ -204,6 +204,10 @@ path:hover {
 }
 
 @media screen and (max-width: 375px) {
+  body.public main {
+    padding-top: 98px;
+  }
+
   body.public h1 {
     font-size: 26px;
   }

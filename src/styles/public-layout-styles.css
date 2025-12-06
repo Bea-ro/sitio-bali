@@ -1,0 +1,47 @@
+body.public h1 {
+  font-size: 40px;
+}
+
+body.public h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+body.public h3 {
+  font-size: 24px;
+  margin-bottom: 28px;
+}
+
+body.public h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+body.public .button {
+  padding: 14px 26px;
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 375px) {
+  body.public main {
+    padding-top: 98px;
+  }
+
+  body.public h1 {
+    font-size: 26px;
+  }
+  body.public h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  body.public h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  body.public h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}

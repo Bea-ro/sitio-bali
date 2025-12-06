@@ -1,3 +1,6 @@
+@import './admin-layout-styles.css';
+@import './public-layout-styles.css';
+
 :root {
   --color-black: rgb(2, 21, 38);
   --color-white: #ffffff;
@@ -84,56 +87,8 @@ button:disabled:hover {
   color: var(--color-white);
 }
 
-body.public .button {
-  padding: 14px 26px;
-  border-radius: 12px;
-}
-
-body.admin .button {
-  padding: 8px 14px;
-  border-radius: 10px;
-}
-
-.icon-button {
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  padding: 12px;
-  background-color: var(--color-light);
-  opacity: 0.7;
-}
-.icon-button:hover {
-  opacity: 1;
-}
-.icon-button:hover svg path {
-  stroke: var(--color-sec);
-}
-
 h1 {
   margin-bottom: 16px;
-}
-
-body.public h1 {
-  font-size: 40px;
-}
-
-body.admin h1 {
-  font-size: 26px;
-}
-
-body.public h2 {
-  font-size: 34px;
-  margin-bottom: 12px;
-}
-
-body.public h3 {
-  font-size: 24px;
-  margin-bottom: 28px;
-}
-
-body.public h4 {
-  font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .page-title {
@@ -204,28 +159,6 @@ path:hover {
 }
 
 @media screen and (max-width: 375px) {
-  body.public main {
-    padding-top: 98px;
-  }
-
-  body.public h1 {
-    font-size: 26px;
-  }
-  body.public h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  body.public h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  body.public h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
   .middle-section {
     padding: 30px 0;
   }

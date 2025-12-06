@@ -32,10 +32,6 @@ form {
   width: 89%;
 }
 
-.add-category-icon {
-  height: 20px;
-}
-
 #text {
   min-height: 50vh;
   field-sizing: content;

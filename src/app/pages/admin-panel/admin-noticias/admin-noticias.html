@@ -2,7 +2,7 @@
   <h1>Administrador de Noticias</h1>
   <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/nueva-noticia"></app-button>
   <ul class="noticias-list">
-    @for(noticia of noticias$ | async; track noticia._id) {
+    @for(noticia of getNoticias.noticias(); track noticia._id) {
     <app-editable-noticia [noticia]="noticia"></app-editable-noticia>
     }
   </ul>

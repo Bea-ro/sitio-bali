@@ -1,3 +1,7 @@
-.noticia-listed {
+.noticias-list {
   display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  background-color: var(--color-white);
+  border-radius: 6px;
 }

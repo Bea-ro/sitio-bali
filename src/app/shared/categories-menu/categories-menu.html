@@ -10,7 +10,7 @@
         Todas
       </button>
     </li>
-    @for(category of categories$ | async; track $index){
+    @for(category of getNoticias.categories(); track $index){
     <li>
       <button
         class="noticia-category aside"

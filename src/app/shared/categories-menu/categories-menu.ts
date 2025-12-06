@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { ActivatedRoute } from '@angular/router';
@@ -11,14 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './categories-menu.css',
 })
 export class CategoriesMenu {
-  public categories$?: Observable<string[]>;
   @Output() selectedCategory = new EventEmitter<string>();
   public selectedCategoryIndex: number | null = null;
 
-  constructor(private getNoticias: GetNoticias, private route: ActivatedRoute) {}
+  constructor(public getNoticias: GetNoticias, private route: ActivatedRoute) {}
 
   public ngOnInit() {
-    this.categories$ = this.getNoticias.getCategories();
+    this.getNoticias.categories();
   }
   public updateFilterCategory(category: string, index: number | null) {
     this.selectedCategory.emit(category);

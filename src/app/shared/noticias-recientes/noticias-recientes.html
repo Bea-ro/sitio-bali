@@ -1,7 +1,7 @@
 <section class="bottom-section">
   <h2 class="centered-text">Últimas novedades</h2>
   <ul class="noticias-cards">
-    @for(noticia of noticias$ | async; track noticia._id) {
+    @for(noticia of getNoticias.noticias().slice(0, 3); track noticia._id) {
     <app-noticia-card [noticia]="noticia"></app-noticia-card>
     }
   </ul>

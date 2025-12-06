@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NoticiaCard } from '../../shared/noticia-card/noticia-card';
-import { INoticia } from '../../models/models';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { FilterPipe } from '../../pipes/filter-pipe';
@@ -15,13 +13,12 @@ import { ReferenceLinks } from './reference-links/reference-links';
   styleUrl: './noticias.css',
 })
 export class Noticias {
-  public noticias$?: Observable<INoticia[]>;
   public selectedCategory: string = '';
 
-  constructor(private getNoticias: GetNoticias) {}
+  constructor(public getNoticias: GetNoticias) {}
 
   public ngOnInit() {
-    this.noticias$ = this.getNoticias.getNoticias();
+    this.getNoticias.getNoticias();
   }
 
   public onSelectedCategoryChange(category: string) {

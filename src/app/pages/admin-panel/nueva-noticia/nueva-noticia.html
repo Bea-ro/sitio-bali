@@ -16,16 +16,16 @@
     <p class="error-message">
       Ya existe una noticia con este título Por favor, introduce un título distinto.
     </p>
-    } @if (categories$) {
+    } @if (getNoticias.categories()) {
     <p>Selecciona una categoría o añade una nueva</p>
     } @else {
     <p>No hay ninguna categoría creada todavía. Añade una nueva categoría.</p>
     }
     <div class="category-fields">
-      @if (categories$) {
+      @if (getNoticias.categories()) {
       <select class="form-field" formControlName="existingCategory" id="existingCategory">
         <option value="">Selecciona una categoría</option>
-        @for(category of categories$ | async; track $index) {
+        @for(category of getNoticias.categories(); track $index) {
         <option [value]="category">{{ category }}</option>
         }
       </select>

@@ -1,4 +1,25 @@
+.editable-noticia {
+  display: flex;
+  width: 100%;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 2px solid var(--color-extra-light);
+}
+
+.editable-noticia > p {
+  font-size: 16px;
+  color: var(--color-main);
+}
+
+.editable-noticia-category {
+  background-color: var(--color-extra-light);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
 .noticia-icons {
   display: flex;
+  margin-left: auto;
   gap: 6px;
 }

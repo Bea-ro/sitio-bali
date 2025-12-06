@@ -1,12 +1,13 @@
 .button-icon-icon {
   height: 20px;
+  color: var(--color-main);
 }
 
 .button-icon-container {
   border-radius: 6px;
   display: flex;
   justify-content: center;
-  padding: 12px;
+  padding: 6px;
   background-color: var(--color-light);
   opacity: 0.7;
 }

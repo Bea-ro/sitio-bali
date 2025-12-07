@@ -37,6 +37,10 @@ span {
   font-weight: 400;
 }
 
+.noticia-text {
+  white-space: pre-wrap;
+}
+
 @media screen and (max-width: 375px) {
   .noticia-section {
     padding-bottom: 40px;

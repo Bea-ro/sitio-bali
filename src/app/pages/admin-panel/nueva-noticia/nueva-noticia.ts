@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoticiaForm } from '../../../models/models';
 import { AdminNoticias } from '../../../services/admin-noticias';
-import { Observable, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../../core/services/get-noticias';
 import { AdminCategories } from '../../../services/admin-categories';
@@ -18,6 +17,12 @@ export class NuevaNoticia implements OnInit {
   public noticiaFields?: FormGroup<NoticiaForm>;
   public plusPath: string =
     'M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z';
+
+  constructor(
+    public adminNoticias: AdminNoticias,
+    public getNoticias: GetNoticias,
+    public adminCategories: AdminCategories
+  ) {}
   public ngOnInit() {
     this.noticiaFields = new FormGroup<NoticiaForm>({
       title: new FormControl('', {
@@ -36,14 +41,8 @@ export class NuevaNoticia implements OnInit {
       }),
     });
 
-    this.getNoticias.categories();
+    this.adminCategories.getCategories();
   }
-
-  constructor(
-    private adminNoticias: AdminNoticias,
-    public getNoticias: GetNoticias,
-    private adminCategories: AdminCategories
-  ) {}
 
   public generateSlug(title: string): string {
     return title

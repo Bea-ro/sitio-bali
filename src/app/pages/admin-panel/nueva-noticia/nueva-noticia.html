@@ -16,16 +16,16 @@
     <p class="error-message">
       Ya existe una noticia con este título Por favor, introduce un título distinto.
     </p>
-    } @if (getNoticias.categories()) {
+    } @if (adminCategories.categories()) {
     <p>Selecciona una categoría o añade una nueva</p>
     } @else {
     <p>No hay ninguna categoría creada todavía. Añade una nueva categoría.</p>
     }
     <div class="category-fields">
-      @if (getNoticias.categories()) {
+      @if (adminCategories.categories()) {
       <select class="form-field" formControlName="existingCategory" id="existingCategory">
         <option value="">Selecciona una categoría</option>
-        @for(category of getNoticias.categories(); track $index) {
+        @for(category of adminCategories.categories(); track $index) {
         <option [value]="category">{{ category }}</option>
         }
       </select>
@@ -55,7 +55,9 @@
     @if(noticiaFields.get('text')?.touched && noticiaFields.get('text')?.errors?.['required']){
     <p class="error-message">Por favor, introduce contenido para la nueva noticia.</p>
     } @if(noticiaFields.get('text')?.value?.includes('PwC')){
-    <p id="warning">Tu texto contiene la palabra "PwC". Bórrala para publicar la noticia.</p>
+    <p id="error-message">
+      Tu texto contiene la palabra "PwC". Revísalo antes de publicar la noticia.
+    </p>
     }
     <button class="button" type="submit" [disabled]="noticiaFields.invalid">Publicar</button>
   </form>

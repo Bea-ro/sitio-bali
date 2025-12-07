@@ -35,6 +35,10 @@ export interface INoticia {
   slug: string;
 }
 
+export interface Category {
+  category: string;
+  _id?: string;
+}
 export interface NoticiaForm {
   title: FormControl<string>;
   text: FormControl<string>;

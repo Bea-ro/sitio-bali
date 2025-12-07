@@ -12,6 +12,16 @@ export class AdminNoticias {
 
   constructor(private http: HttpClient) {}
 
+  public getNoticias() {
+    this.http
+      .get<INoticia[]>(`${this.API_URL}/noticias`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .subscribe((lista) => {
+        this.noticias.set(lista);
+      });
+  }
+
   public createNoticia(noticia: INoticia) {
     console.log('esto en el servicio', noticia);
     return this.http
@@ -47,7 +57,7 @@ export class AdminNoticias {
 
   public deleteNoticia(id: string) {
     this.http
-      .delete<INoticia[]>(`${this.API_URL}/noticias/${id}`, {
+      .delete<INoticia>(`${this.API_URL}/noticias/${id}`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe(

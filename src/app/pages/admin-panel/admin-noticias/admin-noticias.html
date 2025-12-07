@@ -1,9 +1,13 @@
 <main>
   <h1>Administrador de Noticias</h1>
   <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/nueva-noticia"></app-button>
+  @if(adminNoticias.noticias().length === 0){
+  <p>No hay noticias publicadas en este momento.</p>
+  } @else {
   <ul class="noticias-list">
-    @for(noticia of getNoticias.noticias(); track noticia._id) {
+    @for(noticia of adminNoticias.noticias(); track noticia._id) {
     <app-editable-noticia [noticia]="noticia"></app-editable-noticia>
     }
   </ul>
+  }
 </main>

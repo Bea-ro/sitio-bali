@@ -12,9 +12,9 @@ import { EditableNoticia } from './components/editable-noticia/editable-noticia'
   styleUrl: './admin-noticias.css',
 })
 export class AdminNoticias {
-  constructor(public getNoticias: GetNoticias) {}
+  constructor(public adminNoticias: GetNoticias) {}
 
   ngOnInit() {
-    this.getNoticias.getNoticias();
+    this.adminNoticias.getNoticias();
   }
 }

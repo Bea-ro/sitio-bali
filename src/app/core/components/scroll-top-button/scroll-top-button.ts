@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { arrowPath } from '../../../data/icon-paths';
 
 @Component({
   selector: 'app-scroll-top-button',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './scroll-top-button.css',
 })
 export class ScrollTopButton {
+  public arrowPath: string = arrowPath;
   scrollToTop() {
     window.scrollTo({
       top: 0,

@@ -8,6 +8,7 @@ import { IconCard } from '../../shared/icon-card/icon-card';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
 import { Button } from '../../shared/button/button';
 import { environment } from '../../../environments/environment';
+import { arrowPath } from '../../data/icon-paths';
 
 @Component({
   selector: 'app-home',
@@ -19,5 +20,6 @@ export class Home {
   public services: Service[] = services;
   public customers: Customer[] = customers;
   public trabajoHome: Paragraph = trabajoHome;
-  public imagePrefix = environment.imagePrefix;
+  public imagePrefix: string = environment.imagePrefix;
+  public arrowPath: string = arrowPath;
 }

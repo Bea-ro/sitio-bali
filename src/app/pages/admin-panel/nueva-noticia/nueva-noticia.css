@@ -32,12 +32,6 @@ form {
   width: 89%;
 }
 
-#text {
-  min-height: 50vh;
-  field-sizing: content;
-  padding: 16px 20px 40px 20px;
-}
-
 .error-message {
   font-size: 15px;
   color: #b3001b;

@@ -46,12 +46,7 @@
       </div>
     </div>
 
-    <textarea
-      formControlName="text"
-      id="text"
-      placeholder="Introduce el texto de la noticia"
-      class="form-field"
-    ></textarea>
+    <editor formControlName="text" id="text" [init]="init"></editor>
     @if(noticiaFields.get('text')?.touched && noticiaFields.get('text')?.errors?.['required']){
     <p class="error-message">Por favor, introduce contenido para la nueva noticia.</p>
     } @if(noticiaFields.get('text')?.value?.includes('PwC')){
@@ -59,6 +54,7 @@
       Tu texto contiene la palabra "PwC". Revísalo antes de publicar la noticia.
     </p>
     }
+
     <button class="button" type="submit" [disabled]="noticiaFields.invalid">Publicar</button>
   </form>
 

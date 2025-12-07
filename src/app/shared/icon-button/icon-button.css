@@ -14,6 +14,13 @@
 .button-icon-container:hover {
   opacity: 1;
 }
+
+.button-icon-container path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
+}
+
 .button-icon-container:hover svg path {
   stroke: var(--color-sec);
 }

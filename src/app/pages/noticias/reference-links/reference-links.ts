@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { referenceLinks } from '../../../data/data';
 import { ReferenceLink } from '../../../models/models';
+import { arrowPath } from '../../../data/icon-paths';
 
 @Component({
   selector: 'app-reference-links',
@@ -12,6 +13,7 @@ export class ReferenceLinks {
   public referenceLinks: ReferenceLink[] = referenceLinks;
   public referencesShown: ReferenceLink[] = referenceLinks.slice(0, 6);
   public currentIndex: number = 0;
+  public arrowPath: string = arrowPath;
 
   public hideCarouselNextArrow: boolean = false;
   public hideCarouselPrevArrow: boolean = true;

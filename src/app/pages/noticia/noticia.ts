@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { Pdf } from '../../core/services/pdf';
+import { downloadPath } from '../../data/icon-paths';
 
 @Component({
   selector: 'app-noticia',
@@ -21,6 +22,7 @@ export class Noticia implements OnInit {
     slug: '',
   };
   public selectedCategory: string = '';
+  public downloadPath: string = downloadPath;
 
   constructor(private route: ActivatedRoute, private getNoticias: GetNoticias, private pdf: Pdf) {}
 

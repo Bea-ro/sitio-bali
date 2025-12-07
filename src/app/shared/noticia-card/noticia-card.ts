@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { INoticia } from '../../models/models';
 import { Router, RouterLink } from '@angular/router';
+import { arrowPath } from '../../data/icon-paths';
 
 @Component({
   selector: 'app-noticia-card',
@@ -11,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 export class NoticiaCard implements OnInit {
   @Input() noticia?: INoticia;
   public noticiaIntro: string = '';
+  public arrowPath: string = arrowPath;
 
   constructor(private router: Router) {}
 

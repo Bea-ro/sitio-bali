@@ -123,16 +123,6 @@ h1 {
   margin-top: 6px;
 }
 
-path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
-}
-
-path:hover {
-  stroke: var(--color-sec);
-}
-
 .paragraph {
   white-space: pre-line;
 }

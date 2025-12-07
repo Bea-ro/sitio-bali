@@ -22,6 +22,12 @@ body.public .button {
   border-radius: 12px;
 }
 
+body.public path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
+}
+
 @media screen and (max-width: 375px) {
   body.public main {
     padding-top: 98px;

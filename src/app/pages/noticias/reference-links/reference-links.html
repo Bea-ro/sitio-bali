@@ -4,7 +4,7 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 640 640"
-    class="arrow-icon"
+    class="arrow-icon left carousel-arrow"
     (click)="carouselPrevElements()"
   >
     <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
@@ -12,20 +12,33 @@
   </svg>
   }
 
-  <ul class="reference-links-list">
-    @for(link of referencesShown; track link.name) {
+  <ul #contenedor class="reference-links-list">
+    @if(size().width > 1400) { @for( link of referenceLinks.slice(0, 6); track link.name) {
     <li class="reference-link-container">
       <a [href]="link.url">
         <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
       </a>
     </li>
-    }
+    }} @else { @for(link of referenceLinks;track link.name ) {
+    <li class="reference-link-container">
+      <a [href]="link.url">
+        <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
+      </a>
+    </li>
+    @if(size().width < 374) { @for( link of referenceLinks; track link.name) {
+    <li class="reference-link-container">
+      <a [href]="link.url">
+        <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
+      </a>
+    </li>
+    } } }}
   </ul>
+
   @if(!hideCarouselNextArrow) {
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 640 640"
-    class="arrow-icon"
+    class="arrow-icon carousel-arrow"
     [hidden]="hideCarouselNextArrow"
     (click)="carouselNextElements()"
   >

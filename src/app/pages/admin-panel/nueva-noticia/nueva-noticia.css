@@ -26,6 +26,7 @@ form {
 .add-category-input-and-button {
   display: flex;
   gap: 6px;
+  align-items: center;
 }
 
 #newCategory {

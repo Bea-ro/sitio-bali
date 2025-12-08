@@ -1,13 +1,13 @@
 <main>
   <div class="noticias-content-container">
-    @if(noticiadData) {
+    @if(noticiaData) {
     <section class="noticia-section">
-      <h1>{{ noticiadData.title }}</h1>
+      <h1>{{ noticiaData.title }}</h1>
       <div class="date-and-category-conotainer">
-        <p class="date">{{ noticiadData.date }}</p>
-        <p class="noticia-category">{{ noticiadData.category }}</p>
+        <p class="date">{{ noticiaData.date }}</p>
+        <p class="noticia-category">{{ noticiaData.category }}</p>
       </div>
-      <p class="noticia-text">{{ noticiadData.text }}</p>
+      <div class="noticia-text" [innerHTML]="noticiaData.text"></div>
       <button class="button download" (click)="downloadPdf()">
         <span>Descargar</span>
         <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

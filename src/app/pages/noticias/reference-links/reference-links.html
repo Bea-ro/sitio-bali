@@ -25,13 +25,7 @@
         <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
       </a>
     </li>
-    @if(size().width < 374) { @for( link of referenceLinks; track link.name) {
-    <li class="reference-link-container">
-      <a [href]="link.url">
-        <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
-      </a>
-    </li>
-    } } }}
+    }}
   </ul>
 
   @if(!hideCarouselNextArrow) {

@@ -20,6 +20,23 @@ main {
   color: var(--color-main);
 }
 
+.noticia-text {
+  white-space: pre-wrap;
+}
+
+:host ::ng-deep .noticia-text ul {
+  padding-left: 1.5rem;
+}
+
+:host ::ng-deep .noticia-text ul li {
+  list-style-type: circle;
+}
+
+:host ::ng-deep .noticia-text a {
+  text-decoration: underline;
+  color: var(--color-main);
+}
+
 .download-icon {
   height: 28px;
 }
@@ -35,10 +52,6 @@ span {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: 400;
-}
-
-.noticia-text {
-  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 375px) {

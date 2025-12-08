@@ -13,7 +13,7 @@ import { downloadPath } from '../../data/icon-paths';
   styleUrl: './noticia.css',
 })
 export class Noticia implements OnInit {
-  public noticiadData: INoticia = {
+  public noticiaData: INoticia = {
     title: '',
     date: '',
     text: '',
@@ -30,7 +30,7 @@ export class Noticia implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const noticiaSlug = params.get('slug') ?? '';
       this.getNoticias.getNoticiaBySlug(noticiaSlug).subscribe((noticia) => {
-        this.noticiadData = noticia;
+        this.noticiaData = noticia;
       });
     });
   }
@@ -40,8 +40,8 @@ export class Noticia implements OnInit {
   }
 
   public downloadPdf() {
-    const title = this.noticiadData.title;
-    const content = this.noticiadData.text;
+    const title = this.noticiaData.title;
+    const content = this.noticiaData.text;
     this.pdf.generatePdf(title, content);
   }
 }

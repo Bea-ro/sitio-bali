@@ -6,3 +6,10 @@ body.admin .button {
   padding: 8px 14px;
   border-radius: 10px;
 }
+
+.add-category-button .button-icon-container {
+  height: 47px;
+}
+.add-category-button .button-icon-container svg {
+  margin: auto;
+}

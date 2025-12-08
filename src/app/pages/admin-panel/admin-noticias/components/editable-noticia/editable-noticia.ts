@@ -19,6 +19,7 @@ export class EditableNoticia {
   constructor(private adminNoticias: AdminNoticias) {}
 
   public deleteNoticia(noticiaID: string | undefined) {
+    console.log(noticiaID);
     noticiaID && this.adminNoticias.deleteNoticia(noticiaID);
   }
 }

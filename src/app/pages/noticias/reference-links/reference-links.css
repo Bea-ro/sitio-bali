@@ -1,15 +1,6 @@
-@keyframes moveImages {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 .carousel-container {
   display: flex;
-  padding: 0 16px 80px 16px;
+  padding: 0 16px;
   align-items: center;
   justify-content: space-around;
 }
@@ -25,7 +16,7 @@
 .reference-links-list {
   display: flex;
   gap: 48px;
-  padding: 0 26px;
+  padding: 26px;
   justify-content: space-around;
   width: 80vw;
 }
@@ -47,19 +38,15 @@
 }
 
 @media screen and (max-width: 374px) {
-  .carousel-container {
-    overflow-x: hidden;
-    white-space: nowrap;
-  }
-
-  .reference-links-list {
-    display: inline-flex;
-    width: 100%;
-    padding-bottom: 30px;
-    animation: moveImages 58s linear infinite;
-  }
-
   .carousel-arrow {
     display: none;
+  }
+  .reference-links-list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .reference-link-container {
+    scroll-snap-align: center;
   }
 }

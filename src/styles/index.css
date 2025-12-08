@@ -21,11 +21,10 @@
   box-sizing: border-box;
   border: none;
   outline: none;
-  text-decoration: none;
+  /* text-decoration: none; */
 
   font-family: 'EB+Garamond', serif;
   font-optical-sizing: auto;
-  font-style: normal;
   font-size: 18px;
   line-height: 1.5em;
 }

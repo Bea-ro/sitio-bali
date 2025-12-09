@@ -3,6 +3,7 @@ import { INoticia } from '../../../../../models/models';
 import { IconButton } from '../../../../../shared/icon-button/icon-button';
 import { AdminNoticias } from '../../../../../services/admin-noticias';
 import { binPath, pencilPath } from '../../../../../data/icon-paths';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editable-noticia',
@@ -16,10 +17,12 @@ export class EditableNoticia {
   public binPath = binPath;
   public pencilPath = pencilPath;
 
-  constructor(private adminNoticias: AdminNoticias) {}
+  constructor(private adminNoticias: AdminNoticias, private router: Router) {}
 
   public deleteNoticia(noticiaID: string | undefined) {
-    console.log(noticiaID);
     noticiaID && this.adminNoticias.deleteNoticia(noticiaID);
+  }
+  public goToEditNoticia(noticiaID: string | undefined) {
+    noticiaID && this.router.navigateByUrl(`/admin-panel/noticias/editar/${noticiaID}`);
   }
 }

@@ -1,5 +1,5 @@
 <main>
-  <h1>Añadir nueva noticia</h1>
+  <h1>{{ noticiaId ? 'Editar noticia ' : 'Añadir nueva noticia' }}</h1>
   @if(noticiaFields){
   <form [formGroup]="noticiaFields" (submit)="onSubmit(); noticiaFields.reset()">
     <input
@@ -56,7 +56,9 @@
     </p>
     }
 
-    <button class="button" type="submit" [disabled]="noticiaFields.invalid">Publicar</button>
+    <button class="button" type="submit" [disabled]="noticiaFields.invalid">
+      {{ noticiaId ? 'Guardar' : 'Publicar' }}
+    </button>
   </form>
 
   }

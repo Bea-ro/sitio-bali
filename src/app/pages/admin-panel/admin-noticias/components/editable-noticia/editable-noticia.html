@@ -3,7 +3,7 @@
   <p class="editable-noticia-date">{{ noticia.date }}</p>
   <p class="editable-noticia-category">{{ noticia.category }}</p>
   <figure class="noticia-icons">
+    <app-icon-button [path]="pencilPath" (click)="goToEditNoticia(noticia._id)"></app-icon-button>
     <app-icon-button [path]="binPath" (click)="deleteNoticia(noticia._id)"></app-icon-button>
-    <app-icon-button [path]="pencilPath"></app-icon-button>
   </figure>
 </li>

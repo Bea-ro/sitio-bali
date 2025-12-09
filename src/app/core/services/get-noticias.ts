@@ -35,7 +35,14 @@ export class GetNoticias {
   }
 
   public getNoticiaBySlug(slug: string): Observable<INoticia> {
-    return this.http.get<INoticia>(`${this.API_URL}/noticias/${slug}`, {
+    return this.http.get<INoticia>(`${this.API_URL}/noticias/slug/${slug}`, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  public getNoticiaById(id: string): Observable<INoticia> {
+    console.log(id);
+    return this.http.get<INoticia>(`${this.API_URL}/noticias/id/${id}`, {
       headers: { 'Content-Type': 'application/json' },
     });
   }

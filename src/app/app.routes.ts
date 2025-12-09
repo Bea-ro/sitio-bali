@@ -80,19 +80,36 @@ export const routes: Routes = [
         title: 'Bali Asociados · Panel Administración',
       },
       {
-        path: 'admin-noticias',
-        loadComponent: () =>
-          import('./pages/admin-panel/admin-noticias/admin-noticias').then((c) => c.AdminNoticias),
-        title: 'Bali Asociados · Administrador Noticias',
+        path: 'noticias',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./pages/admin-panel/admin-noticias/admin-noticias').then(
+                (c) => c.AdminNoticias
+              ),
+            title: 'Bali Asociados · Administrador Noticias',
+          },
+          {
+            path: 'nueva',
+            loadComponent: () =>
+              import('./pages/admin-panel/admin-noticias/nueva-noticia/nueva-noticia').then(
+                (c) => c.NuevaNoticia
+              ),
+            title: 'Bali Asociados · Nueva Noticia',
+          },
+          {
+            path: 'editar/:id',
+            loadComponent: () =>
+              import('./pages/admin-panel/admin-noticias/nueva-noticia/nueva-noticia').then(
+                (c) => c.NuevaNoticia
+              ),
+            title: 'Bali Asociados · Nueva Noticia',
+          },
+        ],
       },
       {
-        path: 'nueva-noticia',
-        loadComponent: () =>
-          import('./pages/admin-panel/nueva-noticia/nueva-noticia').then((c) => c.NuevaNoticia),
-        title: 'Bali Asociados · Nueva Noticia',
-      },
-      {
-        path: 'admin-clientes',
+        path: 'clientes',
         loadComponent: () =>
           import('./pages/admin-panel/admin-clientes/admin-clientes').then((c) => c.AdminClientes),
         title: 'Bali Asociados · Administrador Clientes',

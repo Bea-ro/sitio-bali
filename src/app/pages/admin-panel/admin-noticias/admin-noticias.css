@@ -5,3 +5,7 @@
   background-color: var(--color-white);
   border-radius: 6px;
 }
+
+.no-noticias-message {
+  margin-top: 20px;
+}

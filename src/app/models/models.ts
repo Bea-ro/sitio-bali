@@ -1,5 +1,10 @@
 import { FormControl } from '@angular/forms';
 
+export interface Documento {
+  name: string;
+  path: string;
+}
+
 export interface Service {
   name: string;
   image: string;

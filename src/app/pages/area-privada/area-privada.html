@@ -1,1 +1,14 @@
-<p>area-privada works!</p>
+<main>
+  <ul>
+    @for(doc of documentos; track doc.name) {
+    <li>
+      <a
+        [href]="'http://localhost:3001/api' + doc.path"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{{ doc.name }}</a
+      >
+    </li>
+    }
+  </ul>
+</main>

@@ -27,6 +27,11 @@ export const routes: Routes = [
         title: 'Bali Asociados · Expertos en empresas y autónomos',
       },
       {
+        path: 'area-privada/:cliente',
+        loadComponent: () => import('./pages/area-privada/area-privada').then((c) => c.AreaPrivada),
+        title: 'Bali Asociados · Área Privada',
+      },
+      {
         path: 'noticias',
         children: [
           {

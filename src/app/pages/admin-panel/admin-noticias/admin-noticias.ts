@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Button } from '../../../shared/button/button';
-import { GetNoticias } from '../../../core/services/get-noticias';
+import { AdminNoticiasService } from '../../../services/admin-noticias';
 import { EditableNoticia } from './components/editable-noticia/editable-noticia';
 
 @Component({
@@ -12,7 +12,7 @@ import { EditableNoticia } from './components/editable-noticia/editable-noticia'
   styleUrl: './admin-noticias.css',
 })
 export class AdminNoticias {
-  constructor(public adminNoticias: GetNoticias) {}
+  constructor(public adminNoticias: AdminNoticiasService) {}
 
   ngOnInit() {
     this.adminNoticias.getNoticias();

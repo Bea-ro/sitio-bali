@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { INoticia } from '../../models/models';
+import { NoticiaExistente } from '../../models/models';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -9,24 +9,27 @@ import { environment } from '../../../environments/environment';
 })
 export class GetNoticias {
   public API_URL = environment.API_URL;
-  public noticias = signal<INoticia[]>([]);
+  public noticias = signal<NoticiaExistente[]>([]);
   public categories = signal<string[]>([]);
 
   constructor(private http: HttpClient) {}
 
   public getNoticias() {
     this.http
-      .get<INoticia[]>(`${this.API_URL}/noticias`, {
+      .get<NoticiaExistente[]>(`${this.API_URL}/noticias`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe((lista) => {
+        lista.sort((a, b) =>
+          !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
+        );
         this.noticias.set(lista);
       });
   }
 
   public getNoticiasByCategory(category: string) {
     this.http
-      .get<INoticia[]>(`${this.API_URL}/noticias/${category}`, {
+      .get<NoticiaExistente[]>(`${this.API_URL}/noticias/${category}`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe((lista) => {
@@ -34,15 +37,14 @@ export class GetNoticias {
       });
   }
 
-  public getNoticiaBySlug(slug: string): Observable<INoticia> {
-    return this.http.get<INoticia>(`${this.API_URL}/noticias/slug/${slug}`, {
+  public getNoticiaBySlug(slug: string): Observable<NoticiaExistente> {
+    return this.http.get<NoticiaExistente>(`${this.API_URL}/noticias/slug/${slug}`, {
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  public getNoticiaById(id: string): Observable<INoticia> {
-    console.log(id);
-    return this.http.get<INoticia>(`${this.API_URL}/noticias/id/${id}`, {
+  public getNoticiaById(id: string): Observable<NoticiaExistente> {
+    return this.http.get<NoticiaExistente>(`${this.API_URL}/noticias/id/${id}`, {
       headers: { 'Content-Type': 'application/json' },
     });
   }

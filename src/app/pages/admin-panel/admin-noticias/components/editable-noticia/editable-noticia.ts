@@ -1,28 +1,30 @@
 import { Component, Input } from '@angular/core';
-import { INoticia } from '../../../../../models/models';
+import { NoticiaExistente } from '../../../../../models/models';
 import { IconButton } from '../../../../../shared/icon-button/icon-button';
-import { AdminNoticias } from '../../../../../services/admin-noticias';
+import { AdminNoticiasService } from '../../../../../services/admin-noticias';
 import { binPath, pencilPath } from '../../../../../data/icon-paths';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-editable-noticia',
-  imports: [IconButton],
+  imports: [IconButton, RouterLink],
   templateUrl: './editable-noticia.html',
   styleUrl: './editable-noticia.css',
 })
 export class EditableNoticia {
-  @Input() noticia!: INoticia;
+  @Input() noticia!: NoticiaExistente;
 
   public binPath = binPath;
   public pencilPath = pencilPath;
 
-  constructor(private adminNoticias: AdminNoticias, private router: Router) {}
+  constructor(private adminNoticias: AdminNoticiasService, private router: Router) {}
 
-  public deleteNoticia(noticiaID: string | undefined) {
-    noticiaID && this.adminNoticias.deleteNoticia(noticiaID);
+  public deleteNoticia(noticiaId: string | undefined) {
+    console.log('id de borrar', noticiaId);
+    noticiaId && this.adminNoticias.deleteNoticia(noticiaId);
   }
-  public goToEditNoticia(noticiaID: string | undefined) {
-    noticiaID && this.router.navigateByUrl(`/admin-panel/noticias/editar/${noticiaID}`);
+  public goToEditNoticia(noticiaId: string | undefined) {
+    console.log('este es el id que pilla', noticiaId);
+    noticiaId && this.router.navigateByUrl(`/admin-panel/noticias/editar/${noticiaId}`);
   }
 }

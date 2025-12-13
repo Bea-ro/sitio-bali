@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { INoticia } from '../../models/models';
+import { NoticiaExistente } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { NoticiasRecientes } from '../../shared/noticias-recientes/noticias-recientes';
 import { GetNoticias } from '../../core/services/get-noticias';
@@ -13,13 +13,14 @@ import { downloadPath } from '../../data/icon-paths';
   styleUrl: './noticia.css',
 })
 export class Noticia implements OnInit {
-  public noticiaData: INoticia = {
+  public noticiaData: NoticiaExistente = {
     title: '',
     date: '',
     text: '',
     category: '',
     _id: '',
     slug: '',
+    createdAt: '',
   };
   public selectedCategory: string = '';
   public downloadPath: string = downloadPath;

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Documento } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-area-privada',
@@ -14,9 +15,10 @@ export class AreaPrivada {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   public documentos: Documento[] = [];
+  public API_URL = environment.API_URL;
 
   public getDocs(cliente: string): Observable<Documento[]> {
-    return this.http.get<Documento[]>(`http://192.168.1.140:3001/api/clientes/${cliente}`);
+    return this.http.get<Documento[]>(`${this.API_URL}/clientes/${cliente}`);
   }
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {

@@ -1,29 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { INoticia } from '../models/models';
+import { NoticiaEditada, NoticiaExistente, NoticiaNueva } from '../models/models';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AdminNoticias {
+export class AdminNoticiasService {
   public API_URL = environment.API_URL;
-  noticias = signal<INoticia[]>([]);
+  noticias = signal<NoticiaExistente[]>([]);
 
   constructor(private http: HttpClient) {}
 
   public getNoticias() {
     this.http
-      .get<INoticia[]>(`${this.API_URL}/noticias`, {
+      .get<NoticiaExistente[]>(`${this.API_URL}/noticias`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe((lista) => {
+        lista.sort((a, b) =>
+          !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
+        );
         this.noticias.set(lista);
       });
   }
 
-  public createNoticia(noticia: INoticia) {
-    console.log('esto en el servicio', noticia);
+  public createNoticia(noticia: NoticiaNueva) {
     return this.http
       .post(`${this.API_URL}/noticias`, noticia, {
         headers: { 'Content-Type': 'application/json' },
@@ -38,9 +40,9 @@ export class AdminNoticias {
       );
   }
 
-  public updateNoticia(id: string, noticia: INoticia) {
+  public updateNoticia(id: string, noticia: NoticiaEditada | NoticiaNueva) {
     return this.http
-      .put(`${this.API_URL}/noticias/${id}`, noticia, {
+      .patch(`${this.API_URL}/noticias/${id}`, noticia, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe(
@@ -48,6 +50,7 @@ export class AdminNoticias {
           alert('La noticia se ha actualizado correctamente.');
         },
         (error) => {
+          console.log(error);
           alert(
             'Se ha producido un error al actualizar la noticia. Por favor, inténtalo más tarde.'
           );
@@ -57,7 +60,7 @@ export class AdminNoticias {
 
   public deleteNoticia(id: string) {
     this.http
-      .delete<INoticia>(`${this.API_URL}/noticias/${id}`, {
+      .delete<NoticiaExistente>(`${this.API_URL}/noticias/${id}`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe(

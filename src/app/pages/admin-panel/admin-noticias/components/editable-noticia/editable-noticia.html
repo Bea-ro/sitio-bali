@@ -1,5 +1,8 @@
 <li class="editable-noticia">
-  <p>{{ noticia.title }}</p>
+  <a [routerLink]="['/noticias', `${noticia.slug}`]">
+    <p>{{ noticia.title }}</p></a
+  >
+
   <p class="editable-noticia-date">{{ noticia.date }}</p>
   <p class="editable-noticia-category">{{ noticia.category }}</p>
   <figure class="noticia-icons">

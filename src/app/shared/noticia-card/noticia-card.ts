@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { INoticia } from '../../models/models';
+import { NoticiaExistente } from '../../models/models';
 import { Router, RouterLink } from '@angular/router';
 import { arrowPath } from '../../data/icon-paths';
 
@@ -10,7 +10,7 @@ import { arrowPath } from '../../data/icon-paths';
   styleUrl: './noticia-card.css',
 })
 export class NoticiaCard implements OnInit {
-  @Input() noticia?: INoticia;
+  @Input() noticia?: NoticiaExistente;
   public noticiaIntro: string = '';
   public arrowPath: string = arrowPath;
 

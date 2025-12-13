@@ -31,12 +31,28 @@ export interface UserRegister {
   repeatPassword: FormControl<string>;
 }
 
-export interface INoticia {
+export interface NoticiaNueva {
   title: string;
   date: string;
   text: string;
   category: string;
-  _id?: string;
+  slug: string;
+}
+
+export interface NoticiaExistente {
+  title: string;
+  date: string;
+  text: string;
+  category: string;
+  _id: string;
+  createdAt: string;
+  slug: string;
+}
+
+export interface NoticiaEditada {
+  title: string;
+  text: string;
+  category: string;
   slug: string;
 }
 

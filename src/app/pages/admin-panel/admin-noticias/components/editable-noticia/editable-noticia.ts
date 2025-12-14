@@ -20,11 +20,9 @@ export class EditableNoticia {
   constructor(private adminNoticias: AdminNoticiasService, private router: Router) {}
 
   public deleteNoticia(noticiaId: string | undefined) {
-    console.log('id de borrar', noticiaId);
     noticiaId && this.adminNoticias.deleteNoticia(noticiaId);
   }
   public goToEditNoticia(noticiaId: string | undefined) {
-    console.log('este es el id que pilla', noticiaId);
     noticiaId && this.router.navigateByUrl(`/admin-panel/noticias/editar/${noticiaId}`);
   }
 }

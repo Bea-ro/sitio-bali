@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GetNoticias } from '../../core/services/get-noticias';
 import { ActivatedRoute } from '@angular/router';
+import { AdminCategories } from '../../services/admin-categories';
+import { Category } from '../../models/models';
 
 @Component({
   selector: 'app-categories-menu',
@@ -10,16 +11,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './categories-menu.css',
 })
 export class CategoriesMenu {
-  @Output() selectedCategory = new EventEmitter<string>();
-  public selectedCategoryIndex: number | null = null;
+  @Input() activeCategory?: Category;
+  @Output() selectedCategory = new EventEmitter<Category>();
 
-  constructor(public getNoticias: GetNoticias, private route: ActivatedRoute) {}
+  constructor(public adminCategories: AdminCategories, private route: ActivatedRoute) {}
 
   public ngOnInit() {
-    this.getNoticias.categories();
+    this.adminCategories.getCategories();
   }
-  public updateFilterCategory(category: string, index: number | null) {
+  public selectCategory(category: Category) {
     this.selectedCategory.emit(category);
-    this.selectedCategoryIndex = index;
+  }
+  public cleanCategorySelection() {
+    this.selectedCategory.emit(undefined);
   }
 }

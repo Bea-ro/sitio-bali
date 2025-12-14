@@ -1,0 +1,31 @@
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  background-color: var(--color-white);
+  border-radius: 6px;
+}
+
+.no-categories-message {
+  margin-top: 20px;
+}
+
+.editable-category {
+  display: flex;
+  width: 100%;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 2px solid var(--color-extra-light);
+}
+
+.editable-category > p {
+  font-size: 16px;
+  color: var(--color-main);
+}
+
+.category-icons {
+  display: flex;
+  margin-left: auto;
+  gap: 6px;
+}

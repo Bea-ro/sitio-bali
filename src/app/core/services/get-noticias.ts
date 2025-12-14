@@ -33,6 +33,9 @@ export class GetNoticias {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe((lista) => {
+        lista.sort((a, b) =>
+          !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
+        );
         this.noticias.set(lista);
       });
   }

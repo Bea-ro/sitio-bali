@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
-import { ReferenceLinks } from './reference-links/reference-links';
+import { ReferenceLinks } from './components/reference-links/reference-links';
+import { Category } from '../../models/models';
 
 @Component({
   selector: 'app-noticias',
@@ -13,7 +14,7 @@ import { ReferenceLinks } from './reference-links/reference-links';
   styleUrl: './noticias.css',
 })
 export class Noticias {
-  public selectedCategory: string = '';
+  public selectedCategory?: Category | undefined;
 
   constructor(public getNoticias: GetNoticias) {}
 
@@ -21,7 +22,7 @@ export class Noticias {
     this.getNoticias.getNoticias();
   }
 
-  public onSelectedCategoryChange(category: string) {
+  public onSelectedCategoryChange(category: Category) {
     this.selectedCategory = category;
   }
 }

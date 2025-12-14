@@ -1,0 +1,29 @@
+<main>
+  <h1>Administrador de Categorías</h1>
+  <app-button buttonText="Añadir nueva"></app-button>
+  @if(adminCategories.categories().length === 0){
+  <p class="no-categories-message">No hay categorías creadas en este momento.</p>
+  } @else {
+  <ul class="categories-list">
+    @for(category of adminCategories.categories(); track category._id) {
+
+    <li class="editable-category">
+      @if (editingCategoryId === category._id) {
+      <input
+        #input
+        [(ngModel)]="category.category"
+        (keydown.enter)="save(category._id, input.value)"
+        (keydown.escape)="cancel()"
+      />
+      } @else {
+      <p>{{ category.category }}</p>
+      }
+      <figure class="category-icons">
+        <app-icon-button [path]="pencilPath" (click)="editCategory(category._id)"></app-icon-button>
+        <app-icon-button [path]="binPath" (click)="deleteCategory(category._id)"></app-icon-button>
+      </figure>
+    </li>
+    }
+  </ul>
+  }
+</main>

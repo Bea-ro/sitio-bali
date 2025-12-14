@@ -9,6 +9,7 @@
     </ul>
     <aside class="noticias-aside">
       <app-categories-menu
+        [activeCategory]="selectedCategory"
         (selectedCategory)="onSelectedCategoryChange($event)"
       ></app-categories-menu>
     </aside>

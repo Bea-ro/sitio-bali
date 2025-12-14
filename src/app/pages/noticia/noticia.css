@@ -1,10 +1,7 @@
-main {
-  padding-right: 12px;
-  padding-left: 12px;
-}
-
 .noticia-section {
-  padding: 38px 48px 80px 48px;
+  padding: 38px 22px 80px 22px;
+  max-width: 90%;
+  margin: auto;
 }
 
 .date-and-category-conotainer {
@@ -57,16 +54,11 @@ span {
 @media screen and (max-width: 375px) {
   .noticia-section {
     padding-bottom: 40px;
+    max-width: 100%;
   }
 
   .download {
     margin-right: auto;
     margin-left: auto;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .noticia-section {
-    padding-top: 60px;
   }
 }

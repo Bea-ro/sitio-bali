@@ -113,6 +113,15 @@ export const routes: Routes = [
           },
         ],
       },
+
+      {
+        path: 'categorias',
+        loadComponent: () =>
+          import('./pages/admin-panel/admin-categorias/admin-categorias').then(
+            (c) => c.AdminCategorias
+          ),
+        title: 'Bali Asociados · Administrador Categorías',
+      },
       {
         path: 'clientes',
         loadComponent: () =>

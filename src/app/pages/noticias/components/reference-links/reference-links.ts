@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, signal, ViewChild } from '@angular/core';
-import { referenceLinks } from '../../../data/data';
-import { ReferenceLink } from '../../../models/models';
-import { arrowPath } from '../../../data/icon-paths';
+import { referenceLinks } from '../../../../data/data';
+import { ReferenceLink } from '../../../../models/models';
+import { arrowPath } from '../../../../data/icon-paths';
 
 @Component({
   selector: 'app-reference-links',

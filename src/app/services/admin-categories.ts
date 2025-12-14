@@ -8,10 +8,7 @@ import { Category } from '../models/models';
 })
 export class AdminCategories {
   public API_URL = environment.API_URL;
-  public categoriesObjetcs = signal<Category[]>([]);
-  public categories = computed(() =>
-    Array.from(new Set(this.categoriesObjetcs().map((c) => c.category)))
-  );
+  public categories = signal<Category[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +18,7 @@ export class AdminCategories {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe((lista) => {
-        this.categoriesObjetcs.set(lista);
+        this.categories.set(lista);
       });
   }
 
@@ -70,7 +67,7 @@ export class AdminCategories {
       .subscribe(
         (response) => {
           alert('La categoría se ha eliminado.');
-          this.categoriesObjetcs.update((lista) => lista.filter((category) => category._id !== id));
+          this.categories.update((lista) => lista.filter((category) => category._id !== id));
         },
         (error) => {
           alert(

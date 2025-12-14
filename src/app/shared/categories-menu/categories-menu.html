@@ -4,20 +4,20 @@
     <li>
       <button
         class="noticia-category todas-noticias"
-        [class.active]="selectedCategoryIndex === null"
-        (click)="updateFilterCategory('', null)"
+        [class.active]="!activeCategory"
+        (click)="cleanCategorySelection()"
       >
         Todas
       </button>
     </li>
-    @for(category of getNoticias.categories(); track $index){
+    @for(category of adminCategories.categories(); track category._id){
     <li>
       <button
         class="noticia-category aside"
-        [class.active]="$index === selectedCategoryIndex"
-        (click)="updateFilterCategory(category, $index)"
+        [class.active]="activeCategory && category._id === activeCategory._id"
+        (click)="selectCategory(category)"
       >
-        {{ category }}
+        {{ category.category }}
       </button>
     </li>
     }

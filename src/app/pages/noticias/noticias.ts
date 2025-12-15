@@ -5,7 +5,6 @@ import { GetNoticias } from '../../core/services/get-noticias';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
 import { ReferenceLinks } from './components/reference-links/reference-links';
-import { Category } from '../../models/models';
 
 @Component({
   selector: 'app-noticias',
@@ -14,7 +13,7 @@ import { Category } from '../../models/models';
   styleUrl: './noticias.css',
 })
 export class Noticias {
-  public selectedCategory?: Category | undefined;
+  public selectedCategory?: string | undefined;
 
   constructor(public getNoticias: GetNoticias) {}
 
@@ -22,7 +21,7 @@ export class Noticias {
     this.getNoticias.getNoticias();
   }
 
-  public onSelectedCategoryChange(category: Category) {
+  public onSelectedCategoryChange(category: string) {
     this.selectedCategory = category;
   }
 }

@@ -5,13 +5,13 @@ import { AdminNoticiasService } from '../../../../services/admin-noticias';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../../../core/services/get-noticias';
 import { AdminCategories } from '../../../../services/admin-categories';
-import { IconButton } from '../../../../shared/icon-button/icon-button';
+// import { IconButton } from '../../../../shared/icon-button/icon-button';
 import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nueva-noticia',
-  imports: [ReactiveFormsModule, CommonModule, IconButton, EditorComponent],
+  imports: [ReactiveFormsModule, CommonModule, EditorComponent],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   templateUrl: './nueva-noticia.html',
   styleUrl: './nueva-noticia.css',
@@ -86,6 +86,9 @@ export class NuevaNoticia implements OnInit {
         ? this.noticiaFields?.value.newCategory
         : this.noticiaFields?.value.existingCategory;
 
+      this.noticiaFields?.value.newCategory &&
+        this.addCategory(this.noticiaFields?.value.newCategory);
+
       if (this.noticiaId) {
         const editedNoticia: NoticiaEditada = {
           title: this.noticiaFields.value.title || '',
@@ -108,7 +111,7 @@ export class NuevaNoticia implements OnInit {
     }
   }
 
-  public addCategory(category: string | undefined) {
+  private addCategory(category: string | undefined) {
     category && this.adminCategories.createCategory(category);
   }
 

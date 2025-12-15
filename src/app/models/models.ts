@@ -59,6 +59,7 @@ export interface NoticiaEditada {
 export interface Category {
   category: string;
   _id?: string;
+  createdAt?: string;
 }
 export interface NoticiaForm {
   title: FormControl<string>;

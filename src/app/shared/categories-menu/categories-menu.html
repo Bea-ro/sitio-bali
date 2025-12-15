@@ -10,14 +10,14 @@
         Todas
       </button>
     </li>
-    @for(category of adminCategories.categories(); track category._id){
+    @for(category of adminCategories.categoriesUsed(); track $index){
     <li>
       <button
         class="noticia-category aside"
-        [class.active]="activeCategory && category._id === activeCategory._id"
+        [class.active]="activeCategory && category === activeCategory"
         (click)="selectCategory(category)"
       >
-        {{ category.category }}
+        {{ category }}
       </button>
     </li>
     }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Category, NoticiaExistente } from '../models/models';
+import { NoticiaExistente } from '../models/models';
 
 @Pipe({
   name: 'filter',
@@ -7,7 +7,7 @@ import { Category, NoticiaExistente } from '../models/models';
 export class FilterPipe implements PipeTransform {
   transform(
     noticias: NoticiaExistente[] | null,
-    selectedCategory: Category | undefined
+    selectedCategory: string | undefined
   ): NoticiaExistente[] | null | undefined {
     if (!noticias) return null;
 
@@ -16,7 +16,7 @@ export class FilterPipe implements PipeTransform {
     }
 
     return noticias.filter(
-      (noticia) => noticia.category.toLowerCase() === selectedCategory.category.toLowerCase()
+      (noticia) => noticia.category.toLowerCase() === selectedCategory.toLowerCase()
     );
   }
 }

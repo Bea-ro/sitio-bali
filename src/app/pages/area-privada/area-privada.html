@@ -1,6 +1,6 @@
 <main>
   <ul>
-    @for(doc of documentos; track doc.name) {
+    @for(doc of adminDocuments.documents(); track doc.name) {
     <li>
       <a
         [href]="'http://localhost:3001/api' + doc.path"

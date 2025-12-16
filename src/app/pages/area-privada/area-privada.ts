@@ -1,9 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Documento } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { AdminDocuments } from '../../services/admin-documents';
 
 @Component({
   selector: 'app-area-privada',
@@ -12,24 +9,14 @@ import { environment } from '../../../environments/environment';
   styleUrl: './area-privada.css',
 })
 export class AreaPrivada {
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(public adminDocuments: AdminDocuments, private route: ActivatedRoute) {}
+  //en el servicio poner un docPath para no exponer enlace api que está ahora en HTML de area-privada
+  public docPath: string = '';
 
-  public documentos: Documento[] = [];
-  public API_URL = environment.API_URL;
-
-  public getDocs(cliente: string): Observable<Documento[]> {
-    return this.http.get<Documento[]>(`${this.API_URL}/clientes/${cliente}`);
-  }
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const cliente = params.get('cliente') ?? '';
-
-      this.getDocs(cliente).subscribe({
-        next: (docs) => {
-          this.documentos = docs;
-        },
-        error: (err) => console.error('Error cargando documentos:', err),
-      });
+      this.adminDocuments.getDocuments(cliente);
     });
   }
 }

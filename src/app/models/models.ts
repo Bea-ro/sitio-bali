@@ -92,3 +92,13 @@ export interface ReferenceLink {
   url: string;
   icon: string;
 }
+
+export interface Cliente {
+  name: string;
+  _id?: string;
+}
+
+export interface Documento {
+  name: string;
+  path: string;
+}

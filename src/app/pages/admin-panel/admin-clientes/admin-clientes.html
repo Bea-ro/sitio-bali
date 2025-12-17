@@ -1,1 +1,24 @@
-<p>admin-clientes works!</p>
+<main>
+  <h1>Administrador de Clientes</h1>
+
+  <app-nuevo-cliente></app-nuevo-cliente>
+
+  @if(adminClientes.clientes().length === 0){
+  <p class="no-clientes-message">No hay clientes dados de alta en este momento.</p>
+  } @else {
+  <ul class="clientes-list">
+    @for(cliente of adminClientes.clientes(); track cliente._id) {
+    <li>
+      <p>{{ cliente.name }}</p>
+      <p>{{ cliente.email }}</p>
+      <p class="editable-noticia-date">{{ cliente.cif }}</p>
+      <p class="editable-noticia-category">{{ cliente.createdAt }}</p>
+      <figure class="noticia-icons">
+        <app-icon-button [path]="pencilPath"></app-icon-button>
+        <app-icon-button [path]="binPath" (click)="deleteCliente(cliente._id)"></app-icon-button>
+      </figure>
+    </li>
+    }
+  </ul>
+  }
+</main>

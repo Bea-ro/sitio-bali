@@ -95,7 +95,16 @@ export interface ReferenceLink {
 
 export interface Cliente {
   name: string;
+  email: string;
+  cif: string;
+  createdAt?: string;
   _id?: string;
+}
+
+export interface ClienteForm {
+  name: FormControl<string>;
+  email: FormControl<string>;
+  cif: FormControl<string>;
 }
 
 export interface Documento {

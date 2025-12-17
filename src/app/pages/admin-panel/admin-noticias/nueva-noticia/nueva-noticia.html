@@ -1,6 +1,6 @@
 <main>
   <h1>{{ noticiaId ? 'Editar noticia ' : 'Añadir nueva noticia' }}</h1>
-  @if(noticiaFields){
+
   <form [formGroup]="noticiaFields" (submit)="onSubmit(); noticiaFields.reset()">
     <input
       placeholder="Escribe un título"
@@ -14,7 +14,7 @@
     } @if (noticiaFields.get('title')?.invalid && noticiaFields.get('title')?.dirty &&
     noticiaFields.get('title')?.errors?.['existingTitle'] ) {
     <p class="error-message">
-      Ya existe una noticia con este título Por favor, introduce un título distinto.
+      Ya existe una noticia con este título. Por favor, introduce un título distinto.
     </p>
     } @if (adminCategories.categories()) {
     <p>Selecciona una categoría o añade una nueva</p>
@@ -60,6 +60,4 @@
       {{ noticiaId ? 'Guardar' : 'Publicar' }}
     </button>
   </form>
-
-  }
 </main>

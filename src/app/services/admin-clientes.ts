@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminClientes {
+export class AdminClientesService {
   public API_URL = environment.API_URL;
   public clientes = signal<Cliente[]>([]);
 
@@ -21,7 +21,7 @@ export class AdminClientes {
       });
   }
 
-  public createCliente(cliente: string) {
+  public createCliente(cliente: Cliente) {
     return this.http
       .post<Cliente>(
         `${this.API_URL}/clientes`,

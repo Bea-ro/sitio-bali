@@ -17,11 +17,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './nueva-noticia.css',
 })
 export class NuevaNoticia implements OnInit {
-  public noticiaFields?: FormGroup<NoticiaForm>;
+  public noticiaFields!: FormGroup<NoticiaForm>;
   public plusPath: string =
     'M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z';
   public init: EditorComponent['init'] = {
-    height: 300,
+    height: 500,
     menubar: false,
     base_url: '/tinymce',
     suffix: '.min',
@@ -99,8 +99,8 @@ export class NuevaNoticia implements OnInit {
         this.adminNoticias.updateNoticia(this.noticiaId, editedNoticia);
       } else {
         const newNoticia: NoticiaNueva = {
-          title: this.noticiaFields.value.title || '',
-          text: this.noticiaFields.value.text || '',
+          title: this.noticiaFields.getRawValue().title,
+          text: this.noticiaFields.getRawValue().text,
           category: noticiaCategory || '',
           slug: noticiaSlug || '',
           date: new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date()),

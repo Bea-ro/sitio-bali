@@ -1,0 +1,46 @@
+<form [formGroup]="clienteFields" (submit)="onSubmit(); clienteFields.reset()">
+  <input
+    placeholder="Nombre cliente"
+    class="form-field"
+    type="text"
+    id="name"
+    formControlName="name"
+  />
+  @if (clienteFields.get('name')?.touched && clienteFields.get('name')?.errors?.['required']) {
+  <p class="error-message">Por favor, introduce un nombre para el nuevo cliente.</p>
+  } @if (clienteFields.get('name')?.invalid && clienteFields.get('name')?.dirty &&
+  clienteFields.get('name')?.errors?.['existingName'] ) {
+  <p class="error-message">
+    Ya existe un cliente con este nombre. Por favor, introduce un nombre distinto.
+  </p>
+  }
+
+  <input
+    placeholder="CIF/NIF/NIE cliente"
+    class="form-field"
+    type="text"
+    id="cif"
+    formControlName="cif"
+  />
+  @if (clienteFields.get('cif')?.errors?.['nifNieCif']) {
+  <p class="error-message">
+    @switch (clienteFields.get('cif')?.errors?.['nifNieCif']) { @case ('nif') { NIF inválido } @case
+    ('nie') { NIE inválido } @case ('cif') { CIF inválido } @case ('length') { Debe tener 9
+    caracteres } @default { Documento fiscal inválido } }
+  </p>
+  }
+  <input
+    placeholder="Email de contacto"
+    class="form-field"
+    type="email"
+    id="email"
+    formControlName="email"
+  />
+  @if (clienteFields.get('email')?.touched && clienteFields.get('email')?.errors?.['required']) {
+  <p class="error-message">Por favor, introduce un email de contacto para el nuevo cliente.</p>
+  } @if (clienteFields.get('email')?.invalid && clienteFields.get('email')?.dirty &&
+  clienteFields.get('email')?.errors?.['email'] ) {
+  <p class="error-message">Email inválido.</p>
+  }
+  <button class="button" type="submit" [disabled]="clienteFields.invalid">Guardar</button>
+</form>

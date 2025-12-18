@@ -59,7 +59,7 @@ export class NuevaNoticia implements OnInit {
       newCategory: new FormControl('', {
         nonNullable: true,
       }),
-      existingCategory: new FormControl('', {
+      existingCategory: new FormControl('General', {
         nonNullable: true,
       }),
     });
@@ -80,21 +80,21 @@ export class NuevaNoticia implements OnInit {
 
   public onSubmit() {
     if (this.noticiaFields && this.noticiaFields.valid) {
-      const noticiaSlug =
-        this.noticiaFields?.value.title && this.generateSlug(this.noticiaFields.value.title);
-      const noticiaCategory = this.noticiaFields?.value.newCategory
-        ? this.noticiaFields?.value.newCategory
-        : this.noticiaFields?.value.existingCategory;
+      const noticiaSlug = this.generateSlug(this.noticiaFields.getRawValue().title);
 
-      this.noticiaFields?.value.newCategory &&
-        this.addCategory(this.noticiaFields?.value.newCategory);
+      const noticiaCategory = this.noticiaFields.getRawValue().newCategory
+        ? this.noticiaFields.getRawValue().newCategory
+        : this.noticiaFields.getRawValue().existingCategory;
+
+      this.noticiaFields.getRawValue().newCategory &&
+        this.addCategory(this.noticiaFields.getRawValue().newCategory);
 
       if (this.noticiaId) {
         const editedNoticia: NoticiaEditada = {
-          title: this.noticiaFields.value.title || '',
-          text: this.noticiaFields.value.text || '',
+          title: this.noticiaFields.getRawValue().title,
+          text: this.noticiaFields.getRawValue().text,
           category: noticiaCategory || '',
-          slug: noticiaSlug || '',
+          slug: noticiaSlug,
         };
         this.adminNoticias.updateNoticia(this.noticiaId, editedNoticia);
       } else {
@@ -102,7 +102,7 @@ export class NuevaNoticia implements OnInit {
           title: this.noticiaFields.getRawValue().title,
           text: this.noticiaFields.getRawValue().text,
           category: noticiaCategory || '',
-          slug: noticiaSlug || '',
+          slug: noticiaSlug,
           date: new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date()),
         };
         this.adminNoticias.createNoticia(newNoticia);

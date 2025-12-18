@@ -3,31 +3,18 @@ import { AdminClientesService } from '../../../services/admin-clientes';
 import { IconButton } from '../../../shared/icon-button/icon-button';
 import { binPath, pencilPath } from '../../../data/icon-paths';
 import { NuevoCliente } from './components/nuevo-cliente/nuevo-cliente';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-admin-clientes',
-  imports: [IconButton, NuevoCliente],
+  imports: [IconButton, NuevoCliente, MatTableModule],
   templateUrl: './admin-clientes.html',
   styleUrl: './admin-clientes.css',
 })
 export class AdminClientes implements OnInit {
   public binPath = binPath;
   public pencilPath = pencilPath;
-
-  public clientes = [
-    {
-      name: 'cliente abc',
-      email: 'clienteabc@gmail.Component',
-      cif: '60750299A',
-      createdAt: '',
-    },
-    {
-      name: 'cliente def',
-      email: 'clientedef@gmail.Component',
-      cif: '60750299B',
-      createdAt: '',
-    },
-  ];
+  public displayedColumns = ['name', 'email', 'cif', 'date', 'id'];
 
   constructor(public adminClientes: AdminClientesService) {}
 

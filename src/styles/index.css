@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import './admin-layout-styles.css';
 @import './public-layout-styles.css';
 

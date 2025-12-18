@@ -23,13 +23,9 @@ export class AdminClientesService {
 
   public createCliente(cliente: Cliente) {
     return this.http
-      .post<Cliente>(
-        `${this.API_URL}/clientes`,
-        { cliente },
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
+      .post<Cliente>(`${this.API_URL}/clientes`, cliente, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       .subscribe({
         next: (newCliente) => {
           this.clientes.update((clientes) => [...clientes, newCliente]);

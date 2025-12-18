@@ -22,14 +22,12 @@
     <p>No hay ninguna categoría creada todavía. Añade una nueva categoría.</p>
     }
     <div class="category-fields">
-      @if (adminCategories.categories()) {
       <select class="form-field" formControlName="existingCategory" id="existingCategory">
-        <option value="">Selecciona una categoría</option>
+        <option value="General">General</option>
         @for(category of adminCategories.categories(); track $index) {
         <option [value]="category.category">{{ category.category }}</option>
         }
       </select>
-      }
       <div class="add-category-input-and-button">
         <input
           placeholder="Escribe una nueva categoría"

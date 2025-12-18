@@ -6,19 +6,39 @@
   @if(adminClientes.clientes().length === 0){
   <p class="no-clientes-message">No hay clientes dados de alta en este momento.</p>
   } @else {
-  <ul class="clientes-list">
-    @for(cliente of adminClientes.clientes(); track cliente._id) {
-    <li>
-      <p>{{ cliente.name }}</p>
-      <p>{{ cliente.email }}</p>
-      <p class="editable-noticia-date">{{ cliente.cif }}</p>
-      <p class="editable-noticia-category">{{ cliente.createdAt }}</p>
-      <figure class="noticia-icons">
-        <app-icon-button [path]="pencilPath"></app-icon-button>
-        <app-icon-button [path]="binPath" (click)="deleteCliente(cliente._id)"></app-icon-button>
-      </figure>
-    </li>
-    }
-  </ul>
+  <table mat-table [dataSource]="adminClientes.clientes()" class="clientes-table">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cif">
+      <th mat-header-cell *matHeaderCellDef>CIF</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.cif }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let cliente">
+        <figure class="cliente-icons">
+          <app-icon-button [path]="pencilPath"></app-icon-button>
+          <app-icon-button [path]="binPath" (click)="deleteCliente(cliente._id)"></app-icon-button>
+        </figure>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
   }
 </main>

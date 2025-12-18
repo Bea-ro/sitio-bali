@@ -1,0 +1,9 @@
+.clientes-table {
+  margin: 20px 0;
+}
+
+.cliente-icons {
+  display: flex;
+  margin-left: auto;
+  gap: 6px;
+}

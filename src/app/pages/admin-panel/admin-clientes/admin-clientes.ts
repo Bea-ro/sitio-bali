@@ -14,7 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 export class AdminClientes implements OnInit {
   public binPath = binPath;
   public pencilPath = pencilPath;
-  public displayedColumns = ['name', 'email', 'cif', 'date', 'id'];
+  public displayedColumns = ['name', 'email', 'cif', 'date', 'edition'];
 
   constructor(public adminClientes: AdminClientesService) {}
 
@@ -22,7 +22,7 @@ export class AdminClientes implements OnInit {
     this.adminClientes.getClientes();
   }
 
-  public deleteCliente(clienteId: string | undefined) {
-    clienteId && this.adminClientes.deleteCliente(clienteId);
+  public deleteCliente(clienteId: string) {
+    this.adminClientes.deleteCliente(clienteId);
   }
 }

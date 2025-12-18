@@ -3,7 +3,7 @@
 
   <app-nuevo-cliente></app-nuevo-cliente>
 
-  @if(adminClientes.clientes().length === 0){
+  @if(adminClientes.clientes().length === 0) {
   <p class="no-clientes-message">No hay clientes dados de alta en este momento.</p>
   } @else {
   <table mat-table [dataSource]="adminClientes.clientes()" class="clientes-table">
@@ -27,7 +27,7 @@
       <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="edition">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let cliente">
         <figure class="cliente-icons">

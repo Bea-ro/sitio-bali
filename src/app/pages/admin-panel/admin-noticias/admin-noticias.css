@@ -1,11 +1,14 @@
+.no-noticias-message {
+  margin-top: 20px;
+}
+
 .noticias-list {
-  display: flex;
-  flex-direction: column;
   margin: 20px 0;
-  background-color: var(--color-white);
   border-radius: 6px;
 }
 
-.no-noticias-message {
-  margin-top: 20px;
+.noticia-icons {
+  display: flex;
+  margin-left: auto;
+  gap: 6px;
 }

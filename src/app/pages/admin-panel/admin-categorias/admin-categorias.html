@@ -3,34 +3,43 @@
   @if(adminCategories.categories().length === 0){
   <p class="no-categories-message">No hay categorías creadas en este momento.</p>
   }
-  <ul class="categories-list">
-    <li class="editable-category">
-      <input
-        [(ngModel)]="newCategoryName"
-        placeholder="Añade una nueva categoría"
-        (keydown.enter)="addCategory(newCategoryName); reset()"
-        (keydown.escape)="reset()"
-      />
-    </li>
-    <!-- @if(adminCategories.categories().length !== 0){ -->
-    @for(category of adminCategories.categories(); track category._id) {
-    <li class="editable-category">
-      @if (editingCategoryId === category._id) {
-      <input
-        #input
-        [(ngModel)]="editingCategoryName"
-        (keydown.enter)="save(category._id, input.value)"
-        (keydown.escape)="cancel()"
-      />
-      } @else {
-      <p>{{ category.category }}</p>
-      }
-      <figure class="category-icons">
-        <app-icon-button [path]="pencilPath" (click)="editCategory(category)"></app-icon-button>
-        <app-icon-button [path]="binPath" (click)="deleteCategory(category._id)"></app-icon-button>
-      </figure>
-    </li>
-    }
-    <!-- } -->
-  </ul>
+  <input
+    [(ngModel)]="newCategoryName"
+    placeholder="Añade una nueva categoría"
+    (keydown.enter)="addCategory(newCategoryName); reset()"
+    (keydown.escape)="reset()"
+    class="new-category"
+  />
+  <table mat-table [dataSource]="adminCategories.categories()">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let category">
+        @if (editingCategoryId === category._id) {
+        <input
+          #input
+          [(ngModel)]="editingCategoryName"
+          (keydown.enter)="save(category._id, input.value)"
+          (keydown.escape)="cancel()"
+        />
+        } @else {
+        <p>{{ category.category }}</p>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edition">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let category">
+        <figure class="category-icons">
+          <app-icon-button [path]="pencilPath" (click)="editCategory(category)"></app-icon-button>
+          <app-icon-button
+            [path]="binPath"
+            (click)="deleteCategory(category._id)"
+          ></app-icon-button>
+        </figure>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </main>

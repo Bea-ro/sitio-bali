@@ -42,7 +42,6 @@ export class NuevaNoticia implements OnInit {
       const id = params.get('id');
       if (id) {
         this.noticiaId = id;
-        console.log(this.noticiaId);
         this.cargarNoticia(this.noticiaId);
       }
     });

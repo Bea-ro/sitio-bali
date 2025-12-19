@@ -9,20 +9,27 @@ import { environment } from '../../environments/environment';
 export class AdminNoticiasService {
   public API_URL = environment.API_URL;
   noticias = signal<NoticiaExistente[]>([]);
+  public loading = signal<boolean>(true);
+  public error = signal<string | null>(null);
 
   constructor(private http: HttpClient) {}
 
   public getNoticias() {
-    this.http
-      .get<NoticiaExistente[]>(`${this.API_URL}/noticias`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe((lista) => {
+    this.loading.set(true);
+    this.error.set(null);
+    this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias`).subscribe({
+      next: (lista) => {
         lista.sort((a, b) =>
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.noticias.set(lista);
-      });
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+        this.loading.set(false);
+      },
+    });
   }
 
   public createNoticia(noticia: NoticiaNueva) {

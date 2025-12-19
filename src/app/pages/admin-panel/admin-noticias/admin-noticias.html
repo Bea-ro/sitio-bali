@@ -1,7 +1,13 @@
 <main>
-  <h1>Administrador de Noticias</h1>
+  <h1 class="admin-noticias-header">Administrador de Noticias</h1>
   <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/noticias/nueva"></app-button>
-  @if(adminNoticias.noticias().length === 0){
+  @if (adminNoticias.loading()) {
+  <p>Cargando noticias...</p>
+
+  } @else if (adminNoticias.error()) {
+  <p class="error-message">{{ adminNoticias.error() }}</p>
+
+  } @else if(adminNoticias.noticias().length === 0){
   <p class="no-noticias-message">No hay noticias publicadas en este momento.</p>
   } @else {
 
@@ -15,7 +21,7 @@
 
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let noticia">{{ noticia.date }}</td>
+      <td mat-cell *matCellDef="let noticia">{{ noticia.createdAt | date }}</td>
     </ng-container>
 
     <ng-container matColumnDef="category">

@@ -1,11 +1,16 @@
-.no-categories-message {
-  margin-top: 20px;
+form {
+  display: flex;
+  padding: 28px 0px;
+  gap: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.new-category {
-  padding: 10px 16px;
-  border-bottom: 2px solid var(--color-extra-light);
+.form-field {
   width: 400px;
+  /* background-color: var(--color-white); */
+  border-radius: 6px;
+  padding: 10px 12px;
 }
 
 .mat-mdc-table {
@@ -20,6 +25,39 @@ thead {
 
 .category-icons {
   display: flex;
-  margin-left: auto;
   gap: 6px;
+}
+
+.nuevo-cliente-icons {
+  display: flex;
+  gap: 6px;
+}
+
+.button-icon-icon {
+  height: 24px;
+  color: var(--color-main);
+}
+
+.button-icon-container {
+  width: 47px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  background-color: var(--color-light);
+  opacity: 0.7;
+}
+.button-icon-container:hover {
+  opacity: 1;
+}
+
+.button-icon-container path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
+}
+
+.button-icon-container:hover svg path {
+  stroke: var(--color-sec);
 }

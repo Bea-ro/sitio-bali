@@ -4,6 +4,6 @@
 
 .cliente-icons {
   display: flex;
-  margin-left: auto;
+  justify-content: center;
   gap: 6px;
 }

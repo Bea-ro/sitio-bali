@@ -9,16 +9,23 @@ import { HttpClient } from '@angular/common/http';
 export class AdminClientesService {
   public API_URL = environment.API_URL;
   public clientes = signal<Cliente[]>([]);
+  public error = signal<string | null>(null);
+  public loading = signal(true);
 
   constructor(private http: HttpClient) {}
   public getClientes() {
-    this.http
-      .get<Cliente[]>(`${this.API_URL}/clientes`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe((lista) => {
+    this.loading.set(true);
+    this.error.set(null);
+    this.http.get<Cliente[]>(`${this.API_URL}/clientes`).subscribe({
+      next: (lista) => {
         this.clientes.set(lista);
-      });
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+        this.loading.set(false);
+      },
+    });
   }
 
   public createCliente(cliente: Cliente) {

@@ -2,8 +2,13 @@
   <h1>Administrador de Clientes</h1>
 
   <app-nuevo-cliente></app-nuevo-cliente>
+  @if (adminClientes.loading()) {
+  <p>Cargando clientes...</p>
 
-  @if(adminClientes.clientes().length === 0) {
+  } @else if (adminClientes.error()) {
+  <p class="error-message">{{ adminClientes.error() }}</p>
+
+  } @else if(adminClientes.clientes().length === 0) {
   <p class="no-clientes-message">No hay clientes dados de alta en este momento.</p>
   } @else {
   <table mat-table [dataSource]="adminClientes.clientes()" class="clientes-table">
@@ -12,19 +17,19 @@
       <td mat-cell *matCellDef="let cliente">{{ cliente.name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="cif">
       <th mat-header-cell *matHeaderCellDef>CIF</th>
       <td mat-cell *matCellDef="let cliente">{{ cliente.cif }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
+    </ng-container>
+
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt }}</td>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt | date }}</td>
     </ng-container>
 
     <ng-container matColumnDef="edition">

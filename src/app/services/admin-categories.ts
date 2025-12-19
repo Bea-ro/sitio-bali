@@ -10,30 +10,42 @@ export class AdminCategories {
   public API_URL = environment.API_URL;
   public categories = signal<Category[]>([]);
   public categoriesUsed = signal<string[]>([]);
+  public loading = signal<boolean>(true);
+  public error = signal<string | null>(null);
 
   constructor(private http: HttpClient) {}
 
   public getCategories() {
-    this.http
-      .get<Category[]>(`${this.API_URL}/categories`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe((lista) => {
+    this.loading.set(true);
+    this.error.set(null);
+    this.http.get<Category[]>(`${this.API_URL}/categories`).subscribe({
+      next: (lista) => {
         lista.sort((a, b) =>
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.categories.set(lista);
-      });
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+        this.loading.set(false);
+      },
+    });
   }
 
   public getCategoriesUsed() {
-    this.http
-      .get<string[]>(`${this.API_URL}/categories/used`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe((lista) => {
+    this.loading.set(true);
+    this.error.set(null);
+    this.http.get<string[]>(`${this.API_URL}/categories/used`).subscribe({
+      next: (lista) => {
         this.categoriesUsed.set(lista.sort());
-      });
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+        this.loading.set(false);
+      },
+    });
   }
 
   public createCategory(category: string) {

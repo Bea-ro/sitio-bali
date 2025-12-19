@@ -27,6 +27,7 @@ export class AdminCategorias implements OnInit {
 
   public addCategory(category: string | undefined) {
     category && this.adminCategories.createCategory(category.trim());
+    this.reset();
   }
   public editCategory(category: Category) {
     if (category._id) {

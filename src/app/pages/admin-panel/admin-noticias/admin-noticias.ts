@@ -6,10 +6,11 @@ import { AdminNoticiasService } from '../../../services/admin-noticias';
 import { MatTableModule } from '@angular/material/table';
 import { IconButton } from '../../../shared/icon-button/icon-button';
 import { binPath, pencilPath } from '../../../data/icon-paths';
+import { DatePipe } from '../../../pipes/date-pipe';
 
 @Component({
   selector: 'app-admin-noticias',
-  imports: [CommonModule, RouterModule, Button, IconButton, MatTableModule],
+  imports: [CommonModule, RouterModule, Button, IconButton, MatTableModule, DatePipe],
   templateUrl: './admin-noticias.html',
   styleUrl: './admin-noticias.css',
 })

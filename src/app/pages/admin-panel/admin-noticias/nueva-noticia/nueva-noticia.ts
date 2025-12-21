@@ -5,9 +5,10 @@ import { AdminNoticiasService } from '../../../../services/admin-noticias';
 import { CommonModule } from '@angular/common';
 import { GetNoticias } from '../../../../core/services/get-noticias';
 import { AdminCategories } from '../../../../services/admin-categories';
-// import { IconButton } from '../../../../shared/icon-button/icon-button';
 import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { existingEntryValidator } from '../../../../validators/existing.validator';
+import { delay, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-nueva-noticia',
@@ -18,8 +19,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NuevaNoticia implements OnInit {
   public noticiaFields!: FormGroup<NoticiaForm>;
-  public plusPath: string =
-    'M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z';
   public init: EditorComponent['init'] = {
     height: 500,
     menubar: false,
@@ -50,6 +49,9 @@ export class NuevaNoticia implements OnInit {
       title: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
+        asyncValidators: [
+          existingEntryValidator(() => this.adminNoticias.noticias(), 'title', 'existingEntry'),
+        ],
       }),
       text: new FormControl('', {
         nonNullable: true,
@@ -71,6 +73,7 @@ export class NuevaNoticia implements OnInit {
       .toLowerCase()
       .trim()
       .normalize('NFD') // elimina tildes
+
       .replace(/[\u0300-\u036f]/g, '') // elimina diacríticos
       .replace(/[^a-z0-9\s-]/g, '') // elimina caracteres no válidos
       .replace(/\s+/g, '-') // reemplaza espacios por guiones
@@ -78,6 +81,7 @@ export class NuevaNoticia implements OnInit {
   }
 
   public onSubmit() {
+    console.log(this.noticiaFields.get('title'));
     if (this.noticiaFields && this.noticiaFields.valid) {
       const noticiaSlug = this.generateSlug(this.noticiaFields.getRawValue().title);
 
@@ -115,16 +119,13 @@ export class NuevaNoticia implements OnInit {
   }
 
   public cargarNoticia(noticiaId: string) {
-    console.log(noticiaId);
     this.getNoticias.getNoticiaById(noticiaId).subscribe((noticia) => {
-      console.log(noticia);
       this.noticiaFields &&
         this.noticiaFields.patchValue({
           title: noticia.title,
           text: noticia.text,
           existingCategory: noticia.category,
         });
-      console.log(this.noticiaFields);
     });
   }
 }

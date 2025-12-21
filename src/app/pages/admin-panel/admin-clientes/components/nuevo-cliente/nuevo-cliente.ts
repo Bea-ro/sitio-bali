@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angula
 import { Cliente, ClienteForm } from '../../../../../models/models';
 import { nifNieCifValidator } from './nif-nie-cif.validator';
 import { AdminClientesService } from '../../../../../services/admin-clientes';
+import { existingEntryValidator } from '../../../../../validators/existing.validator';
 
 @Component({
   selector: 'app-nuevo-cliente',
@@ -19,6 +20,9 @@ export class NuevoCliente implements OnInit {
       name: new FormControl<string>('', {
         nonNullable: true,
         validators: [Validators.required],
+        asyncValidators: [
+          existingEntryValidator(() => this.adminClientes.clientes(), 'name', 'existingEntry'),
+        ],
       }),
       email: new FormControl<string>('', {
         nonNullable: true,

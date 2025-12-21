@@ -12,7 +12,7 @@
     @if (noticiaFields.get('title')?.touched && noticiaFields.get('title')?.errors?.['required']) {
     <p class="error-message">Por favor, introduce un título para la nueva noticia.</p>
     } @if (noticiaFields.get('title')?.invalid && noticiaFields.get('title')?.dirty &&
-    noticiaFields.get('title')?.errors?.['existingTitle'] ) {
+    noticiaFields.get('title')?.errors?.['existingEntry'] ) {
     <p class="error-message">
       Ya existe una noticia con este título. Por favor, introduce un título distinto.
     </p>

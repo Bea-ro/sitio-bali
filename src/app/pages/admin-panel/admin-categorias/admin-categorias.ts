@@ -25,6 +25,12 @@ export class AdminCategorias implements OnInit {
     this.adminCategories.getCategories();
   }
 
+  public existingCategory(name: string) {
+    if (!name) return false;
+    return this.adminCategories
+      .categories()
+      .some((c) => c.category.trim().toLowerCase() === name.trim().toLowerCase());
+  }
   public addCategory(category: string | undefined) {
     category && this.adminCategories.createCategory(category.trim());
     this.reset();

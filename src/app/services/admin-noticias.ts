@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class AdminNoticiasService {
   public API_URL = environment.API_URL;
-  noticias = signal<NoticiaExistente[]>([]);
+  public noticias = signal<NoticiaExistente[]>([]);
   public loading = signal<boolean>(true);
   public error = signal<string | null>(null);
 

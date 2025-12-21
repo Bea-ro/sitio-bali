@@ -3,7 +3,7 @@
   (submit)="onSubmit(); clienteFields.reset()"
   class="nuevo-cliente-form"
 >
-  <div class="nuevo-cliente-inputs-and-buttons-container">
+  <div class="inputs-and-buttons-container">
     <input
       placeholder="Nombre cliente"
       class="form-field"
@@ -50,7 +50,7 @@
   @if (clienteFields.get('name')?.touched && clienteFields.get('name')?.errors?.['required']) {
   <p class="error-message">Por favor, introduce un nombre para el nuevo cliente.</p>
   } @if (clienteFields.get('name')?.invalid && clienteFields.get('name')?.dirty &&
-  clienteFields.get('name')?.errors?.['existingName'] ) {
+  clienteFields.get('name')?.errors?.['existingEntry'] ) {
   <p class="error-message">
     Ya existe un cliente con este nombre. Por favor, introduce un nombre distinto.
   </p>

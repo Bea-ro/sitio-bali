@@ -1,16 +1,7 @@
 form {
-  padding: 28px 0px;
-  border-radius: 10px;
-  background-color: var(--color-extra-light);
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.form-field {
-  background-color: var(--color-white);
-  border-radius: 6px;
-  padding: 10px 12px;
 }
 
 .category-fields {
@@ -31,9 +22,4 @@ form {
 
 #newCategory {
   width: 89%;
-}
-
-.error-message {
-  font-size: 15px;
-  color: #b3001b;
 }

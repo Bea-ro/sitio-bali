@@ -1,16 +1,5 @@
-form {
-  display: flex;
-  padding: 28px 0px;
-  gap: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
 .form-field {
   width: 400px;
-  /* background-color: var(--color-white); */
-  border-radius: 6px;
-  padding: 10px 12px;
 }
 
 .mat-mdc-table {

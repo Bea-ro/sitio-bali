@@ -2,12 +2,10 @@
   margin-bottom: 28px;
 }
 
-.error-message {
+.server-error-message,
+.no-elements-message,
+.loading-message {
   margin-top: 28px;
-}
-
-.no-noticias-message {
-  margin-top: 20px;
 }
 
 .noticias-list {

@@ -3,13 +3,13 @@
 
   <app-nuevo-cliente></app-nuevo-cliente>
   @if (adminClientes.loading()) {
-  <p>Cargando clientes...</p>
+  <p class="loading-message">Cargando clientes...</p>
 
   } @else if (adminClientes.error()) {
-  <p class="error-message">{{ adminClientes.error() }}</p>
+  <p class="server-error-message">{{ adminClientes.error() }}</p>
 
   } @else if(adminClientes.clientes().length === 0) {
-  <p class="no-clientes-message">No hay clientes dados de alta en este momento.</p>
+  <p class="no-elements-message">No hay clientes dados de alta en este momento.</p>
   } @else {
   <table mat-table [dataSource]="adminClientes.clientes()" class="clientes-table">
     <ng-container matColumnDef="name">

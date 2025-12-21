@@ -2,13 +2,13 @@
   <h1 class="admin-noticias-header">Administrador de Noticias</h1>
   <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/noticias/nueva"></app-button>
   @if (adminNoticias.loading()) {
-  <p>Cargando noticias...</p>
+  <p class="loading-message">Cargando noticias...</p>
 
   } @else if (adminNoticias.error()) {
-  <p class="error-message">{{ adminNoticias.error() }}</p>
+  <p class="server-error-message">{{ adminNoticias.error() }}</p>
 
   } @else if(adminNoticias.noticias().length === 0){
-  <p class="no-noticias-message">No hay noticias publicadas en este momento.</p>
+  <p class="no-elements-message">No hay noticias publicadas en este momento.</p>
   } @else {
 
   <table mat-table [dataSource]="adminNoticias.noticias()" class="noticias-list">

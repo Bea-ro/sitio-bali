@@ -22,6 +22,20 @@
   padding: 20px;
 }
 
+.icon-wrapper {
+  background-color: var(--color-light);
+  padding: 16px 16px 8px 16px;
+  display: inline-block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  /* width: fit-content; */
+}
+
+.icon {
+  color: var(--color-main);
+  height: 50px;
+}
+
 @media screen and (max-width: 375px) {
   .member-position {
     font-size: 15px;

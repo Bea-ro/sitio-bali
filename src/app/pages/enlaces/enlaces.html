@@ -1,0 +1,15 @@
+<main class="centered-main">
+  <h1 class="page-title centered-text">Accesos rápidos</h1>
+  <h2 class="page-subtitle centered-text">Facilitando tu día a día</h2>
+  <section class="bottom-section">
+    <ul #contenedor class="reference-links-list">
+      @for(link of referenceLinks;track link.name ) {
+      <li class="reference-link-container">
+        <a [href]="link.url">
+          <img [src]="link.icon" [alt]="`logotipo ${link.name}`" />
+        </a>
+      </li>
+      }
+    </ul>
+  </section>
+</main>

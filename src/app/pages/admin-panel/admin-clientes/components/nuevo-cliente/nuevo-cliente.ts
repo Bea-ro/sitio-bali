@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Cliente, ClienteForm } from '../../../../../models/models';
+import { ClienteForm } from '../../../../../models/models';
 import { nifNieCifValidator } from './nif-nie-cif.validator';
-import { AdminClientesService } from '../../../../../services/admin-clientes';
 import { existingEntryValidator } from '../../../../../validators/existing.validator';
+import { AdminClientesService } from '../../../../../services/admin-clientes';
 
 @Component({
   selector: 'app-nuevo-cliente',

@@ -4,6 +4,7 @@ import { PublicLayout } from './layouts/public-layout/public-layout';
 import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { AdminLogin } from './pages/admin-login/admin-login';
 import { AdminPanel } from './pages/admin-panel/admin-panel';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,11 @@ export const routes: Routes = [
         ],
       },
       {
+        path: 'enlaces-de-interes',
+        loadComponent: () => import('./pages/enlaces/enlaces').then((c) => c.Enlaces),
+        title: 'Enlaces de interés · Bali Asociados',
+      },
+      {
         path: 'politica-cookies',
         loadComponent: () =>
           import('./pages/politica-cookies/politica-cookies').then((c) => c.PoliticaCookies),
@@ -76,7 +82,7 @@ export const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminLayout,
-    // canActivate: [AuthGuard],
+    canActivate: [authGuard],
     title: 'Panel administración | Bali Asociados',
     children: [
       {
@@ -127,6 +133,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/admin-panel/admin-clientes/admin-clientes').then((c) => c.AdminClientes),
         title: 'Bali Asociados · Administrador Clientes',
+      },
+      {
+        path: 'admins',
+        loadComponent: () => import('./pages/admin-panel/admins/admins').then((c) => c.Admins),
+        title: 'Bali Asociados · Administradores',
       },
     ],
   },

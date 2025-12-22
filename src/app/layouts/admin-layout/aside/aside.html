@@ -50,7 +50,27 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a class="nav-link" [routerLink]="['/admin-panel/clientes']">Ver y gestionar clientes</a>
+        <a class="nav-link" [routerLink]="['/admin-panel/clientes']">Gestionar clientes</a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav>
+    <div class="aside-title">
+      <svg
+        class="aside-icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 640 640"
+      >
+        <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+        <path [attr.d]="lockPath" />
+      </svg>
+      <h3 class="aside-menu-title">Admin</h3>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a class="nav-link" [routerLink]="['/admin-panel/admins']">Gestionar admins</a>
       </li>
     </ul>
   </nav>

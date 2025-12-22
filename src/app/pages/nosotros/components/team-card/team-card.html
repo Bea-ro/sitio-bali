@@ -1,6 +1,12 @@
 @if(cardElement) {
 <li class="team-card-container">
-  <img class="member-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" />
+  <!-- <img class="member-image" [src]="`${imagePrefix}${cardElement.image}`" [alt]="cardElement.name" /> -->
+  <div class="icon-wrapper">
+    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+      <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+      <path [attr.d]="cardElement.icon" />
+    </svg>
+  </div>
   <div class="card-text">
     <h4 class="member-name">{{ cardElement.name }}</h4>
     <p class="member-position">{{ cardElement.position }}</p>

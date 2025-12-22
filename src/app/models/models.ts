@@ -24,8 +24,7 @@ export interface ContactDetails {
   cif: string;
 }
 
-export interface UserRegister {
-  name: FormControl<string>;
+export interface UserLogin {
   email: FormControl<string>;
   password: FormControl<string>;
   repeatPassword: FormControl<string>;
@@ -86,6 +85,7 @@ export interface Member {
   name: string;
   position: string;
   image: string;
+  icon: string;
 }
 export interface ReferenceLink {
   name: string;
@@ -101,12 +101,42 @@ export interface Cliente {
   _id?: string;
 }
 
+export interface Admin {
+  rol: string;
+  email: string;
+  createdAt?: string;
+  _id?: string;
+}
+
+export interface AdminDataLogin {
+  email: string;
+  password: string;
+}
+
+export interface AdminLoginResponse {
+  token: string;
+  admin: {
+    id: string;
+    email: string;
+    rol: string;
+  };
+}
+
 export interface ClienteForm {
   name: FormControl<string>;
   email: FormControl<string>;
   cif: FormControl<string>;
 }
 
+export interface AdminForm {
+  rol: FormControl<string>;
+  email: FormControl<string>;
+}
+
+export interface AdminStored {
+  adminUser: string;
+  token: string;
+}
 export interface Documento {
   name: string;
   path: string;

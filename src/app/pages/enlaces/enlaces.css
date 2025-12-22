@@ -1,0 +1,38 @@
+.reference-links-list {
+  padding: 50px 26px 0 26px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  justify-items: center;
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .reference-links-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .reference-links-list {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 16px 0 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reference-links-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100vw;
+    scrollbar-width: none;
+  }
+
+  .reference-links-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reference-link-container {
+    scroll-snap-align: center;
+  }
+}

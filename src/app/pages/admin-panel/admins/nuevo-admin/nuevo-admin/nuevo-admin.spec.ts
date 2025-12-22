@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReferenceLinks } from './reference-links';
+import { NuevoAdmin } from './nuevo-admin';
 
-describe('ReferenceLinks', () => {
-  let component: ReferenceLinks;
-  let fixture: ComponentFixture<ReferenceLinks>;
+describe('NuevoAdmin', () => {
+  let component: NuevoAdmin;
+  let fixture: ComponentFixture<NuevoAdmin>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReferenceLinks]
+      imports: [NuevoAdmin]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReferenceLinks);
+    fixture = TestBed.createComponent(NuevoAdmin);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

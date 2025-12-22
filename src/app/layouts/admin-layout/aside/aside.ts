@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { homePath, newspaperPath, userPath } from '../../../data/icon-paths';
+import { homePath, lockPath, newspaperPath, userPath } from '../../../data/icon-paths';
 
 @Component({
   selector: 'app-aside',
@@ -12,4 +12,5 @@ export class Aside {
   public homePath: string = homePath;
   public newspaperPath: string = newspaperPath;
   public userPath: string = userPath;
+  public lockPath: string = lockPath;
 }

@@ -1,20 +1,5 @@
 <main class="centered-main">
-  @if(userForm){
   <form class="admin-form" [formGroup]="userForm" (submit)="onSumbit()">
-    <div>
-      <label for="name">Nombre:</label>
-      <input
-        class="form-field"
-        type="text"
-        id="name"
-        formControlName="name"
-        placeholder="Nombre usuario"
-      />
-      @if(userForm.get('name')?.invalid && userForm.get('name')?.touched) {
-      <p class="error-message">Este campo es obligatorio.</p>
-      }
-    </div>
-
     <div>
       <label for="email">Email:</label>
       <input type="email" id="email" formControlName="email" />
@@ -41,15 +26,10 @@
     @if(userForm.get('repeatPassword')?.errors?.['required']){
     <p>Este campo es obligatorio.</p>
     } @else if (userForm.get('repeatPassword')?.errors?.['minlength']) {
-    <p>La contraseña deben tener 6 caracteres como mínimo.</p>
+    <p>La contraseña debe tener 6 caracteres como mínimo.</p>
     } @else if (userForm.get('repeatPassword')?.errors?.['differentPasswords']){
     <p>Las contraseñas deben coincidir.</p>
     } }
-
     <button class="button" type="submit" [disabled]="userForm.invalid">Acceder</button>
-    @if(adminLoginMessage){
-    <p class="submitted-message">{{ adminLoginMessage }}</p>
-    }
   </form>
-  }
 </main>

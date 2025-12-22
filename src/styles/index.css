@@ -43,18 +43,6 @@ li {
   list-style-type: none;
 }
 
-body.public main {
-  padding-top: 118px;
-  min-height: 40vw;
-}
-
-body.admin main {
-  padding: 42px 38px;
-  min-height: 100vh;
-  min-width: 80vw;
-  background-color: var(--color-extra-light);
-}
-
 .centered-main {
   display: flex;
   flex-direction: column;

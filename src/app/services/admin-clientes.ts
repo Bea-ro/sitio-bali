@@ -36,10 +36,12 @@ export class AdminClientesService {
       .subscribe({
         next: (newCliente) => {
           this.clientes.update((clientes) => [...clientes, newCliente]);
-          alert('Cliente guardado.');
+          alert('Cliente registrado.');
         },
         error: () => {
-          alert('Se ha producido un error al guardar el cliente. Por favor, inténtalo más tarde.');
+          alert(
+            'Se ha producido un error al registrar el cliente. Por favor, inténtalo más tarde.'
+          );
         },
       });
   }

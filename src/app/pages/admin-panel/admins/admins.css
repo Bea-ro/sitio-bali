@@ -1,0 +1,9 @@
+.admins-table {
+  margin: 20px 0;
+}
+
+.admins-icons {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}

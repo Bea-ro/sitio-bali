@@ -1,3 +1,8 @@
+body.public main {
+  padding-top: 118px;
+  min-height: 40vh;
+}
+
 body.public h1 {
   font-size: 40px;
 }
@@ -26,6 +31,12 @@ body.public path {
   stroke: currentColor;
   stroke-width: 20;
   fill: none;
+}
+
+@media screen and (max-width: 678px) {
+  body.public main {
+    min-height: 85vh;
+  }
 }
 
 @media screen and (max-width: 375px) {

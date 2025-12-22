@@ -112,7 +112,6 @@ export interface AdminDataLogin {
   email: string;
   password: string;
 }
-
 export interface AdminLoginResponse {
   token: string;
   admin: {
@@ -131,6 +130,11 @@ export interface ClienteForm {
 export interface AdminForm {
   rol: FormControl<string>;
   email: FormControl<string>;
+}
+
+export interface PasswordForm {
+  password: FormControl<string>;
+  repeatPassword: FormControl<string>;
 }
 
 export interface AdminStored {

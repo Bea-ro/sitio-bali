@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Admin, AdminDataLogin, AdminLoginResponse } from '../models/models';
 import { Router } from '@angular/router';
-
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
@@ -52,9 +52,22 @@ export class AdminAdmins {
     return this.http.post<AdminLoginResponse>(`${this.API_URL}/admins/login`, admin);
   }
 
-  //ver si esto va en el servicio o componente
   public isAuthenticated(): boolean {
-    return !!localStorage.getItem('adminStored');
+    const stored = localStorage.getItem('adminStored');
+    if (!stored) return false;
+    try {
+      const token = JSON.parse(stored).token;
+      const decoded = jwtDecode<JwtPayload>(token);
+      const now = Math.floor(Date.now() / 1000);
+      if (decoded.exp && decoded.exp < now) {
+        localStorage.removeItem('adminStored');
+        return false;
+      }
+      return true;
+    } catch {
+      localStorage.removeItem('adminStored');
+      return false;
+    }
   }
 
   public deregisterAdmin(id: string) {

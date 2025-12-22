@@ -1,20 +1,16 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { PublicLayout } from './layouts/public-layout/public-layout';
-import { AdminLayout } from './layouts/admin-layout/admin-layout';
-import { AdminLogin } from './pages/admin-login/admin-login';
-import { AdminPanel } from './pages/admin-panel/admin-panel';
 import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: PublicLayout,
+    loadComponent: () =>
+      import('./layouts/public-layout/public-layout').then((c) => c.PublicLayout),
     title: 'Bali Asociados · Asesoría empresas y autónomos',
     children: [
       {
         path: '',
-        component: Home,
+        loadComponent: () => import('./pages/home/home').then((c) => c.Home),
         title: 'Bali Asociados · Asesoría empresas y autónomos',
       },
       {
@@ -69,25 +65,24 @@ export const routes: Routes = [
       {
         path: 'aviso-legal',
         loadComponent: () => import('./pages/aviso-legal/aviso-legal').then((c) => c.AvisoLegal),
-
         title: 'Aviso legal | Bali Asociados',
       },
     ],
   },
   {
     path: 'admin-login',
-    component: AdminLogin,
+    loadComponent: () => import('./pages/admin-login/admin-login').then((c) => c.AdminLogin),
     title: 'Bali Asociados · Acceso Administrador',
   },
   {
     path: 'admin-panel',
-    component: AdminLayout,
+    loadComponent: () => import('./layouts/admin-layout/admin-layout').then((c) => c.AdminLayout),
     canActivate: [authGuard],
     title: 'Panel administración | Bali Asociados',
     children: [
       {
         path: '',
-        component: AdminPanel,
+        loadComponent: () => import('./pages/admin-panel/admin-panel').then((c) => c.AdminPanel),
         title: 'Bali Asociados · Panel Administración',
       },
       {

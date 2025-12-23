@@ -1,0 +1,73 @@
+<form class="admin-form" [formGroup]="userForm" (submit)="onSumbit()">
+  <div>
+    <div class="label-input-container">
+      <label for="email" class="button-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="emailPath" />
+        </svg>
+      </label>
+      <input
+        class="form-field"
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+    </div>
+    @if(userForm.get('email')?.errors?.['required'] && userForm.get('email')?.touched){
+    <p class="error-message">Este campo es obligatorio.</p>
+    } @if(userForm.get('email')?.errors?.['email']){
+    <p class="error-message">Por favor, introduce un email válido.</p>
+    }
+  </div>
+
+  <div>
+    <div class="label-input-container">
+      <label for="password" class="button-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="lockPath" />
+        </svg>
+      </label>
+      <input
+        class="form-field"
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Contraseña"
+      />
+    </div>
+    @if(userForm.get('password')?.errors?.['password']){
+    <p class="error-message">Por favor, introduce una contraseña válida</p>
+    }
+  </div>
+
+  <div>
+    <div class="label-input-container">
+      <label for="repeatPassword" class="button-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="lockPath" />
+        </svg>
+      </label>
+      <input
+        class="form-field"
+        type="password"
+        placeholder="Repite la contraseña"
+        id="repeatPassword"
+        formControlName="repeatPassword"
+      />
+    </div>
+
+    @if(userForm.get('repeatPassword')?.invalid && userForm.get('repeatPassword')?.touched){
+    @if(userForm.get('repeatPassword')?.errors?.['required']){
+    <p class="error-message">Este campo es obligatorio.</p>
+    } @else if (userForm.get('repeatPassword')?.errors?.['minlength']) {
+    <p class="error-message">La contraseña debe tener 6 caracteres como mínimo.</p>
+    } @else if (userForm.get('repeatPassword')?.errors?.['differentPasswords']){
+    <p class="error-message">Las contraseñas deben coincidir.</p>
+    } }
+  </div>
+  <button class="button" type="submit" [disabled]="userForm.invalid">Acceder</button>
+</form>

@@ -1,15 +1,4 @@
-import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
-
-export function emailValidator(): ValidatorFn {
-  return (control: AbstractControl) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const emailIsValid = emailRegex.test(control.value);
-    if (control.value === '') {
-      return null;
-    }
-    return emailIsValid ? null : { errorEmail: true };
-  };
-}
+import { FormGroup } from '@angular/forms';
 
 export function comparePasswords(formGroup: FormGroup) {
   const control = formGroup.get('password');

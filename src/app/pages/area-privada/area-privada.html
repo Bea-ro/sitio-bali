@@ -1,14 +1,8 @@
-<main>
-  <ul>
-    @for(doc of adminDocuments.documents(); track doc.name) {
-    <li>
-      <a
-        [href]="'http://localhost:3001/api' + doc.path"
-        target="_blank"
-        rel="noopener noreferrer"
-        >{{ doc.name }}</a
-      >
-    </li>
-    }
-  </ul>
+<main class="centered-main">
+  <h1 class="page-title">Acceso cliente</h1>
+  <h2 class="page-subtitle">Bienvenido a tu área privada</h2>
+  <app-login></app-login>
+  <p class="bottom-message">
+    Si aún no tienes acceso a tu área de cliente, contacta con Bali Asociados.
+  </p>
 </main>

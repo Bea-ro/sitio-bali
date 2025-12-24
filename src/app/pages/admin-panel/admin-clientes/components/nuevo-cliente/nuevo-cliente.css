@@ -17,6 +17,7 @@
   padding: 6px;
   background-color: var(--color-light);
   opacity: 0.7;
+  height: 48px;
 }
 .button-icon-container:hover {
   opacity: 1;
@@ -30,8 +31,4 @@
 
 .button-icon-container:hover svg path {
   stroke: var(--color-sec);
-}
-
-.form-field {
-  width: 30%;
 }

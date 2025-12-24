@@ -5,7 +5,6 @@
 .mat-mdc-table {
   margin: 20px 0;
   border-radius: 6px;
-  width: 400px;
 }
 
 thead {
@@ -36,7 +35,9 @@ thead {
   padding: 6px;
   background-color: var(--color-light);
   opacity: 0.7;
+  height: 48px;
 }
+
 .button-icon-container:hover {
   opacity: 1;
 }
@@ -49,4 +50,10 @@ thead {
 
 .button-icon-container:hover svg path {
   stroke: var(--color-sec);
+}
+
+.error-message {
+  font-size: 15px;
+  color: #b3001b;
+  margin-top: 10px;
 }

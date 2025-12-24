@@ -9,17 +9,10 @@ form {
   gap: 12px;
 }
 
-#existingCategory,
-.add-category-input-and-button {
-  flex: 1;
-}
-
-.add-category-input-and-button {
-  display: flex;
-  gap: 6px;
-  align-items: center;
+#existingCategory {
+  width: 40%;
 }
 
 #newCategory {
-  width: 89%;
+  width: 60%;
 }

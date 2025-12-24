@@ -7,7 +7,16 @@
       }
     </select>
 
-    <input placeholder="Email" class="form-field" type="email" id="email" formControlName="email" />
+    <div class="form-fiel">
+      <input
+        placeholder="Email"
+        class="form-field"
+        type="email"
+        id="email"
+        formControlName="email"
+      />
+      <app-error-message [formFields]="adminFields" control="email"></app-error-message>
+    </div>
 
     <figure class="nuevo-admin-icons">
       <button class="button-icon-container" type="submit" [disabled]="adminFields.invalid">
@@ -29,10 +38,4 @@
       </button>
     </figure>
   </div>
-  @if (adminFields.get('email')?.touched && adminFields.get('email')?.errors?.['required']) {
-  <p class="error-message">Por favor, introduce un email para el nuevo administrador.</p>
-  } @if (adminFields.get('email')?.invalid && adminFields.get('email')?.dirty &&
-  adminFields.get('email')?.errors?.['email'] ) {
-  <p class="error-message">Email inválido.</p>
-  }
 </form>

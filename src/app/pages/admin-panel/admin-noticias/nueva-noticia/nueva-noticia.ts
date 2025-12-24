@@ -8,11 +8,11 @@ import { AdminCategories } from '../../../../services/admin-categories';
 import { EditorComponent, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { existingEntryValidator } from '../../../../validators/existing.validator';
-import { delay, Observable, of } from 'rxjs';
+import { ErrorMessage } from '../../../../shared/error-message/error-message';
 
 @Component({
   selector: 'app-nueva-noticia',
-  imports: [ReactiveFormsModule, CommonModule, EditorComponent],
+  imports: [ReactiveFormsModule, CommonModule, EditorComponent, ErrorMessage],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }],
   templateUrl: './nueva-noticia.html',
   styleUrl: './nueva-noticia.css',

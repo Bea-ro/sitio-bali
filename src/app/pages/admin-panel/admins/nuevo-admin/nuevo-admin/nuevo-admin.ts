@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminForm } from '../../../../../models/models';
 import { AdminAdmins } from '../../../../../services/admin-admins';
+import { ErrorMessage } from '../../../../../shared/error-message/error-message';
 
 @Component({
   selector: 'app-nuevo-admin',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessage],
   templateUrl: './nuevo-admin.html',
   styleUrl: './nuevo-admin.css',
 })

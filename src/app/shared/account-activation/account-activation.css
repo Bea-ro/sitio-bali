@@ -1,9 +1,5 @@
-main {
+.expired-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-img {
-  height: 62px;
 }

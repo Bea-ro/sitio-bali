@@ -4,10 +4,11 @@ import { ClienteForm } from '../../../../../models/models';
 import { nifNieCifValidator } from './nif-nie-cif.validator';
 import { existingEntryValidator } from '../../../../../validators/existing.validator';
 import { AdminClientesService } from '../../../../../services/admin-clientes';
+import { ErrorMessage } from '../../../../../shared/error-message/error-message';
 
 @Component({
   selector: 'app-nuevo-cliente',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessage],
   templateUrl: './nuevo-cliente.html',
   styleUrl: './nuevo-cliente.css',
 })

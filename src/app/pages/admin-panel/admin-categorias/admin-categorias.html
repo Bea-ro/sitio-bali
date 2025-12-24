@@ -2,13 +2,18 @@
   <h1>Administrador de Categorías</h1>
   <form #newCategoryForm="ngForm" (ngSubmit)="addCategory(newCategoryName)">
     <div class="inputs-and-buttons-container">
-      <input
-        name="newCategoryName"
-        [(ngModel)]="newCategoryName"
-        placeholder="Añade una nueva categoría"
-        class="form-field"
-        (keydown.escape)="reset()"
-      />
+      <div class="form-field-container">
+        <input
+          name="newCategoryName"
+          [(ngModel)]="newCategoryName"
+          placeholder="Añade una nueva categoría"
+          class="form-field"
+          (keydown.escape)="reset()"
+        />
+        @if (existingCategory(newCategoryName)) {
+        <p class="error-message">Categoría existente. Por favor, introduce un nombre distinto.</p>
+        }
+      </div>
       <figure class="nuevo-cliente-icons">
         <button class="button-icon-container" type="submit" [disabled]="newCategoryName === ''">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -29,9 +34,6 @@
         </button>
       </figure>
     </div>
-    @if (existingCategory(newCategoryName)) {
-    <p class="error-message">Esta categoría ya existe. Por favor, introduce un nombre distinto.</p>
-    }
   </form>
   @if (adminCategories.loading()) {
   <p class="loading-message">Cargando categorías...</p>

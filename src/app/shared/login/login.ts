@@ -7,14 +7,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { AdminDataLogin, UserLogin } from '../../models/models';
-import { emailPath, lockPath } from '../../data/icon-paths';
+import { emailPath, lockPath, unlockPath } from '../../data/icon-paths';
 import { AdminAdmins } from '../../services/admin-admins';
 import { Router } from '@angular/router';
-import { comparePasswords } from '../../pages/admin-login/validators';
+import { comparePasswords, passwordRequirements } from './validators';
+import { ErrorMessage } from '../error-message/error-message';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessage],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -22,6 +23,7 @@ export class Login implements OnInit {
   public userForm!: FormGroup<UserLogin>;
   public emailPath: string = emailPath;
   public lockPath: string = lockPath;
+  public unlockPath: string = unlockPath;
 
   constructor(public adminAdmins: AdminAdmins, public router: Router) {}
 
@@ -34,11 +36,11 @@ export class Login implements OnInit {
         }),
         password: new FormControl('', {
           nonNullable: true,
-          validators: [Validators.required, Validators.minLength(6)],
+          validators: [Validators.required, passwordRequirements()],
         }),
         repeatPassword: new FormControl('', {
           nonNullable: true,
-          validators: [Validators.required, Validators.minLength(6)],
+          validators: [Validators.required, passwordRequirements()],
         }),
       },
       comparePasswords as ValidatorFn

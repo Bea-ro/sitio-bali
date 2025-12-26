@@ -15,7 +15,7 @@ import { NuevoAdmin } from './nuevo-admin/nuevo-admin/nuevo-admin';
 export class Admins implements OnInit {
   public binPath = binPath;
   public pencilPath = pencilPath;
-  public displayedColumns = ['rol', 'email', 'date', 'edition'];
+  public displayedColumns = ['rol', 'email', 'date', 'active', 'edition'];
 
   constructor(public adminAdmins: AdminAdmins) {}
 

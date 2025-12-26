@@ -7,27 +7,37 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { comparePasswords, passwordRequirements } from '../login/validators';
 import { Button } from '../button/button';
-import { AdminAdmins } from '../../services/admin-admins';
+import { Auth } from '../../services/auth';
+import { PASSWORD_MESSAGES } from '../../data/messages';
+import { ErrorMessage } from '../error-message/error-message';
+import { lockPath, unlockPath } from '../../data/icon-paths';
 
 @Component({
   selector: 'app-account-activation',
-  imports: [ReactiveFormsModule, Button],
+  imports: [ReactiveFormsModule, Button, ErrorMessage],
   templateUrl: './account-activation.html',
   styleUrl: './account-activation.css',
 })
 export class AccountActivation implements OnInit {
   public validToken: boolean = false;
+  public token: string = '';
   public passwordForm!: FormGroup<PasswordForm>;
+  public passwordRequitements: string = PASSWORD_MESSAGES.INVALID;
+  public lockPath: string = lockPath;
+  public unlockPath: string = unlockPath;
 
-  constructor(private route: ActivatedRoute, private adminAdmins: AdminAdmins) {}
+  constructor(private route: ActivatedRoute, private auth: Auth, private router: Router) {}
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      const token = params['token'];
-      this.validToken = this.adminAdmins.isAuthenticated();
-      console.log(this.validToken);
+      this.token = params['token'];
+      this.auth.tokenValidity(this.token).subscribe({
+        next: () => (this.validToken = true),
+        error: () => (this.validToken = false),
+      });
+      //this.validToken = this.adminAdmins.isAuthenticated();
     });
 
     this.passwordForm = new FormGroup<PasswordForm>(
@@ -45,19 +55,15 @@ export class AccountActivation implements OnInit {
     );
   }
 
-  public onSumbit() {
+  public onSubmit() {
     const { password } = this.passwordForm.getRawValue();
-    //hacer un patch para añadirle password al usuario
-    // this.adminAdmins.loginAdmin(adminData).subscribe({
-    //   next: (response) => {
-    //     this.router.navigate(['/admin-login']);
-    //     this.passwordForm.reset();
-    //   },
-    //   error: (err) =>
-    //     err.status === 401
-    //       ? alert('Las contraseñas no coinciden.')
-    //       : alert('Error del servidor. Inténtalo más tarde.'),
-    // });
+    const accountData = {
+      password: password,
+      token: this.token,
+    };
+    this.auth.activateAccount(accountData);
+    this.router.navigate(['/admin-login']);
+    this.passwordForm.reset();
   }
 
   public resendEmail() {

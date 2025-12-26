@@ -22,44 +22,34 @@ import { ErrorMessage } from '../error-message/error-message';
 export class Login implements OnInit {
   public userForm!: FormGroup<UserLogin>;
   public emailPath: string = emailPath;
-  public lockPath: string = lockPath;
   public unlockPath: string = unlockPath;
 
   constructor(public adminAdmins: AdminAdmins, public router: Router) {}
 
   public ngOnInit() {
-    this.userForm = new FormGroup<UserLogin>(
-      {
-        email: new FormControl('', {
-          nonNullable: true,
-          validators: [Validators.required, Validators.email],
-        }),
-        password: new FormControl('', {
-          nonNullable: true,
-          validators: [Validators.required, passwordRequirements()],
-        }),
-        repeatPassword: new FormControl('', {
-          nonNullable: true,
-          validators: [Validators.required, passwordRequirements()],
-        }),
-      },
-      comparePasswords as ValidatorFn
-    );
+    this.userForm = new FormGroup<UserLogin>({
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, passwordRequirements()],
+      }),
+    });
   }
 
-  public onSumbit() {
+  public onSubmit() {
     const { email, password } = this.userForm.getRawValue();
     const adminData: AdminDataLogin = { email, password };
+    console.log(adminData);
     this.adminAdmins.loginAdmin(adminData).subscribe({
       next: (response) => {
         localStorage.setItem('adminStored', JSON.stringify(response));
         this.router.navigate(['/admin-panel']);
         this.userForm.reset();
       },
-      error: (err) =>
-        err.status === 401
-          ? alert('Email o contraseña incorrectos.')
-          : alert('Error del servidor. Inténtalo más tarde.'),
+      error: (err) => alert(err.error.message),
     });
   }
 }

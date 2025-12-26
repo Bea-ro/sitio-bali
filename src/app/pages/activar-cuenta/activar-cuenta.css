@@ -2,6 +2,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 0 16px;
 }
 
 img {

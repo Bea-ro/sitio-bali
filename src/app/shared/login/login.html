@@ -1,4 +1,4 @@
-<form class="admin-form" [formGroup]="userForm" (submit)="onSumbit()">
+<form class="admin-form" [formGroup]="userForm" (submit)="onSubmit()">
   <div class="field-container">
     <div class="label-input-container">
       <label for="email" class="button-icon-container">
@@ -24,7 +24,7 @@
       <label for="password" class="button-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
           <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-          <path [attr.d]="lockPath" />
+          <path [attr.d]="unlockPath" />
         </svg>
       </label>
       <input
@@ -39,23 +39,5 @@
     <app-error-message [formFields]="userForm" control="password"></app-error-message>
   </div>
 
-  <div class="field-container">
-    <div class="label-input-container">
-      <label for="repeatPassword" class="button-icon-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
-          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-          <path [attr.d]="unlockPath" />
-        </svg>
-      </label>
-      <input
-        class="form-field"
-        type="password"
-        placeholder="Repite la contraseña"
-        id="repeatPassword"
-        formControlName="repeatPassword"
-      />
-    </div>
-    <app-error-message [formFields]="userForm" control="repeatPassword"></app-error-message>
-  </div>
   <button class="button" type="submit" [disabled]="userForm.invalid">Acceder</button>
 </form>

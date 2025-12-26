@@ -1,30 +1,48 @@
 @if (validToken) {
-<form class="activation-form" [formGroup]="passwordForm" (submit)="onSumbit()">
-  <div>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" formControlName="password" class="form-field" />
-    @if(passwordForm.get('password')?.errors?.['password']){
-    <p class="error-message">Por favor, introduce una contraseña válida</p>
-    }
+<p class="password-instructions">
+  Introduce una contraseña segura para activar tu cuenta. <br />{{ passwordRequitements }}.
+</p>
+<form class="activation-form" [formGroup]="passwordForm" (submit)="onSubmit()">
+  <div class="field-container">
+    <div class="label-input-container">
+      <label for="password" class="button-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="lockPath" />
+        </svg>
+      </label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-field"
+        placeholder="Contraseña"
+      />
+    </div>
+    <app-error-message [formFields]="passwordForm" control="password"></app-error-message>
   </div>
 
-  <div>
-    <label for="repeatPassword">Repetir contraseña:</label>
-    <input type="password" id="repeatPassword" formControlName="repeatPassword" />
+  <div class="field-container">
+    <div class="label-input-container">
+      <label for="repeatPassword" class="button-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="unlockPath" />
+        </svg>
+      </label>
+      <input
+        type="password"
+        id="repeatPassword"
+        formControlName="repeatPassword"
+        class="form-field"
+        placeholder="Repite la contraseña"
+      />
+    </div>
+    <app-error-message [formFields]="passwordForm" control="repeatPassword"></app-error-message>
   </div>
-  @if(passwordForm.get('repeatPassword')?.invalid && passwordForm.get('repeatPassword')?.touched){
-  @if(passwordForm.get('repeatPassword')?.errors?.['required']){
-  <p>Este campo es obligatorio.</p>
-  } @else if (passwordForm.get('repeatPassword')?.errors?.['minlength']) {
-  <p>La contraseña debe tener al menos 6 caracteres .</p>
-  } @else if (passwordForm.get('repeatPassword')?.errors?.['differentPasswords']){
-  <p>Las contraseñas deben coincidir.</p>
-  } }
   <button class="button" type="submit" [disabled]="passwordForm.invalid">Activar</button>
 </form>
 } @else {
-<div class="expired-container">
-  <p>Tu enlace ha caducado.</p>
-  <app-button buttonText="Reenviar email"></app-button>
-</div>
+<p>Tu enlace ha caducado.</p>
+<app-button buttonText="Reenviar email"></app-button>
 }

@@ -30,20 +30,18 @@ export class AdminAdmins {
   }
 
   public registerAdmin(admin: Admin) {
-    console.log(admin);
     return this.http
       .post<Admin>(`${this.API_URL}/admins/registro`, admin, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe({
         next: (newAdmin) => {
+          console.log(newAdmin);
           this.admins.update((admins) => [...admins, newAdmin]);
-          alert('Administrador registrado.');
+          alert('Usuario registrado; se le ha enviado un email de activación.');
         },
-        error: () => {
-          alert(
-            'Se ha producido un error al registrar el administrador. Por favor, inténtalo más tarde.'
-          );
+        error: (err) => {
+          alert(err.error.message);
         },
       });
   }

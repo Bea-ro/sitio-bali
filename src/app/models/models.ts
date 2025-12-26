@@ -27,7 +27,6 @@ export interface ContactDetails {
 export interface UserLogin {
   email: FormControl<string>;
   password: FormControl<string>;
-  repeatPassword: FormControl<string>;
 }
 
 export interface NoticiaNueva {
@@ -135,6 +134,11 @@ export interface AdminForm {
 export interface PasswordForm {
   password: FormControl<string>;
   repeatPassword: FormControl<string>;
+}
+
+export interface AccountData {
+  token: string;
+  password: string;
 }
 
 export interface AdminStored {

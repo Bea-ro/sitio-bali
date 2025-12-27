@@ -19,6 +19,9 @@ export class AdminAdmins {
     this.error.set(null);
     this.http.get<Admin[]>(`${this.API_URL}/admins`).subscribe({
       next: (lista) => {
+        lista.sort((a, b) =>
+          !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
+        );
         this.admins.set(lista);
         this.loading.set(false);
       },

@@ -14,7 +14,10 @@ body.admin .button {
   border-radius: 10px;
 }
 
-th {
+thead {
   background-color: var(--color-light) !important;
-  color: var(--color-main) !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--color-main);
 }

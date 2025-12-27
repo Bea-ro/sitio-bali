@@ -51,9 +51,7 @@ export class AdminClientesService {
       .put<Cliente>(
         `${this.API_URL}/clientes/${id}`,
         { cliente },
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
+        { headers: { 'Content-Type': 'application/json' } }
       )
       .subscribe({
         next: (updatedCliente) => {

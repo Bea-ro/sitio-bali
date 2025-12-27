@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Button } from '../../../shared/button/button';
@@ -14,7 +14,7 @@ import { DatePipe } from '../../../pipes/date-pipe';
   templateUrl: './admin-noticias.html',
   styleUrl: './admin-noticias.css',
 })
-export class AdminNoticias {
+export class AdminNoticias implements OnInit {
   public binPath = binPath;
   public pencilPath = pencilPath;
   public displayedColumns = ['title', 'date', 'category', 'edition'];

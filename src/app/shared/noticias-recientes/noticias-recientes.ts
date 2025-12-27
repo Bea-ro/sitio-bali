@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NoticiaCard } from '../noticia-card/noticia-card';
 import { GetNoticias } from '../../core/services/get-noticias';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './noticias-recientes.html',
   styleUrl: './noticias-recientes.css',
 })
-export class NoticiasRecientes {
+export class NoticiasRecientes implements OnInit {
   constructor(public getNoticias: GetNoticias) {}
 
   public ngOnInit() {

@@ -42,9 +42,9 @@ export interface NoticiaExistente {
   date: string;
   text: string;
   category: string;
+  slug: string;
   _id: string;
   createdAt: string;
-  slug: string;
 }
 
 export interface NoticiaEditada {

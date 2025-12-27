@@ -34,35 +34,42 @@ export class AdminNoticiasService {
 
   public createNoticia(noticia: NoticiaNueva) {
     return this.http
-      .post(`${this.API_URL}/noticias`, noticia, {
+      .post<NoticiaExistente>(`${this.API_URL}/noticias`, noticia, {
         headers: { 'Content-Type': 'application/json' },
       })
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (newNoticia) => {
+          this.noticias.update((noticias) =>
+            [...noticias, newNoticia].sort((a, b) =>
+              !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
+            )
+          );
           alert('La noticia se ha publicado correctamente.');
         },
-        (error) => {
+        error: () => {
           alert('Se ha producido un error al publicar la noticia. Por favor, inténtalo más tarde.');
-        }
-      );
+        },
+      });
   }
 
-  public updateNoticia(id: string, noticia: NoticiaEditada | NoticiaNueva) {
+  public updateNoticia(id: string, noticia: NoticiaEditada) {
     return this.http
-      .patch(`${this.API_URL}/noticias/${id}`, noticia, {
+      .patch<NoticiaExistente>(`${this.API_URL}/noticias/${id}`, noticia, {
         headers: { 'Content-Type': 'application/json' },
       })
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (updatedNoticia) => {
+          this.noticias.update((noticias) =>
+            noticias.map((noticia) => (noticia._id === id ? updatedNoticia : noticia))
+          );
           alert('La noticia se ha actualizado correctamente.');
         },
-        (error) => {
-          console.log(error);
+        error: () => {
           alert(
             'Se ha producido un error al actualizar la noticia. Por favor, inténtalo más tarde.'
           );
-        }
-      );
+        },
+      });
   }
 
   public deleteNoticia(id: string) {

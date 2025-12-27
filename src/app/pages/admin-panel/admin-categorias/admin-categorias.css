@@ -4,19 +4,16 @@
 
 .mat-mdc-table {
   margin: 20px 0;
-  border-radius: 6px;
-}
-
-thead {
-  display: none;
+  min-width: 525px !important;
 }
 
 .category-icons {
   display: flex;
+  justify-content: flex-end;
   gap: 6px;
 }
 
-.nuevo-cliente-icons {
+.nuevo-element-icons {
   display: flex;
   gap: 6px;
 }

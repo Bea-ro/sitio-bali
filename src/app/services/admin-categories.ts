@@ -20,9 +20,7 @@ export class AdminCategories {
     this.error.set(null);
     this.http.get<Category[]>(`${this.API_URL}/categories`).subscribe({
       next: (lista) => {
-        lista.sort((a, b) =>
-          !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
-        );
+        lista.sort((a, b) => a.category.localeCompare(b.category));
         this.categories.set(lista);
         this.loading.set(false);
       },
@@ -38,7 +36,8 @@ export class AdminCategories {
     this.error.set(null);
     this.http.get<string[]>(`${this.API_URL}/categories/used`).subscribe({
       next: (lista) => {
-        this.categoriesUsed.set(lista.sort());
+        lista.sort((a, b) => a.localeCompare(b));
+        this.categoriesUsed.set(lista);
         this.loading.set(false);
       },
       error: () => {
@@ -59,7 +58,9 @@ export class AdminCategories {
       )
       .subscribe({
         next: (newCategory) => {
-          this.categories.update((cats) => [...cats, newCategory]);
+          this.categories.update((cats) =>
+            [...cats, newCategory].sort((a, b) => a.category.localeCompare(b.category))
+          );
           alert('Se ha añadido la categoría.');
         },
         error: () => {

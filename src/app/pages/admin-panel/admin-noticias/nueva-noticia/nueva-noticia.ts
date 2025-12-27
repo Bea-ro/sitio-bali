@@ -81,7 +81,6 @@ export class NuevaNoticia implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.noticiaFields.get('title'));
     if (this.noticiaFields && this.noticiaFields.valid) {
       const noticiaSlug = this.generateSlug(this.noticiaFields.getRawValue().title);
 

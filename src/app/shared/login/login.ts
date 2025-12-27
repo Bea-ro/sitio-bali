@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminDataLogin, UserLogin } from '../../models/models';
-import { emailPath, lockPath, unlockPath } from '../../data/icon-paths';
+import { emailPath, hidePassPath, lockPath, showPassPath, unlockPath } from '../../data/icon-paths';
 import { AdminAdmins } from '../../services/admin-admins';
 import { Router } from '@angular/router';
-import { comparePasswords, passwordRequirements } from './validators';
+import { passwordRequirements } from './validators';
 import { ErrorMessage } from '../error-message/error-message';
 
 @Component({
@@ -23,6 +17,9 @@ export class Login implements OnInit {
   public userForm!: FormGroup<UserLogin>;
   public emailPath: string = emailPath;
   public unlockPath: string = unlockPath;
+  public showPass: boolean = false;
+  public showPassPath: string = showPassPath;
+  public hidePassPath: string = hidePassPath;
 
   constructor(public adminAdmins: AdminAdmins, public router: Router) {}
 

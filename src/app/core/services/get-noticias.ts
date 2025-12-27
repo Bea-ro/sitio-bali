@@ -33,6 +33,11 @@ export class GetNoticias {
       },
     });
   }
+
+  public getRSS() {
+    return this.http.get<any[]>(`${this.API_URL}/noticias/rss/aeat`);
+  }
+
   public getNoticiasByCategory(category: string) {
     this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias/${category}`).subscribe({
       next: (lista) => {

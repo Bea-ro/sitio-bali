@@ -13,11 +13,15 @@ import { CategoriesMenu } from '../../shared/categories-menu/categories-menu';
 })
 export class Noticias {
   public selectedCategory?: string | undefined;
-
+  public rss?: any[];
   constructor(public getNoticias: GetNoticias) {}
 
   public ngOnInit() {
     this.getNoticias.getNoticias();
+    this.getNoticias.getRSS().subscribe((data) => {
+      this.rss = data;
+      console.log(data);
+    });
   }
 
   public onSelectedCategoryChange(category: string) {

@@ -41,6 +41,17 @@ form {
   fill: none;
 }
 
-button {
+.button {
   margin-top: 20px;
+}
+
+.label-input-container {
+  position: relative;
+}
+.show-pass-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
 }

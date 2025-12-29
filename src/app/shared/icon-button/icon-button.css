@@ -25,3 +25,17 @@
 .button-icon-container:hover svg path {
   stroke: var(--color-sec);
 }
+
+.show-pass-button {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+}
+.show-pass-button .button-icon-icon {
+  color: rgba(0, 0, 0, 0.42);
+  height: 18px;
+}
+.show-pass-button .button-icon-icon path {
+  stroke: none;
+  fill: currentColor;
+}

@@ -1,7 +1,8 @@
 import { Injectable, signal } from '@angular/core';
-import { Cliente } from '../models/models';
+import { Cliente, ClienteLoginResponse, UserDataLogin } from '../models/models';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -28,20 +29,18 @@ export class AdminClientesService {
     });
   }
 
-  public createCliente(cliente: Cliente) {
+  public registerCliente(cliente: Cliente) {
     return this.http
-      .post<Cliente>(`${this.API_URL}/clientes`, cliente, {
+      .post<Cliente>(`${this.API_URL}/clientes/registro`, cliente, {
         headers: { 'Content-Type': 'application/json' },
       })
       .subscribe({
         next: (newCliente) => {
           this.clientes.update((clientes) => [...clientes, newCliente]);
-          alert('Cliente registrado.');
+          alert('Cliente registrado. Se le ha enviado un email de activación.');
         },
-        error: () => {
-          alert(
-            'Se ha producido un error al registrar el cliente. Por favor, inténtalo más tarde.'
-          );
+        error: (err) => {
+          alert(err.error.message);
         },
       });
   }
@@ -69,7 +68,29 @@ export class AdminClientesService {
       });
   }
 
-  public deleteCliente(id: string) {
+  public loginCliente(cliente: UserDataLogin) {
+    return this.http.post<ClienteLoginResponse>(`${this.API_URL}/clientes/login`, cliente);
+  }
+
+  public isAuthenticated(): boolean {
+    const stored = localStorage.getItem('userStored');
+    if (!stored) return false;
+    try {
+      const token = JSON.parse(stored).token;
+      const decoded = jwtDecode<JwtPayload>(token);
+      const now = Math.floor(Date.now() / 1000);
+      if (decoded.exp && decoded.exp < now) {
+        localStorage.removeItem('userStored');
+        return false;
+      }
+      return true;
+    } catch {
+      localStorage.removeItem('userStored');
+      return false;
+    }
+  }
+
+  public deregisterCliente(id: string) {
     this.http
       .delete<Cliente>(`${this.API_URL}/clientes/${id}`, {
         headers: { 'Content-Type': 'application/json' },

@@ -12,12 +12,17 @@
         </svg>
       </label>
       <input
-        type="password"
+        [type]="showPassOne ? 'text' : 'password'"
         id="password"
         formControlName="password"
         class="form-field"
         placeholder="Contraseña"
       />
+      <app-icon-button
+        [path]="showPassOne ? showPassPath : hidePassPath"
+        class="show-pass-button"
+        (click)="showPassOne = !showPassOne"
+      ></app-icon-button>
     </div>
     <app-error-message [formFields]="passwordForm" control="password"></app-error-message>
   </div>
@@ -31,12 +36,17 @@
         </svg>
       </label>
       <input
-        type="password"
+        [type]="showPassTwo ? 'text' : 'password'"
         id="repeatPassword"
         formControlName="repeatPassword"
         class="form-field"
         placeholder="Repite la contraseña"
       />
+      <app-icon-button
+        [path]="showPassTwo ? showPassPath : hidePassPath"
+        class="show-pass-button"
+        (click)="showPassTwo = !showPassTwo"
+      ></app-icon-button>
     </div>
     <app-error-message [formFields]="passwordForm" control="repeatPassword"></app-error-message>
   </div>

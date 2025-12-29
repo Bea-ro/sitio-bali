@@ -107,7 +107,7 @@ export interface Admin {
   _id?: string;
 }
 
-export interface AdminDataLogin {
+export interface UserDataLogin {
   email: string;
   password: string;
 }
@@ -120,6 +120,13 @@ export interface AdminLoginResponse {
   };
 }
 
+export interface ClienteLoginResponse {
+  token: string;
+  user: {
+    id: string;
+    email: string;
+  };
+}
 export interface ClienteForm {
   name: FormControl<string>;
   email: FormControl<string>;

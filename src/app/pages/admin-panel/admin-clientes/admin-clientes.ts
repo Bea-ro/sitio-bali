@@ -15,7 +15,7 @@ import { DatePipe } from '../../../pipes/date-pipe';
 export class AdminClientes implements OnInit {
   public binPath = binPath;
   public pencilPath = pencilPath;
-  public displayedColumns = ['name', 'cif', 'email', 'date', 'edition'];
+  public displayedColumns = ['name', 'cif', 'email', 'date', 'active', 'edition'];
 
   constructor(public adminClientes: AdminClientesService) {}
 
@@ -24,6 +24,6 @@ export class AdminClientes implements OnInit {
   }
 
   public deleteCliente(clienteId: string) {
-    this.adminClientes.deleteCliente(clienteId);
+    this.adminClientes.deregisterCliente(clienteId);
   }
 }

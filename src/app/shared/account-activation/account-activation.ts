@@ -13,11 +13,12 @@ import { Button } from '../button/button';
 import { Auth } from '../../services/auth';
 import { PASSWORD_MESSAGES } from '../../data/messages';
 import { ErrorMessage } from '../error-message/error-message';
-import { lockPath, unlockPath } from '../../data/icon-paths';
+import { hidePassPath, lockPath, showPassPath, unlockPath } from '../../data/icon-paths';
+import { IconButton } from '../icon-button/icon-button';
 
 @Component({
   selector: 'app-account-activation',
-  imports: [ReactiveFormsModule, Button, ErrorMessage],
+  imports: [ReactiveFormsModule, Button, ErrorMessage, IconButton],
   templateUrl: './account-activation.html',
   styleUrl: './account-activation.css',
 })
@@ -28,6 +29,10 @@ export class AccountActivation implements OnInit {
   public passwordRequitements: string = PASSWORD_MESSAGES.INVALID;
   public lockPath: string = lockPath;
   public unlockPath: string = unlockPath;
+  public showPassOne: boolean = false;
+  public showPassTwo: boolean = false;
+  public showPassPath: string = showPassPath;
+  public hidePassPath: string = hidePassPath;
 
   constructor(private route: ActivatedRoute, private auth: Auth, private router: Router) {}
   ngOnInit() {
@@ -61,9 +66,21 @@ export class AccountActivation implements OnInit {
       password: password,
       token: this.token,
     };
-    this.auth.activateAccount(accountData);
-    this.router.navigate(['/admin-login']);
-    this.passwordForm.reset();
+
+    this.auth.activateAccount(accountData).subscribe({
+      next: (res) => {
+        console.log(res);
+        res.user.rol === 'cliente'
+          ? this.router.navigate(['/area-privada'])
+          : this.router.navigate(['/admin-login']);
+        alert('Cuenta activada.');
+        this.passwordForm.reset();
+      },
+      error: () => {
+        alert('Se ha producido un error al activar la cuenta. Por favor, inténtalo más tarde.');
+        this.passwordForm.reset();
+      },
+    });
   }
 
   public resendEmail() {

@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 24px;
   padding: 16px;
+  margin: auto;
 }
 
 .diferencias-section {
@@ -13,7 +14,8 @@
   align-items: center;
 }
 
-.diferencias-section > ul {
+.diferencias-section > ul,
+.equipo-section {
   width: 100%;
 }
 
@@ -34,9 +36,15 @@ iframe {
 
 @media screen and (min-width: 375px) and (max-width: 992px) {
   .members-list {
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
-    padding: 8px;
+    /* padding: 8px; */
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .members-list {
+    width: 80%;
   }
 }
 

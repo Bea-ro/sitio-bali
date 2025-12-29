@@ -21,18 +21,8 @@ export class Auth {
     );
   }
   public activateAccount(accountData: AccountData) {
-    return this.http
-      .patch<Admin>(`${this.API_URL}/auth/activar-cuenta`, accountData, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe(
-        (response) => {
-          alert('Cuenta activada.');
-        },
-        (error) => {
-          console.log(error);
-          alert('Se ha producido un error al activar la cuenta. Por favor, inténtalo más tarde.');
-        }
-      );
+    return this.http.patch<any>(`${this.API_URL}/auth/activar-cuenta`, accountData, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

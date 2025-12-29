@@ -50,3 +50,14 @@ form {
   stroke-width: 20;
   fill: none;
 }
+
+.label-input-container {
+  position: relative;
+}
+.show-pass-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+}

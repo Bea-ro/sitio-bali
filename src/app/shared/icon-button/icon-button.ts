@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class IconButton {
   @Input() path: string = '';
+  @Input() class?: string = 'button-icon-container';
 }

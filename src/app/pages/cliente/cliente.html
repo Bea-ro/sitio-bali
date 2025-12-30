@@ -1,14 +1,49 @@
 <main>
-  <ul>
-    @for(doc of adminDocuments.documents(); track doc.name) {
-    <li>
-      <a
-        [href]="'http://localhost:3001/api' + doc.path"
-        target="_blank"
-        rel="noopener noreferrer"
-        >{{ doc.name }}</a
-      >
-    </li>
-    }
-  </ul>
+  <h1 class="page-title centered-text">TWS</h1>
+  <h2 class="page-subtitle centered-text">Documentación</h2>
+  <section class="files-section bottom-section">
+    <article class="years-article">
+      <mat-tab-group class="mis-tabs">
+        @for(folder of adminDocuments.yearFolders(); track folder.name) {
+        <mat-tab [label]="folder.name">
+          <ul>
+            @for(file of folder.files; track file.name) {
+            <li>
+              <a
+                [href]="
+                  'http://localhost:3001/api/' + 'clientes/' + clienteId + '/archivo/' + file.path
+                "
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ file.name }}</a
+              >
+            </li>
+            }
+          </ul>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </article>
+    <article class="permanent-article">
+      @if (adminDocuments.permanenteFolder()) {
+      <div class="archivos-permanentes-tab">
+        <h3>Permanentes</h3>
+        <ul>
+          @for(file of adminDocuments.permanenteFolder()!.files; track file.name) {
+          <li>
+            <a
+              [href]="
+                'http://localhost:3001/api/' + 'clientes/' + clienteId + '/archivo/' + file.path
+              "
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ file.name }}</a
+            >
+          </li>
+          }
+        </ul>
+      </div>
+      }
+    </article>
+  </section>
 </main>

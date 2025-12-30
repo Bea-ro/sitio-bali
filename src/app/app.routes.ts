@@ -33,7 +33,7 @@ export const routes: Routes = [
             title: 'Bali Asociados · Área Privada',
           },
           {
-            path: ':cliente',
+            path: ':id',
             loadComponent: () => import('./pages/cliente/cliente').then((c) => c.Cliente),
             title: 'Bali Asociados · Área Cliente',
           },

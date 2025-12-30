@@ -1,0 +1,11 @@
+.files-section {
+  display: flex;
+  gap: 48px;
+  justify-content: space-evenly;
+  padding-top: 28px;
+}
+
+.years-article,
+.permanente-article {
+  padding: 16px;
+}

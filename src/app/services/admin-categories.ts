@@ -36,8 +36,15 @@ export class AdminCategories {
     this.error.set(null);
     this.http.get<string[]>(`${this.API_URL}/categories/used`).subscribe({
       next: (lista) => {
-        lista.sort((a, b) => a.localeCompare(b));
-        this.categoriesUsed.set(lista);
+        const categories = [...lista];
+        if (!categories.includes('laboral')) {
+          categories.push('laboral');
+        }
+        if (!categories.includes('fiscal')) {
+          categories.push('fiscal');
+        }
+        categories.sort((a, b) => a.localeCompare(b));
+        this.categoriesUsed.set(categories);
         this.loading.set(false);
       },
       error: () => {

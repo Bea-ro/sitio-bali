@@ -14,6 +14,7 @@ import { downloadPath } from '../../data/icon-paths';
 })
 export class Noticia implements OnInit {
   public noticiaData: NoticiaExistente = {
+    type: 'internal',
     title: '',
     date: '',
     text: '',

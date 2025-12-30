@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { NoticiaExistente } from '../../models/models';
-import { Observable } from 'rxjs';
+import { INoticia, NoticiaExistente, NoticiaRss } from '../../models/models';
+import { forkJoin, map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class GetNoticias {
   public API_URL = environment.API_URL;
-  public noticias = signal<NoticiaExistente[]>([]);
+  public noticias = signal<INoticia[]>([]);
   public categories = signal<string[]>([]);
   public loading = signal<boolean>(true);
   public error = signal<string | null>(null);
@@ -35,7 +35,55 @@ export class GetNoticias {
   }
 
   public getRSS() {
-    return this.http.get<any[]>(`${this.API_URL}/noticias/rss/aeat`);
+    this.loading.set(true);
+    this.error.set(null);
+    const apiNoticias$ = this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias`).pipe(
+      map((noticias) =>
+        noticias.map((noticia) => ({
+          ...noticia,
+          timestamp: new Date(noticia.createdAt).getTime(),
+        }))
+      )
+    );
+    const ssRss$ = this.http.get<NoticiaRss[]>(`${this.API_URL}/noticias/rss/ss`).pipe(
+      map((noticias) =>
+        noticias.map((n) => ({
+          ...n,
+          createdAt: new Date(n.pubDate.replace('CEST', '+0200')).toISOString(),
+          timestamp: new Date(n.pubDate.replace('CEST', '+0200')).getTime(),
+          type: 'rss' as const,
+          category: 'laboral',
+          text: n.title.slice(0, 100),
+          _id: crypto.randomUUID(),
+          slug: '',
+        }))
+      )
+    );
+    const aeatRss$ = this.http.get<NoticiaRss[]>(`${this.API_URL}/noticias/rss/aeat`).pipe(
+      map((noticias) =>
+        noticias.map((n) => ({
+          ...n,
+          createdAt: new Date(n.pubDate.replace('CEST', '+0200')).toISOString(),
+          timestamp: new Date(n.pubDate.replace('CEST', '+0200')).getTime(),
+          type: 'rss' as const,
+          category: 'fiscal',
+          text: n.title.slice(0, 100),
+          _id: crypto.randomUUID(),
+          slug: '',
+        }))
+      )
+    );
+    forkJoin([apiNoticias$, ssRss$, aeatRss$]).subscribe({
+      next: ([apiNoticias, ss, aeat]) => {
+        const merged = [...apiNoticias, ...ss, ...aeat].sort((a, b) => b.timestamp - a.timestamp);
+        this.noticias.set(merged);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.error.set('No se han podido cargar las noticias. Inténtalo más tarde.');
+        this.loading.set(false);
+      },
+    });
   }
 
   public getNoticiasByCategory(category: string) {

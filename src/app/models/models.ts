@@ -1,10 +1,4 @@
 import { FormControl } from '@angular/forms';
-
-export interface Documento {
-  name: string;
-  path: string;
-}
-
 export interface Service {
   name: string;
   image: string;
@@ -38,6 +32,7 @@ export interface NoticiaNueva {
 }
 
 export interface NoticiaExistente {
+  type: 'internal';
   title: string;
   date: string;
   text: string;
@@ -47,6 +42,18 @@ export interface NoticiaExistente {
   createdAt: string;
 }
 
+export interface NoticiaRss {
+  type: 'rss';
+  title: string;
+  pubDate: string;
+  link: string;
+  text: string;
+  _id: string;
+  category: string;
+  createdAt: string;
+}
+
+export type INoticia = NoticiaExistente | NoticiaRss;
 export interface NoticiaEditada {
   title: string;
   text: string;
@@ -152,7 +159,11 @@ export interface AdminStored {
   adminUser: string;
   token: string;
 }
-export interface Documento {
+export interface File {
   name: string;
   path: string;
+}
+export interface Folder {
+  name: string;
+  files: File[];
 }

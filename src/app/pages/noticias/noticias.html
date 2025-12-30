@@ -14,12 +14,4 @@
       ></app-categories-menu>
     </aside>
   </div>
-
-  <ul>
-    @for(noticia of rss; track noticia.link) {
-    <li>
-      <a [href]="noticia.link">{{ noticia.title }}</a>
-    </li>
-    }
-  </ul>
 </main>

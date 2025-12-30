@@ -71,8 +71,8 @@ export class AccountActivation implements OnInit {
       next: (res) => {
         console.log(res);
         res.user.rol === 'cliente'
-          ? this.router.navigate(['/area-privada'])
-          : this.router.navigate(['/admin-login']);
+          ? this.router.navigate(['/area-privada', `${res.user.id}`])
+          : this.router.navigate(['/admin-panel']);
         alert('Cuenta activada.');
         this.passwordForm.reset();
       },

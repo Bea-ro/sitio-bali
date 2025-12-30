@@ -1,14 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { NoticiaExistente } from '../models/models';
+import { INoticia } from '../models/models';
 
 @Pipe({
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
   transform(
-    noticias: NoticiaExistente[] | null,
+    noticias: INoticia[] | null,
     selectedCategory: string | undefined
-  ): NoticiaExistente[] | null | undefined {
+  ): INoticia[] | null | undefined {
     if (!noticias) return null;
 
     if (!selectedCategory) {

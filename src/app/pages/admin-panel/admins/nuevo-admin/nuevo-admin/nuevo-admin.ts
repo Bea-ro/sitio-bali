@@ -12,7 +12,7 @@ import { ErrorMessage } from '../../../../../shared/error-message/error-message'
 })
 export class NuevoAdmin implements OnInit {
   public adminFields!: FormGroup<AdminForm>;
-  public roles: string[] = ['superadmin', 'editor'];
+  public roles: string[] = ['admin', 'editor'];
 
   constructor(public adminAdmins: AdminAdmins) {}
 

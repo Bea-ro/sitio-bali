@@ -13,6 +13,9 @@ export class AdminDocuments {
   public loading = signal(true);
 
   public yearFolders = computed(() => this.folders().filter((f) => f.name !== 'Permanentes'));
+  public sortedYearFolders = computed(() =>
+    [...this.yearFolders()].sort((a, b) => Number(b.name) - Number(a.name))
+  );
 
   public permanenteFolder = computed<Folder | null>(
     () => this.folders().find((f) => f.name === 'Permanentes') ?? null
@@ -33,5 +36,26 @@ export class AdminDocuments {
         this.loading.set(false);
       },
     });
+  }
+
+  public getDocument(id: string, filePath: string) {
+    const url = `${this.API_URL}/clientes/${id}/archivo/${filePath}`;
+    this.http
+      .get(url, {
+        responseType: 'blob',
+      })
+      .subscribe({
+        next: (blob) => {
+          const fileUrl = window.URL.createObjectURL(blob);
+          window.open(fileUrl);
+
+          setTimeout(() => {
+            window.URL.revokeObjectURL(fileUrl);
+          }, 1000);
+        },
+        error: () => {
+          this.error.set('No se ha podido abrir el documento. Inténtalo más tarde.');
+        },
+      });
   }
 }

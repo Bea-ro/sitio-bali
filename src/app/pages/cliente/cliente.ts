@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { AdminDocuments } from '../../services/admin-documents';
 import { ActivatedRoute } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FileNamePipe } from '../../pipes/file-name-pipe';
+import { downloadPath } from '../../data/icon-paths';
 
 @Component({
   selector: 'app-cliente',
-  imports: [MatTabsModule],
+  imports: [MatTabsModule, FileNamePipe],
   templateUrl: './cliente.html',
   styleUrl: './cliente.css',
 })
 export class Cliente implements OnInit {
   constructor(public adminDocuments: AdminDocuments, private route: ActivatedRoute) {}
-  //en el servicio poner un docPath para no exponer enlace api que está ahora en HTML
-  public clienteId = '';
+
+  public clienteId: string = '';
+  public downloadPath: string = downloadPath;
   public clienteName = '';
 
   ngOnInit() {
@@ -20,5 +23,10 @@ export class Cliente implements OnInit {
       this.clienteId = params.get('id') ?? '';
       this.adminDocuments.getDocuments(this.clienteId);
     });
+  }
+
+  public openDocument(filePath: string) {
+    console.log(this.clienteId, filePath);
+    this.adminDocuments.getDocument(this.clienteId, filePath);
   }
 }

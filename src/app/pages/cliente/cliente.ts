@@ -26,7 +26,6 @@ export class Cliente implements OnInit {
   }
 
   public openDocument(filePath: string) {
-    console.log(this.clienteId, filePath);
     this.adminDocuments.getDocument(this.clienteId, filePath);
   }
 }

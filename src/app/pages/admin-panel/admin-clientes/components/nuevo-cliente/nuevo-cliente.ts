@@ -38,7 +38,6 @@ export class NuevoCliente implements OnInit {
 
   public onSubmit() {
     const newCliente = this.clienteFields.getRawValue();
-    console.log(newCliente);
     this.adminClientes.registerCliente(newCliente);
     this.clienteFields.reset();
   }

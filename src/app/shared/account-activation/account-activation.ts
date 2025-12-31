@@ -69,7 +69,6 @@ export class AccountActivation implements OnInit {
 
     this.auth.activateAccount(accountData).subscribe({
       next: (res) => {
-        console.log(res);
         res.user.rol === 'cliente'
           ? this.router.navigate(['/area-privada', `${res.user.id}`])
           : this.router.navigate(['/admin-panel']);

@@ -38,7 +38,6 @@ export class AdminAdmins {
       })
       .subscribe({
         next: (newAdmin) => {
-          console.log(newAdmin);
           this.admins.update((admins) => [...admins, newAdmin]);
           alert('Usuario registrado. Se le ha enviado un email de activación.');
         },

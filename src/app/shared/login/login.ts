@@ -51,7 +51,6 @@ export class Login implements OnInit {
   public onSubmit() {
     const { email, password } = this.userForm.getRawValue();
     const userData: UserDataLogin = { email, password };
-    console.log(userData);
 
     if (this.currentRoute() === '/admin-login') {
       this.adminAdmins.loginAdmin(userData).subscribe({
@@ -68,7 +67,6 @@ export class Login implements OnInit {
       this.adminClientes.loginCliente(userData).subscribe({
         next: (response) => {
           localStorage.setItem('userStored', JSON.stringify(response));
-          console.log(response);
           this.router.navigate(['/area-privada', `${response.user.id}`]);
           this.userForm.reset();
         },

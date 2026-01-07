@@ -2,7 +2,9 @@
   [formGroup]="clienteFields"
   (submit)="onSubmit(); clienteFields.reset()"
   class="nuevo-cliente-form"
+  aria-labelledby="nuevo-cliente-title"
 >
+  <h2 id="nuevo-cliente-title">Nuevo Cliente</h2>
   <div class="inputs-and-buttons-container">
     <div class="field-container">
       <input

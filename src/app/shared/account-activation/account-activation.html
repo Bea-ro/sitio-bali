@@ -53,6 +53,28 @@
   <button class="button" type="submit" [disabled]="passwordForm.invalid">Activar</button>
 </form>
 } @else {
-<p>Tu enlace ha caducado.</p>
-<app-button buttonText="Reenviar email"></app-button>
+<p>Tu enlace ha caducado. Introduce tu email para reenviar el correo para activar tu cuenta.</p>
+
+<form class="resend-email-form" [formGroup]="emailForm" (submit)="onEmailSubmit()">
+  <div class="field-container">
+    <div class="label-input-container">
+      <label for="email" class="label-icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="emailPath" />
+        </svg>
+      </label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-field"
+        placeholder="Email"
+      />
+    </div>
+    <app-error-message [formFields]="emailForm" control="email"></app-error-message>
+  </div>
+  <button class="button" type="submit" [disabled]="emailForm.invalid">Reenviar email</button>
+</form>
+
 }

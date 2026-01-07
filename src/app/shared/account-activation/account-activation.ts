@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PasswordForm } from '../../models/models';
+import { PasswordForm, EmailForm } from '../../models/models';
 import {
   FormControl,
   FormGroup,
@@ -9,16 +9,15 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { comparePasswords, passwordRequirements } from '../login/validators';
-import { Button } from '../button/button';
 import { Auth } from '../../services/auth';
 import { PASSWORD_MESSAGES } from '../../data/messages';
 import { ErrorMessage } from '../error-message/error-message';
-import { hidePassPath, lockPath, showPassPath, unlockPath } from '../../data/icon-paths';
+import { emailPath, hidePassPath, lockPath, showPassPath, unlockPath } from '../../data/icon-paths';
 import { IconButton } from '../icon-button/icon-button';
 
 @Component({
   selector: 'app-account-activation',
-  imports: [ReactiveFormsModule, Button, ErrorMessage, IconButton, Button],
+  imports: [ReactiveFormsModule, ErrorMessage, IconButton],
   templateUrl: './account-activation.html',
   styleUrl: './account-activation.css',
 })
@@ -26,6 +25,7 @@ export class AccountActivation implements OnInit {
   public validToken: boolean = false;
   public token: string = '';
   public passwordForm!: FormGroup<PasswordForm>;
+  public emailForm!: FormGroup<EmailForm>;
   public passwordRequitements: string = PASSWORD_MESSAGES.INVALID;
   public lockPath: string = lockPath;
   public unlockPath: string = unlockPath;
@@ -33,6 +33,7 @@ export class AccountActivation implements OnInit {
   public showPassTwo: boolean = false;
   public showPassPath: string = showPassPath;
   public hidePassPath: string = hidePassPath;
+  public emailPath: string = emailPath;
 
   constructor(private route: ActivatedRoute, private auth: Auth, private router: Router) {}
   ngOnInit() {
@@ -58,6 +59,13 @@ export class AccountActivation implements OnInit {
       },
       comparePasswords as ValidatorFn
     );
+
+    this.emailForm = new FormGroup<EmailForm>({
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
+    });
   }
 
   public onSubmit() {
@@ -82,7 +90,18 @@ export class AccountActivation implements OnInit {
     });
   }
 
-  public resendEmail() {
-    //cómo le pasamos la acción al botón
+  public onEmailSubmit() {
+    const { email } = this.emailForm.getRawValue();
+    console.log(email);
+    this.auth.resendActivationEmail(email).subscribe({
+      next: () => {
+        alert('Se ha reenviado un email para activar la cuenta.');
+        this.emailForm.reset();
+      },
+      error: () => {
+        alert('Se ha producido un error al enviar el correo. Por favor, inténtalo más tarde.');
+        this.emailForm.reset();
+      },
+    });
   }
 }

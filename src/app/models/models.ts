@@ -143,6 +143,10 @@ export interface PasswordForm {
   repeatPassword: FormControl<string>;
 }
 
+export interface EmailForm {
+  email: FormControl<string>;
+}
+
 export interface AccountData {
   token: string;
   password: string;

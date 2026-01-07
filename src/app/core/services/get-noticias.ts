@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { INoticia, NoticiaExistente, NoticiaRss } from '../../models/models';
-import { catchError, forkJoin, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, finalize, forkJoin, map, Observable, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class GetNoticias {
 
   public noticias = signal<INoticia[]>([]);
   public categories = signal<string[]>([]);
-  public loading = signal<boolean>(true);
+  public loading = signal<boolean>(false);
   public error = signal<string | null>(null);
 
   constructor(private http: HttpClient) {}
@@ -26,13 +26,12 @@ export class GetNoticias {
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.noticias.set(lista);
-        this.loading.set(false);
       }),
       catchError((message: string) => {
         this.error.set(message);
-        this.loading.set(false);
         return throwError(message);
-      })
+      }),
+      finalize(() => this.loading.set(false))
     );
   }
 
@@ -79,13 +78,12 @@ export class GetNoticias {
       tap(([apiNoticias, ss, aeat]) => {
         const merged = [...apiNoticias, ...ss, ...aeat].sort((a, b) => b.timestamp - a.timestamp);
         this.noticias.set(merged);
-        this.loading.set(false);
       }),
       catchError((message: string) => {
         this.error.set(message);
-        this.loading.set(false);
         return throwError(message);
-      })
+      }),
+      finalize(() => this.loading.set(false))
     );
   }
 
@@ -96,13 +94,12 @@ export class GetNoticias {
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.noticias.set(lista);
-        this.loading.set(false);
       }),
       catchError((message: string) => {
         this.error.set(message);
-        this.loading.set(false);
         return throwError(message);
-      })
+      }),
+      finalize(() => this.loading.set(false))
     );
   }
 

@@ -1,4 +1,10 @@
-<form [formGroup]="adminFields" (submit)="onSubmit(); adminFields.reset()" class="nuevo-admin-form">
+<form
+  [formGroup]="adminFields"
+  (submit)="onSubmit(); adminFields.reset()"
+  class="nuevo-admin-form"
+  aria-labelledby="nuevo-admin-title"
+>
+  <h2 id="nuevo-admin-title">Nuevo Administrador</h2>
   <div class="inputs-and-buttons-container">
     <select class="form-field" formControlName="rol" id="rol">
       <option disabled value="">Selecciona un rol</option>

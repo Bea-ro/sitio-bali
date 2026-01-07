@@ -1,12 +1,18 @@
 <main>
   <h1>Administrador de Categorías</h1>
-  <form #newCategoryForm="ngForm" (ngSubmit)="addCategory(newCategoryName)">
+  <form
+    #newCategoryForm="ngForm"
+    (ngSubmit)="addCategory(newCategoryName)"
+    aria-labelledby="new-category-title"
+  >
+    <h2 id="new-category-title">Nueva Categoría</h2>
     <div class="inputs-and-buttons-container">
       <div class="form-field-container">
         <input
+          id="newCategoryName"
           name="newCategoryName"
           [(ngModel)]="newCategoryName"
-          placeholder="Añade una nueva categoría"
+          placeholder="Nombre categoría"
           class="form-field"
           (keydown.escape)="reset()"
         />

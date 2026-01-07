@@ -13,6 +13,6 @@ export class NoticiasRecientes implements OnInit {
   constructor(public getNoticias: GetNoticias) {}
 
   public ngOnInit() {
-    this.getNoticias.getNoticias();
+    this.getNoticias.getRSS$().subscribe();
   }
 }

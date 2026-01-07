@@ -118,20 +118,13 @@ export interface UserDataLogin {
   email: string;
   password: string;
 }
-export interface AdminLoginResponse {
-  token: string;
-  admin: {
-    id: string;
-    email: string;
-    rol: string;
-  };
-}
 
-export interface ClienteLoginResponse {
+export interface UserLoginResponse {
   token: string;
   user: {
     id: string;
     email: string;
+    rol: string;
   };
 }
 export interface ClienteForm {
@@ -155,10 +148,6 @@ export interface AccountData {
   password: string;
 }
 
-export interface AdminStored {
-  adminUser: string;
-  token: string;
-}
 export interface File {
   name: string;
   path: string;

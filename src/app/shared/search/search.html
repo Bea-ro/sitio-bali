@@ -1,0 +1,16 @@
+<div role="search" aria-label="Buscar" class="inputs-and-buttons-container">
+  <input
+    [(ngModel)]="filter"
+    (ngModelChange)="emitFilter()"
+    class="form-field search-input"
+    type="search"
+    [placeholder]="`Buscar por ${searchTerm}...`"
+    [aria-label]="`Buscar  por ${searchTerm}...`"
+  />
+  <app-icon-button
+    [path]="cancelPath"
+    (click)="clear()"
+    [disabled]="!filter"
+    [ariaLabel]="'Limpiar búsqueda'"
+  ></app-icon-button>
+</div>

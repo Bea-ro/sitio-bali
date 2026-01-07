@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+span {
+  font-size: 16px;
+}

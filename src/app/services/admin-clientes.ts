@@ -1,75 +1,79 @@
 import { Injectable, signal } from '@angular/core';
-import { Cliente, ClienteLoginResponse, UserDataLogin } from '../models/models';
+import { Cliente, UserDataLogin, UserLoginResponse } from '../models/models';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { catchError, finalize, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminClientesService {
   public API_URL = environment.API_URL;
+
   public clientes = signal<Cliente[]>([]);
   public error = signal<string | null>(null);
-  public loading = signal(true);
+  public loading = signal(false);
+  public totalClientes = signal<number>(0);
 
   constructor(private http: HttpClient) {}
-  public getClientes() {
+  public getClientes$() {
     this.loading.set(true);
     this.error.set(null);
-    this.http.get<Cliente[]>(`${this.API_URL}/clientes`).subscribe({
-      next: (lista) => {
+    return this.http.get<Cliente[]>(`${this.API_URL}/clientes/todos`).pipe(
+      tap((lista) => {
         this.clientes.set(lista);
-        this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
-        this.loading.set(false);
-      },
-    });
+      }),
+      catchError((message: string) => {
+        this.error.set(message);
+        return throwError(message);
+      }),
+      finalize(() => this.loading.set(false))
+    );
   }
 
-  public registerCliente(cliente: Cliente) {
+  public getClientesPaginated$(page: number, pageSize: number, filter: string) {
+    this.loading.set(true);
+    this.error.set(null);
     return this.http
-      .post<Cliente>(`${this.API_URL}/clientes/registro`, cliente, {
-        headers: { 'Content-Type': 'application/json' },
+      .get<{ data: Cliente[]; total: number }>(`${this.API_URL}/clientes`, {
+        params: { page: page.toString(), pageSize: pageSize.toString(), filter: filter },
       })
-      .subscribe({
-        next: (newCliente) => {
-          this.clientes.update((clientes) => [...clientes, newCliente]);
-          alert('Cliente registrado. Se le ha enviado un email de activación.');
-        },
-        error: (err) => {
-          alert(err.error.message);
-        },
-      });
+      .pipe(
+        tap((lista) => {
+          this.clientes.set(lista.data);
+          this.totalClientes.set(lista.total);
+        }),
+        catchError((message: string) => {
+          this.error.set(message);
+          return throwError(message);
+        }),
+        finalize(() => this.loading.set(false))
+      );
   }
 
-  public updateCliente(id: string, cliente: string) {
+  public registerCliente$(cliente: Cliente) {
     return this.http
-      .put<Cliente>(
-        `${this.API_URL}/clientes/${id}`,
-        { cliente },
-        { headers: { 'Content-Type': 'application/json' } }
-      )
-      .subscribe({
-        next: (updatedCliente) => {
-          this.clientes.update((clientes) =>
-            clientes.map((cliente) => (cliente._id === id ? updatedCliente : cliente))
-          );
+      .post<Cliente>(`${this.API_URL}/clientes/registro`, cliente)
+      .pipe(tap((newCliente) => this.clientes.update((clientes) => [...clientes, newCliente])));
+  }
 
-          alert('El nombre del cliente se ha actualizado.');
-        },
-        error: () => {
-          alert(
-            'Se ha producido un error al actualizar el cliente. Por favor, inténtalo más tarde.'
-          );
-        },
-      });
+  public updateCliente$(id: string, cliente: string) {
+    return this.http.put<Cliente>(`${this.API_URL}/clientes/${id}`, { cliente }).pipe(
+      tap((updatedCliente) => {
+        this.clientes.update((clientes) =>
+          clientes.map((cliente) => (cliente._id === id ? updatedCliente : cliente))
+        );
+      }),
+      catchError((message: string) => {
+        this.error.set(message);
+        return throwError(message);
+      })
+    );
   }
 
   public loginCliente(cliente: UserDataLogin) {
-    return this.http.post<ClienteLoginResponse>(`${this.API_URL}/clientes/login`, cliente);
+    return this.http.post<UserLoginResponse>(`${this.API_URL}/clientes/login`, cliente);
   }
 
   public isAuthenticated(): boolean {
@@ -90,19 +94,13 @@ export class AdminClientesService {
     }
   }
 
-  public deregisterCliente(id: string) {
-    this.http
-      .delete<Cliente>(`${this.API_URL}/clientes/${id}`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe(
-        (response) => {
-          alert('Cliente borrado.');
-          this.clientes.update((lista) => lista.filter((cliente) => cliente._id !== id));
-        },
-        (error) => {
-          alert('Se ha producido un error al borrar el cliente. Por favor, inténtalo más tarde.');
-        }
+  public deregisterCliente$(id: string) {
+    return this.http
+      .delete<Cliente>(`${this.API_URL}/clientes/${id}`)
+      .pipe(
+        tap((lista) =>
+          this.clientes.update((lista) => lista.filter((cliente) => cliente._id !== id))
+        )
       );
   }
 }

@@ -1,0 +1,7 @@
+@if(page !== 0) {
+<app-icon-button [path]="prevPath" (click)="prevPage()"></app-icon-button>
+} @if(totalItems !== 0) {
+<span>Registros {{ startItem }}-{{ endItem }} / {{ totalItems }}</span>
+} @if(totalItems !== endItem) {
+<app-icon-button [path]="nextPath" (click)="nextPage()"></app-icon-button>
+}

@@ -1,0 +1,7 @@
+.login-main {
+  justify-content: center;
+  padding: 42px 38px;
+  min-height: 100vh;
+  min-width: 80vw;
+  background-color: var(--color-extra-light);
+}

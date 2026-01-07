@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { INoticia, NoticiaExistente, NoticiaRss } from '../../models/models';
-import { forkJoin, map, Observable } from 'rxjs';
+import { catchError, forkJoin, map, Observable, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class GetNoticias {
   public API_URL = environment.API_URL;
+
   public noticias = signal<INoticia[]>([]);
   public categories = signal<string[]>([]);
   public loading = signal<boolean>(true);
@@ -16,28 +17,29 @@ export class GetNoticias {
 
   constructor(private http: HttpClient) {}
 
-  public getNoticias() {
+  public getNoticias$() {
     this.loading.set(true);
     this.error.set(null);
-    this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias`).subscribe({
-      next: (lista) => {
+    return this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias/todas`).pipe(
+      tap((lista) => {
         lista.sort((a, b) =>
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.noticias.set(lista);
         this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+      }),
+      catchError((message: string) => {
+        this.error.set(message);
         this.loading.set(false);
-      },
-    });
+        return throwError(message);
+      })
+    );
   }
 
-  public getRSS() {
+  public getRSS$() {
     this.loading.set(true);
     this.error.set(null);
-    const apiNoticias$ = this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias`).pipe(
+    const apiNoticias$ = this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias/todas`).pipe(
       map((noticias) =>
         noticias.map((noticia) => ({
           ...noticia,
@@ -73,33 +75,35 @@ export class GetNoticias {
         }))
       )
     );
-    forkJoin([apiNoticias$, ssRss$, aeatRss$]).subscribe({
-      next: ([apiNoticias, ss, aeat]) => {
+    return forkJoin([apiNoticias$, ssRss$, aeatRss$]).pipe(
+      tap(([apiNoticias, ss, aeat]) => {
         const merged = [...apiNoticias, ...ss, ...aeat].sort((a, b) => b.timestamp - a.timestamp);
         this.noticias.set(merged);
         this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('No se han podido cargar las noticias. Inténtalo más tarde.');
+      }),
+      catchError((message: string) => {
+        this.error.set(message);
         this.loading.set(false);
-      },
-    });
+        return throwError(message);
+      })
+    );
   }
 
-  public getNoticiasByCategory(category: string) {
-    this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias/${category}`).subscribe({
-      next: (lista) => {
+  public getNoticiasByCategory$(category: string) {
+    this.http.get<NoticiaExistente[]>(`${this.API_URL}/noticias/${category}`).pipe(
+      tap((lista) => {
         lista.sort((a, b) =>
           !a.createdAt ? 1 : !b.createdAt ? -1 : b.createdAt.localeCompare(a.createdAt)
         );
         this.noticias.set(lista);
         this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('No se ha podido conectar con el servidor. Inténtalo más tarde.');
+      }),
+      catchError((message: string) => {
+        this.error.set(message);
         this.loading.set(false);
-      },
-    });
+        return throwError(message);
+      })
+    );
   }
 
   public getNoticiaBySlug(slug: string): Observable<NoticiaExistente> {

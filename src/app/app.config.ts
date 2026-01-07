@@ -9,6 +9,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideCloudinaryLoader } from '@angular/common';
 import { authInterceptor } from './interceptors/auth-interceptor';
+import { errorInterceptor } from './interceptors/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       })
     ),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
     provideCloudinaryLoader('https://res.cloudinary.com/dxuseyfxa/'),
   ],
 };

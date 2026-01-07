@@ -18,7 +18,7 @@ export class Noticias implements OnInit {
   constructor(public getNoticias: GetNoticias, public adminNoticias: AdminNoticiasService) {}
 
   public ngOnInit() {
-    this.getNoticias.getRSS();
+    this.getNoticias.getRSS$().subscribe();
   }
 
   public onSelectedCategoryChange(category: string) {

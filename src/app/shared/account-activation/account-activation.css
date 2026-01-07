@@ -15,11 +15,6 @@ form {
   gap: 20px;
 }
 
-.label-input-container {
-  display: flex;
-  border-radius: 6px;
-}
-
 .field-container {
   align-items: center;
 }
@@ -35,29 +30,21 @@ form {
   color: var(--color-main);
 }
 
-.button-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px 8px;
-  background-color: var(--color-light);
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
 .button-icon-icon path {
   stroke: currentColor;
   stroke-width: 20;
   fill: none;
 }
 
-.label-input-container {
-  position: relative;
-}
 .show-pass-button {
   position: absolute;
   right: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
+}
+
+.button {
+  padding: 14px 26px;
+  border-radius: 12px;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Aside } from './aside/aside';
 
@@ -8,4 +8,13 @@ import { Aside } from './aside/aside';
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })
-export class AdminLayout {}
+export class AdminLayout implements OnInit, OnDestroy {
+  ngOnInit() {
+    document.body.classList.add('admin');
+    document.body.classList.remove('public');
+  }
+
+  ngOnDestroy() {
+    document.body.classList.remove('admin');
+  }
+}

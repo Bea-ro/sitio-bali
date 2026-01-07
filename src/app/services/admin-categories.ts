@@ -10,7 +10,7 @@ export class AdminCategories {
   public API_URL = environment.API_URL;
   public categories = signal<Category[]>([]);
   public categoriesUsed = signal<string[]>([]);
-  public loading = signal<boolean>(true);
+  public loading = signal<boolean>(false);
   public error = signal<string | null>(null);
 
   constructor(private http: HttpClient) {}
@@ -108,7 +108,7 @@ export class AdminCategories {
       })
       .subscribe(
         (response) => {
-          alert('La categoría se ha eliminado.');
+          alert('Se ha eliminado la categoría.');
           this.categories.update((lista) => lista.filter((category) => category._id !== id));
         },
         (error) => {

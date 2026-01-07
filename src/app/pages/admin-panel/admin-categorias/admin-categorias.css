@@ -2,55 +2,16 @@
   width: 400px;
 }
 
-.mat-mdc-table {
-  margin: 20px 0;
+.categories-table {
   min-width: 525px !important;
-}
-
-.category-icons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
-}
-
-.nuevo-element-icons {
-  display: flex;
-  gap: 6px;
-}
-
-.button-icon-icon {
-  height: 24px;
-  color: var(--color-main);
-}
-
-.button-icon-container {
-  width: 47px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px;
-  background-color: var(--color-light);
-  opacity: 0.7;
-  height: 48px;
-}
-
-.button-icon-container:hover {
-  opacity: 1;
-}
-
-.button-icon-container path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
-}
-
-.button-icon-container:hover svg path {
-  stroke: var(--color-sec);
 }
 
 .error-message {
   font-size: 15px;
   color: #b3001b;
   margin-top: 10px;
+}
+
+.category-input {
+  color: var(--color-sec);
 }

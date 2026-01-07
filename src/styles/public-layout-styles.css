@@ -1,6 +1,17 @@
 body.public main {
   padding-top: 118px;
-  min-height: 40vh;
+  min-height: 75vh;
+}
+
+.main-policy-page {
+  padding-right: 22px;
+  padding-left: 22px;
+  padding-bottom: 80px;
+  max-width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 body.public h1 {
@@ -31,6 +42,10 @@ body.public path {
   stroke: currentColor;
   stroke-width: 20;
   fill: none;
+}
+
+.policy-title {
+  margin-bottom: 0 !important;
 }
 
 @media screen and (max-width: 678px) {

@@ -3,6 +3,8 @@ main {
   flex-direction: column;
   gap: 20px;
   padding: 0 16px;
+  min-height: 100vh;
+  justify-content: center;
 }
 
 img {

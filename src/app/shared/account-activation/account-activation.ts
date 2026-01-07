@@ -18,7 +18,7 @@ import { IconButton } from '../icon-button/icon-button';
 
 @Component({
   selector: 'app-account-activation',
-  imports: [ReactiveFormsModule, Button, ErrorMessage, IconButton],
+  imports: [ReactiveFormsModule, Button, ErrorMessage, IconButton, Button],
   templateUrl: './account-activation.html',
   styleUrl: './account-activation.css',
 })

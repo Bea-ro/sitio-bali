@@ -5,8 +5,9 @@ import { inject } from '@angular/core';
 export const authGuard: CanActivateFn = (route, state) => {
   const adminAdmins = inject(AdminAdmins);
   const router = inject(Router);
-
-  if (adminAdmins.isAuthenticated()) return true;
-  router.navigate(['/admin-login']);
-  return false;
+  return adminAdmins.isAuthenticated()
+    ? true
+    : route.data['rol'].includes('admin')
+    ? router.createUrlTree(['/admin-login'])
+    : router.createUrlTree(['/area-privada']);
 };

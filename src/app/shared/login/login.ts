@@ -59,7 +59,7 @@ export class Login implements OnInit {
           this.router.navigate(['/admin-panel']);
           this.userForm.reset();
         },
-        error: (err) => alert(err.error.message),
+        error: (message) => alert(message),
       });
     }
 
@@ -70,7 +70,7 @@ export class Login implements OnInit {
           this.router.navigate(['/area-privada', `${response.user.id}`]);
           this.userForm.reset();
         },
-        error: (err) => alert(err.error.message),
+        error: (message) => alert(message),
       });
     }
   }

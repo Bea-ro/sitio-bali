@@ -8,47 +8,62 @@
   } @else if (adminClientes.error()) {
   <p class="server-error-message">{{ adminClientes.error() }}</p>
 
-  } @else if(adminClientes.clientes().length === 0) {
+  } @else if(adminClientes.clientes().length === 0 && filterText === '') {
   <p class="no-elements-message">No hay clientes dados de alta en este momento.</p>
-  } @else {
-  <table mat-table [dataSource]="adminClientes.clientes()" class="clientes-table">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.name }}</td>
-    </ng-container>
+  }
+  <app-search (inputChange)="onInputChange($event)" [searchTerm]="'nombre'"></app-search>
 
-    <ng-container matColumnDef="cif">
-      <th mat-header-cell *matHeaderCellDef>CIF</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.cif }}</td>
-    </ng-container>
+  @if(adminClientes.clientes().length === 0 && filterText !== ''){
+  <p class="no-elements-message">No hay resultados para "{{ filterText }}".</p>
+  } @if(!adminClientes.error() && adminClientes.clientes().length !== 0) {
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="adminClientes.clientes()" class="table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.name }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
-    </ng-container>
+      <ng-container matColumnDef="cif">
+        <th mat-header-cell *matHeaderCellDef>CIF</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.cif }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Fecha</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt | date }}</td>
-    </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="active">
-      <th mat-header-cell *matHeaderCellDef>Estado</th>
-      <td mat-cell *matCellDef="let cliente">{{ cliente.active ? 'Activo' : 'Inactivo' }}</td>
-    </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.createdAt | date }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="edition">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let cliente">
-        <figure class="cliente-icons">
-          <app-icon-button [path]="pencilPath"></app-icon-button>
-          <app-icon-button [path]="binPath" (click)="deleteCliente(cliente._id)"></app-icon-button>
-        </figure>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let cliente">{{ cliente.active ? 'Activo' : 'Inactivo' }}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="edition">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let cliente">
+          <app-edit-delete-buttons (delete)="deleteCliente(cliente._id)"></app-edit-delete-buttons>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <app-paginator
+      [page]="page"
+      [pageSize]="pageSize"
+      [totalItems]="totalItems"
+      (pageChange)="onPageChange($event)"
+    ></app-paginator>
+
+    @if (adminClientes.loading()) {
+    <div class="loading-overlay">
+      <app-spinner></app-spinner>
+    </div>
+    }
+  </div>
   }
 </main>

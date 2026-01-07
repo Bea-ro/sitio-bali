@@ -49,9 +49,9 @@ export class NuevaNoticia implements OnInit {
       title: new FormControl('', {
         nonNullable: true,
         validators: [Validators.required],
-        asyncValidators: [
-          existingEntryValidator(() => this.adminNoticias.noticias(), 'title', 'existingEntry'),
-        ],
+        asyncValidators: !this.noticiaId
+          ? [existingEntryValidator(() => this.adminNoticias.noticias(), 'title', 'existingEntry')]
+          : [],
       }),
       text: new FormControl('', {
         nonNullable: true,
@@ -98,7 +98,11 @@ export class NuevaNoticia implements OnInit {
           category: noticiaCategory || '',
           slug: noticiaSlug,
         };
-        this.adminNoticias.updateNoticia(this.noticiaId, editedNoticia);
+
+        this.adminNoticias.updateNoticia$(this.noticiaId, editedNoticia).subscribe({
+          next: () => alert('La noticia se ha actualizado correctamente.'),
+          error: (message) => alert(message),
+        });
       } else {
         const newNoticia: NoticiaNueva = {
           title: this.noticiaFields.getRawValue().title,
@@ -107,7 +111,10 @@ export class NuevaNoticia implements OnInit {
           slug: noticiaSlug,
           date: new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date()),
         };
-        this.adminNoticias.createNoticia(newNoticia);
+        this.adminNoticias.createNoticia$(newNoticia).subscribe({
+          next: () => alert('Noticia publicada.'),
+          error: (message) => alert(message),
+        });
       }
       this.router.navigateByUrl('/admin-panel/noticias');
     }

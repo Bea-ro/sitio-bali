@@ -27,7 +27,7 @@ export class AdminAdmins {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );

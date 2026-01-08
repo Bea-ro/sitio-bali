@@ -87,3 +87,7 @@ form {
 .loading-message {
   margin-top: 28px;
 }
+
+.updating-input {
+  color: var(--color-sec);
+}

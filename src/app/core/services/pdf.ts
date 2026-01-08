@@ -36,7 +36,7 @@ export class Pdf {
     const ctx = canvas.getContext('2d')!;
     ctx.drawImage(bitmap, 0, 0);
 
-    return canvas.toDataURL('image/png'); // <- PNG compatible
+    return canvas.toDataURL('image/png');
   }
 
   async generatePdf(title: string, content: string) {
@@ -46,7 +46,6 @@ export class Pdf {
       pageSize: 'A4',
       pageMargins: [80, 110, 80, 90], // izq, top, der, bottom
 
-      // Cabecera
       header: {
         margin: [80, 60, 80, 40],
         columns: [
@@ -74,7 +73,6 @@ export class Pdf {
         ],
       },
 
-      // Pie
       footer: (currentPage: number, pageCount: number) => {
         return {
           margin: [40, 20],

@@ -2,35 +2,57 @@
   <h1>Administrador de Clientes</h1>
 
   <app-nuevo-cliente></app-nuevo-cliente>
-  @if (adminClientes.loading()) {
-  <p class="loading-message">Cargando clientes...</p>
 
-  } @else if (adminClientes.error()) {
+  @if (adminClientes.error()) {
   <p class="server-error-message">{{ adminClientes.error() }}</p>
-
-  } @else if(adminClientes.clientes().length === 0 && filterText === '') {
+  } @else if(adminClientes.clientes().length === 0 && filterText === '' && !adminClientes.loading())
+  {
   <p class="no-elements-message">No hay clientes dados de alta en este momento.</p>
   }
   <app-search (inputChange)="onInputChange($event)" [searchTerm]="'nombre'"></app-search>
 
   @if(adminClientes.clientes().length === 0 && filterText !== ''){
   <p class="no-elements-message">No hay resultados para "{{ filterText }}".</p>
-  } @if(!adminClientes.error() && adminClientes.clientes().length !== 0) {
+  } @if(!adminClientes.error()) {
   <div class="table-wrapper">
     <table mat-table [dataSource]="adminClientes.clientes()" class="table">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
-        <td mat-cell *matCellDef="let cliente">{{ cliente.name }}</td>
+        <td mat-cell *matCellDef="let cliente">
+          @if(editingClienteId === cliente._id) {
+          <ng-container [formGroup]="editingClienteFields">
+            <input type="text" id="name" formControlName="name" class="updating-input" />
+          </ng-container>
+          } @else {
+          {{ cliente.name }}
+          }
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="cif">
         <th mat-header-cell *matHeaderCellDef>CIF</th>
-        <td mat-cell *matCellDef="let cliente">{{ cliente.cif }}</td>
+        <td mat-cell *matCellDef="let cliente">
+          @if(editingClienteId === cliente._id) {
+          <ng-container [formGroup]="editingClienteFields">
+            <input type="text" id="cif" formControlName="cif" class="updating-input" />
+          </ng-container>
+          } @else {
+          {{ cliente.cif }}
+          }
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
+        <td mat-cell *matCellDef="let cliente">
+          @if (editingClienteId === cliente._id) {
+          <ng-container [formGroup]="editingClienteFields">
+            <input type="email" id="email" formControlName="email" class="updating-input" />
+          </ng-container>
+          } @else {
+          {{ cliente.email }}
+          }
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="date">
@@ -46,7 +68,26 @@
       <ng-container matColumnDef="edition">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let cliente">
-          <app-edit-delete-buttons (delete)="deleteCliente(cliente._id)"></app-edit-delete-buttons>
+          @if (editingClienteId === cliente._id) {
+          <div class="nuevo-element-icons">
+            <app-icon-button
+              [path]="acceptPath"
+              [disabled]="editingClienteFields.invalid"
+              [type]="'button'"
+              (click)="save()"
+            ></app-icon-button>
+            <app-icon-button
+              [path]="cancelPath"
+              [type]="'button'"
+              (click)="cancel()"
+            ></app-icon-button>
+          </div>
+          } @else{
+          <app-edit-delete-buttons
+            (edit)="editCliente(cliente)"
+            (delete)="deleteCliente(cliente._id)"
+          ></app-edit-delete-buttons>
+          }
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

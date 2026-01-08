@@ -1,15 +1,11 @@
 <main>
   <h1>Administradores</h1>
   <app-nuevo-admin></app-nuevo-admin>
-  @if (adminAdmins.loading()) {
-  <p class="loading-message">Cargando administradores...</p>
-
-  } @else if (adminAdmins.error()) {
+  @if (adminAdmins.error()) {
   <p class="server-error-message">{{ adminAdmins.error() }}</p>
-
   } @else if(adminAdmins.admins().length === 0) {
   <p class="no-elements-message">No hay administradores dados de alta en este momento.</p>
-  } @if(!adminAdmins.error() && adminAdmins.admins().length !== 0) {
+  } @if(!adminAdmins.error()) {
   <div class="table-wrapper">
     <table mat-table [dataSource]="adminAdmins.admins()" class="admins-table">
       <ng-container matColumnDef="rol">

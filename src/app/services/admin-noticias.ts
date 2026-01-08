@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { NoticiaEditada, NoticiaExistente, NoticiaNueva } from '../models/models';
 import { environment } from '../../environments/environment';
@@ -29,7 +29,7 @@ export class AdminNoticiasService {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -49,7 +49,7 @@ export class AdminNoticiasService {
         }),
         catchError((message: string) => {
           this.error.set(message);
-          return throwError(message);
+          return throwError(() => message);
         }),
         finalize(() => this.loading.set(false))
       );
@@ -75,7 +75,7 @@ export class AdminNoticiasService {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       })
     );
   }

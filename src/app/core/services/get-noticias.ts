@@ -29,7 +29,7 @@ export class GetNoticias {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -81,7 +81,7 @@ export class GetNoticias {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -97,7 +97,7 @@ export class GetNoticias {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );

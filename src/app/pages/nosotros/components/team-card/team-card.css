@@ -23,7 +23,7 @@
 }
 
 .icon-wrapper {
-  background-color: var(--color-light);
+  border-bottom: 2px solid var(--color-light);
   padding: 16px 16px 8px 16px;
   display: inline-block;
   border-top-left-radius: 12px;

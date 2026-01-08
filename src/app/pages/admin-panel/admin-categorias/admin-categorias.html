@@ -26,15 +26,13 @@
       ></app-accept-cancel-buttons>
     </div>
   </form>
-  @if (adminCategories.loading()) {
-  <p class="loading-message">Cargando categorías...</p>
 
-  } @else if (adminCategories.error()) {
+  @if (adminCategories.error()) {
   <p class="server-error-message">{{ adminCategories.error() }}</p>
 
-  } @else if(adminCategories.categories().length === 0){
+  } @else if(adminCategories.categories().length === 0 && !adminCategories.loading()){
   <p class="no-elements-message">No hay categorías creadas en este momento.</p>
-  } @if (!adminCategories.error() && adminCategories.categories().length !== 0) {
+  } @if (!adminCategories.error()) {
   <div class="table-wrapper">
     <table mat-table [dataSource]="adminCategories.categories()" class="table categories-table">
       <ng-container matColumnDef="name">
@@ -42,7 +40,7 @@
         <td mat-cell *matCellDef="let category">
           @if (editingCategoryId === category._id) {
           <input
-            class="category-input"
+            class="updating-input"
             #input
             [(ngModel)]="editingCategoryName"
             (keydown.enter)="save(category._id, input.value)"

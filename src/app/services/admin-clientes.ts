@@ -1,9 +1,10 @@
 import { Injectable, signal } from '@angular/core';
 import { Cliente, UserDataLogin, UserLoginResponse } from '../models/models';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { catchError, finalize, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,7 @@ export class AdminClientesService {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -46,7 +47,7 @@ export class AdminClientesService {
         }),
         catchError((message: string) => {
           this.error.set(message);
-          return throwError(message);
+          return throwError(() => message);
         }),
         finalize(() => this.loading.set(false))
       );
@@ -58,8 +59,8 @@ export class AdminClientesService {
       .pipe(tap((newCliente) => this.clientes.update((clientes) => [...clientes, newCliente])));
   }
 
-  public updateCliente$(id: string, cliente: string) {
-    return this.http.put<Cliente>(`${this.API_URL}/clientes/${id}`, { cliente }).pipe(
+  public updateCliente$(id: string, cliente: Cliente) {
+    return this.http.patch<Cliente>(`${this.API_URL}/clientes/${id}`, cliente).pipe(
       tap((updatedCliente) => {
         this.clientes.update((clientes) =>
           clientes.map((cliente) => (cliente._id === id ? updatedCliente : cliente))
@@ -67,13 +68,17 @@ export class AdminClientesService {
       }),
       catchError((message: string) => {
         this.error.set(message);
-        return throwError(message);
+        return throwError(() => message);
       })
     );
   }
 
   public loginCliente(cliente: UserDataLogin) {
     return this.http.post<UserLoginResponse>(`${this.API_URL}/clientes/login`, cliente);
+  }
+
+  public getClienteById(id: string): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.API_URL}/clientes/${id}`);
   }
 
   public isAuthenticated(): boolean {

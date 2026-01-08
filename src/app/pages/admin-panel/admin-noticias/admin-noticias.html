@@ -2,9 +2,11 @@
   <h1 class="admin-noticias-header">Administrador de Noticias</h1>
 
   <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/noticias/nueva"></app-button>
+
   @if (adminNoticias.error()) {
   <p class="server-error-message">{{ adminNoticias.error() }}</p>
-  } @else if(adminNoticias.noticias().length === 0 && filterText === ''){
+  } @else if(adminNoticias.noticias().length === 0 && filterText === '' &&
+  !adminNoticias.loading()){
   <p class="no-elements-message">No hay noticias publicadas en este momento.</p>
   }
 

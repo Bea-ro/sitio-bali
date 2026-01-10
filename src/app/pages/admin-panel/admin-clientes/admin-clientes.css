@@ -1,0 +1,4 @@
+.editing-row {
+  outline: 1.5px solid var(--color-sec);
+  border-radius: 6px;
+}

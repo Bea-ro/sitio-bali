@@ -2,8 +2,8 @@
 <p class="password-instructions">
   Introduce una contraseña segura para activar tu cuenta. <br />{{ passwordRequitements }}.
 </p>
-<form class="activation-form" [formGroup]="passwordForm" (submit)="onSubmit()">
-  <div class="field-container">
+<form class="account-form" [formGroup]="passwordForm" (submit)="onSubmit()">
+  <div class="account-field-container">
     <div class="label-input-container">
       <label for="password" class="label-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -15,7 +15,7 @@
         [type]="showPassOne ? 'text' : 'password'"
         id="password"
         formControlName="password"
-        class="form-field"
+        class="form-field account-form-field"
         placeholder="Contraseña"
       />
       <app-icon-button
@@ -27,7 +27,7 @@
     <app-error-message [formFields]="passwordForm" control="password"></app-error-message>
   </div>
 
-  <div class="field-container">
+  <div class="field-container account-field-container">
     <div class="label-input-container">
       <label for="repeatPassword" class="label-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -39,7 +39,7 @@
         [type]="showPassTwo ? 'text' : 'password'"
         id="repeatPassword"
         formControlName="repeatPassword"
-        class="form-field"
+        class="form-field account-form-field"
         placeholder="Repite la contraseña"
       />
       <app-icon-button
@@ -50,13 +50,15 @@
     </div>
     <app-error-message [formFields]="passwordForm" control="repeatPassword"></app-error-message>
   </div>
-  <button class="button" type="submit" [disabled]="passwordForm.invalid">Activar</button>
+  <button class="button account-button" type="submit" [disabled]="passwordForm.invalid">
+    Activar
+  </button>
 </form>
 } @else {
 <p>Tu enlace ha caducado. Introduce tu email para reenviar el correo para activar tu cuenta.</p>
 
-<form class="resend-email-form" [formGroup]="emailForm" (submit)="onEmailSubmit()">
-  <div class="field-container">
+<form class="account-form" [formGroup]="emailForm" (submit)="onEmailSubmit()">
+  <div class="field-container account-field-container">
     <div class="label-input-container">
       <label for="email" class="label-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -68,7 +70,7 @@
         type="email"
         id="email"
         formControlName="email"
-        class="form-field"
+        class="form-field account-form-field"
         placeholder="Email"
       />
     </div>

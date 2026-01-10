@@ -21,17 +21,25 @@ export class AdminCategorias implements OnInit {
 
   constructor(public adminCategories: AdminCategories) {}
   public ngOnInit() {
-    this.adminCategories.getCategories();
+    this.adminCategories.getCategories$().subscribe();
   }
 
-  public existingCategory(name: string) {
+  get existingCategory(): boolean {
+    return this.checkExistingCategory(this.newCategoryName);
+  }
+
+  public checkExistingCategory(name: string) {
     if (!name) return false;
     return this.adminCategories
       .categories()
       .some((c) => c.category.trim().toLowerCase() === name.trim().toLowerCase());
   }
   public addCategory(category: string | undefined) {
-    category && this.adminCategories.createCategory(category.trim());
+    category &&
+      this.adminCategories.createCategory$(category.trim()).subscribe({
+        next: () => alert('Categoría añadida.'),
+        error: (message) => alert(message),
+      });
     this.reset();
   }
   public editCategory(category: Category) {
@@ -42,7 +50,10 @@ export class AdminCategorias implements OnInit {
   }
 
   public save(id: string, value: string) {
-    this.adminCategories.updateCategory(id, value);
+    this.adminCategories.updateCategory$(id, value).subscribe({
+      next: () => alert('Categoría eliminada.'),
+      error: (message) => alert(message),
+    });
     this.editingCategoryId = '';
   }
 
@@ -54,6 +65,10 @@ export class AdminCategorias implements OnInit {
     this.newCategoryName = '';
   }
   public deleteCategory(id: string | undefined) {
-    id && this.adminCategories.deleteCategory(id);
+    id &&
+      this.adminCategories.deleteCategory$(id).subscribe({
+        next: () => alert('Categoría eliminada.'),
+        error: (message) => alert(message),
+      });
   }
 }

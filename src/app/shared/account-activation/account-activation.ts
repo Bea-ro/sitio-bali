@@ -27,6 +27,7 @@ export class AccountActivation implements OnInit {
   public passwordForm!: FormGroup<PasswordForm>;
   public emailForm!: FormGroup<EmailForm>;
   public passwordRequitements: string = PASSWORD_MESSAGES.INVALID;
+
   public lockPath: string = lockPath;
   public unlockPath: string = unlockPath;
   public showPassOne: boolean = false;
@@ -92,16 +93,10 @@ export class AccountActivation implements OnInit {
 
   public onEmailSubmit() {
     const { email } = this.emailForm.getRawValue();
-    console.log(email);
     this.auth.resendActivationEmail(email).subscribe({
-      next: () => {
-        alert('Se ha reenviado un email para activar la cuenta.');
-        this.emailForm.reset();
-      },
-      error: () => {
-        alert('Se ha producido un error al enviar el correo. Por favor, inténtalo más tarde.');
-        this.emailForm.reset();
-      },
+      next: (res) => alert(res.message),
+      error: (message) => alert(message),
     });
+    this.emailForm.reset();
   }
 }

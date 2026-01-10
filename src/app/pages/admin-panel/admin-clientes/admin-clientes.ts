@@ -10,9 +10,8 @@ import { Spinner } from '../../../shared/spinner/spinner';
 import { Cliente, ClienteForm } from '../../../models/models';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { existingEntryValidator } from '../../../validators/existing.validator';
-import { nifNieCifValidator } from './components/nuevo-cliente/nif-nie-cif.validator';
+import { nifNieCifValidator } from '../../../validators/nif-nie-cif.validator';
 import { AcceptCancelButtons } from '../../../shared/accept-cancel-buttons/accept-cancel-buttons';
-import { IconButton } from '../../../shared/icon-button/icon-button';
 import { acceptPath, cancelPath } from '../../../data/icon-paths';
 
 @Component({
@@ -26,7 +25,7 @@ import { acceptPath, cancelPath } from '../../../data/icon-paths';
     EditDeleteButtons,
     Spinner,
     ReactiveFormsModule,
-    IconButton,
+    AcceptCancelButtons,
   ],
   templateUrl: './admin-clientes.html',
   styleUrl: './admin-clientes.css',

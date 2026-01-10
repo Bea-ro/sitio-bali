@@ -16,7 +16,7 @@ export class CategoriesMenu implements OnInit {
   constructor(public adminCategories: AdminCategories, private route: ActivatedRoute) {}
 
   public ngOnInit() {
-    this.adminCategories.getCategoriesUsed();
+    this.adminCategories.getCategoriesUsed$().subscribe();
   }
   public selectCategory(category: string) {
     this.selectedCategory.emit(category);

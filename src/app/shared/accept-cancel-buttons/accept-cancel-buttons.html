@@ -2,11 +2,13 @@
   <app-icon-button
     [path]="acceptPath"
     [disabled]="acceptDisabled"
-    [type]="'submit'"
+    [type]="acceptType"
+    (click)="onAccept()"
   ></app-icon-button>
   <app-icon-button
     [path]="cancelPath"
     [disabled]="cancelDisabled"
-    [type]="'reset'"
+    [type]="cancelType"
+    (click)="onCancel()"
   ></app-icon-button>
 </div>

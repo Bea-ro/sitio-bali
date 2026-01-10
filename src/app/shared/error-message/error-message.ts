@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormError } from '../../services/form-error';
 import { FormGroup } from '@angular/forms';
-import { ClienteForm } from '../../models/models';
 
 @Component({
   selector: 'app-error-message',
@@ -14,6 +13,7 @@ export class ErrorMessage {
   @Input() control!: string;
 
   constructor(private formError: FormError) {}
+
   get error(): string | null {
     return this.formError.resolveError(this.formFields, this.control);
   }

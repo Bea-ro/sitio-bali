@@ -16,6 +16,12 @@ export const routes: Routes = [
     title: 'Bali Asociados · Activación de cuenta',
   },
   {
+    path: 'reset-cuenta',
+    loadComponent: () =>
+      import('./pages/activar-cuenta/activar-cuenta').then((c) => c.ActivarCuenta),
+    title: 'Bali Asociados · Activación de cuenta',
+  },
+  {
     path: 'admin-panel',
     loadComponent: () => import('./layouts/admin-layout/admin-layout').then((c) => c.AdminLayout),
     canActivate: [authGuard, roleGuard],

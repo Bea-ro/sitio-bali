@@ -1,5 +1,5 @@
-<form class="admin-form" [formGroup]="userForm" (submit)="onSubmit()">
-  <div class="field-container">
+<form class="account-form" [formGroup]="userForm" (submit)="onSubmit()">
+  <div class="account-field-container">
     <div class="label-input-container">
       <label for="email" class="label-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -8,7 +8,7 @@
         </svg>
       </label>
       <input
-        class="form-field"
+        class="form-field account-form-field"
         type="email"
         id="email"
         formControlName="email"
@@ -19,7 +19,7 @@
     <app-error-message [formFields]="userForm" control="email"></app-error-message>
   </div>
 
-  <div class="field-container">
+  <div class="account-field-container">
     <div class="label-input-container">
       <label for="password" class="label-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="button-icon-icon">
@@ -28,7 +28,7 @@
         </svg>
       </label>
       <input
-        class="form-field"
+        class="form-field account-form-field"
         id="password"
         formControlName="password"
         placeholder="Contraseña"
@@ -46,3 +46,9 @@
 
   <button class="button" type="submit" [disabled]="userForm.invalid">Acceder</button>
 </form>
+<p class="forget-password-button centered-text" role="button" (click)="openForgotPassword()">
+  He olvidado mi contraseña
+</p>
+@if(passwordForgotten) {
+<app-forget-password (close)="closeForgotPassword()"></app-forget-password>
+}

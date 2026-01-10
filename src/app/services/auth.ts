@@ -19,7 +19,10 @@ export class Auth {
   }
 
   public resendActivationEmail(email: string) {
-    console.log(email);
-    return this.http.post<any>(`${this.API_URL}/auth/reenviar-email`, { email });
+    return this.http.post<{ message: string }>(`${this.API_URL}/auth/reenviar-email`, { email });
+  }
+
+  public sendResetEmail(email: string) {
+    return this.http.post<{ message: string }>(`${this.API_URL}/auth/reset-email`, { email });
   }
 }

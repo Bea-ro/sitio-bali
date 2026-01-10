@@ -1,17 +1,21 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserLogin, UserDataLogin } from '../../models/models';
-import { emailPath, hidePassPath, showPassPath, unlockPath } from '../../data/icon-paths';
-import { AdminAdmins } from '../../services/admin-admins';
 import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { passwordRequirements } from './validators';
 import { ErrorMessage } from '../error-message/error-message';
-import { IconButton } from '../icon-button/icon-button';
+
+import { emailPath, hidePassPath, showPassPath, unlockPath } from '../../data/icon-paths';
+import { UserLogin, UserDataLogin } from '../../models/models';
+
+import { AdminAdmins } from '../../services/admin-admins';
 import { AdminClientesService } from '../../services/admin-clientes';
-import { filter } from 'rxjs';
+
+import { IconButton } from '../icon-button/icon-button';
+import { ForgetPassword } from '../forget-password/forget-password';
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, ErrorMessage, IconButton],
+  imports: [ReactiveFormsModule, ErrorMessage, IconButton, ForgetPassword],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -23,6 +27,7 @@ export class Login implements OnInit {
   public showPassPath: string = showPassPath;
   public hidePassPath: string = hidePassPath;
   private currentRoute = signal('');
+  public passwordForgotten: boolean = false;
 
   constructor(
     public adminAdmins: AdminAdmins,
@@ -73,5 +78,13 @@ export class Login implements OnInit {
         error: (message) => alert(message),
       });
     }
+  }
+
+  public openForgotPassword() {
+    this.passwordForgotten = true;
+  }
+
+  public closeForgotPassword() {
+    this.passwordForgotten = false;
   }
 }

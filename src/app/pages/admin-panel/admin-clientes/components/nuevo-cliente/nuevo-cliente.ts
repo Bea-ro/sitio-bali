@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ClienteForm } from '../../../../../models/models';
-import { nifNieCifValidator } from './nif-nie-cif.validator';
+import { nifNieCifValidator } from '../../../../../validators/nif-nie-cif.validator';
 import { existingEntryValidator } from '../../../../../validators/existing.validator';
 import { AdminClientesService } from '../../../../../services/admin-clientes';
 import { ErrorMessage } from '../../../../../shared/error-message/error-message';

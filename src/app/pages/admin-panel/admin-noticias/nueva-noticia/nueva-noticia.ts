@@ -65,7 +65,7 @@ export class NuevaNoticia implements OnInit {
       }),
     });
 
-    this.adminCategories.getCategories();
+    this.adminCategories.getCategories$().subscribe();
   }
 
   public generateSlug(title: string): string {
@@ -121,7 +121,10 @@ export class NuevaNoticia implements OnInit {
   }
 
   private addCategory(category: string | undefined) {
-    category && this.adminCategories.createCategory(category);
+    category &&
+      this.adminCategories.createCategory$(category).subscribe({
+        error: (message) => alert(message),
+      });
   }
 
   public cargarNoticia(noticiaId: string) {

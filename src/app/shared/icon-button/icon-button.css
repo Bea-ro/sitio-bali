@@ -18,17 +18,6 @@
   stroke: var(--color-sec);
 }
 
-.button-icon-icon {
-  height: 24px;
-  color: var(--color-main);
-}
-
-.button-icon-icon path {
-  stroke: currentColor;
-  stroke-width: 20;
-  fill: none;
-}
-
 .show-pass-button {
   background: transparent;
   display: flex;

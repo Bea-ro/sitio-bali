@@ -7,7 +7,7 @@
   --color-white: #ffffff;
   --color-main: #231473;
   --color-sec: #3b889d;
-  --color-light: #dedeff;
+  --color-light: rgb(222, 222, 255);
   --color-extra-light: #efedfb;
 
   font-synthesis: none;
@@ -72,7 +72,6 @@ button:disabled:hover {
 
 .button:hover {
   background-color: var(--color-sec);
-  color: var(--color-white);
 }
 
 h1 {
@@ -129,6 +128,17 @@ h1 {
 .noticia-category:hover {
   background-color: var(--color-sec) !important;
   color: var(--color-white);
+}
+
+.button-icon-icon {
+  height: 24px;
+  color: var(--color-main);
+}
+
+.button-icon-icon path {
+  stroke: currentColor;
+  stroke-width: 20;
+  fill: none;
 }
 
 @media screen and (max-width: 375px) {

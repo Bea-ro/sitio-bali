@@ -16,12 +16,12 @@
           class="form-field"
           (keydown.escape)="reset()"
         />
-        @if (existingCategory(newCategoryName)) {
+        @if (existingCategory) {
         <p class="error-message">Categoría existente. Por favor, introduce un nombre distinto.</p>
         }
       </div>
       <app-accept-cancel-buttons
-        [acceptDisabled]="newCategoryName === ''"
+        [acceptDisabled]="newCategoryName === '' || existingCategory"
         [cancelDisabled]="newCategoryName === ''"
       ></app-accept-cancel-buttons>
     </div>

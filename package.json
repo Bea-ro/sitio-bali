@@ -34,6 +34,7 @@
     "@angular/router": "^20.2.0",
     "@ngx-env/builder": "^20.1.1",
     "@tinymce/tinymce-angular": "^9.1.1",
+    "html-to-pdfmake": "^2.5.32",
     "jwt-decode": "^4.0.0",
     "pdfmake": "^0.2.20",
     "rxjs": "~7.8.0",
@@ -43,8 +44,9 @@
   },
   "devDependencies": {
     "@angular/build": "^20.2.0",
-    "@angular/cli": "^20.2.0",
+    "@angular/cli": "^21.1.0",
     "@angular/compiler-cli": "^20.2.0",
+    "@types/html-to-pdfmake": "^2.4.4",
     "@types/jasmine": "~5.1.0",
     "baseline-browser-mapping": "^2.9.11",
     "jasmine-core": "~5.9.0",

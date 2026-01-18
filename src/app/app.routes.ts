@@ -19,7 +19,7 @@ export const routes: Routes = [
     path: 'reset-cuenta',
     loadComponent: () =>
       import('./pages/activar-cuenta/activar-cuenta').then((c) => c.ActivarCuenta),
-    title: 'Bali Asociados · Activación de cuenta',
+    title: 'Bali Asociados · Reactivación de cuenta',
   },
   {
     path: 'admin-panel',

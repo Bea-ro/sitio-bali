@@ -33,11 +33,6 @@ body.public h4 {
   margin-bottom: 20px;
 }
 
-body.public .button {
-  padding: 14px 26px;
-  border-radius: 12px;
-}
-
 body.public path {
   stroke: currentColor;
   stroke-width: 20;

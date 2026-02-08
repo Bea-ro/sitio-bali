@@ -1,0 +1,32 @@
+nav {
+  position: fixed;
+  padding: 10px 0;
+  bottom: 0;
+  z-index: 200;
+  background-color: var(--color-light);
+  width: 100%;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 14px;
+  color: var(--color-main);
+  text-align: center;
+}
+
+.bottom-menu-ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.menu-icon {
+  height: 24px;
+}
+
+svg {
+  color: var(--color-main);
+}

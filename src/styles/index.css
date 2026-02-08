@@ -68,6 +68,8 @@ button:disabled:hover {
   background-color: var(--color-main);
   transition: background-color 0.25s ease-out;
   width: fit-content;
+  padding: 14px 26px;
+  border-radius: 12px;
 }
 
 .button:hover {
@@ -148,5 +150,12 @@ h1 {
 
   .bottom-section {
     padding-bottom: 30px;
+  }
+
+  .button-icon-icon {
+    height: 22px;
+  }
+  .button-icon-icon path {
+    stroke-width: 25;
   }
 }

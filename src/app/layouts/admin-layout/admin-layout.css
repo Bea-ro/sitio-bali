@@ -1,3 +1,21 @@
 :host {
   display: flex;
 }
+
+app-bottom-menu {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  app-aside {
+    display: none;
+  }
+
+  app-bottom-menu {
+    display: block;
+  }
+
+  :host {
+    flex-direction: column;
+  }
+}

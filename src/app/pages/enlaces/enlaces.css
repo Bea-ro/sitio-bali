@@ -22,17 +22,19 @@
 @media screen and (max-width: 600px) {
   .reference-links-list {
     display: flex;
-    overflow-x: auto;
+    flex-direction: column;
+    align-items: center;
+    /* overflow-x: auto;
     scroll-snap-type: x mandatory;
     width: 100vw;
-    scrollbar-width: none;
+    scrollbar-width: none; */
   }
 
-  .reference-links-list::-webkit-scrollbar {
+  /* .reference-links-list::-webkit-scrollbar {
     display: none;
   }
 
   .reference-link-container {
     scroll-snap-align: center;
-  }
+  } */
 }

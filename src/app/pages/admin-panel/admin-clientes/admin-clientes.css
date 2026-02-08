@@ -2,3 +2,9 @@
   outline: 1.5px solid var(--color-sec);
   border-radius: 6px;
 }
+
+@media screen and (max-width: 600px) {
+  .mat-column-email {
+    display: none;
+  }
+}

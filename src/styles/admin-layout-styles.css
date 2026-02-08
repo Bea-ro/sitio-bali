@@ -104,3 +104,28 @@ form {
   border: 1px solid var(--color-light);
   height: 48px;
 }
+
+@media screen and (max-width: 600px) {
+  body.admin main {
+    padding: 22px 12px 80px 12px;
+  }
+
+  .inputs-and-buttons-container {
+    flex-direction: column;
+  }
+
+  .search-input-and-button {
+    flex-direction: row;
+  }
+
+  .mat-column-rol,
+  .mat-column-date,
+  .mat-column-active,
+  .mat-column-category {
+    display: none;
+  }
+
+  .mat-mdc-cell {
+    font-size: 14px;
+  }
+}

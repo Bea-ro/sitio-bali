@@ -1,0 +1,61 @@
+<nav>
+  <ul class="bottom-menu-ul">
+    <li>
+      <a class="aside-menu-title" [routerLink]="['/']">
+        <svg
+          class="menu-icon"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+        >
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="homePath" />
+        </svg>
+        <p>Web</p>
+      </a>
+    </li>
+    <li>
+      <a class="nav-link" [routerLink]="['/admin-panel/noticias']">
+        <svg
+          class="menu-icon"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+        >
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="newspaperPath" />
+        </svg>
+        <p>Noticias</p>
+      </a>
+    </li>
+
+    <li>
+      <a class="nav-link" [routerLink]="['/admin-panel/clientes']">
+        <svg
+          class="menu-icon"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+        >
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="userPath" />
+        </svg>
+        <p>Clientes</p>
+      </a>
+    </li>
+    <li>
+      <a class="nav-link" [routerLink]="['/admin-panel/admins']">
+        <svg
+          class="menu-icon"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+        >
+          <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path [attr.d]="lockPath" />
+        </svg>
+        <p>Admins</p>
+      </a>
+    </li>
+  </ul>
+</nav>

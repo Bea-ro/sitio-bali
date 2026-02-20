@@ -95,13 +95,14 @@
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 992px) {
+@media screen and (min-width: 545px) and (max-width: 992px) {
   .service-cards {
     grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 }
 
-@media screen and (max-width: 374px) {
+@media screen and (max-width: 544px) {
   .service-cards {
     grid-template-columns: 1fr;
   }

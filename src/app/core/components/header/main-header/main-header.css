@@ -21,13 +21,13 @@
     opacity: 1;
     border-radius: 6px;
     justify-content: center;
-    padding: 8px;
+    padding: 6px;
     background-color: var(--color-light);
   }
 
   .burguer-icon {
     color: var(--color-main);
-    height: 30px;
+    height: 26px;
   }
 
   app-button {

@@ -1,7 +1,10 @@
 <main>
   <h1 class="admin-noticias-header">Administrador de Noticias</h1>
 
-  <app-button buttonText="Añadir nueva" buttonLink="/admin-panel/noticias/nueva"></app-button>
+  <app-button
+    [buttonText]="'Añadir nueva'"
+    [buttonLink]="'/admin-panel/noticias/nueva'"
+  ></app-button>
 
   @if (adminNoticias.error()) {
   <p class="server-error-message">{{ adminNoticias.error() }}</p>

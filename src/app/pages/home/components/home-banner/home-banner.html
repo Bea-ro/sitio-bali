@@ -1,15 +1,30 @@
 <section class="home-banner-section">
-  <img
-    class="home-banner-image"
-    [src]="`${imagePrefix}/v1760802190/bali/bali-asociados-presentacion-asesoria_ohtywl.jpg`"
-    alt="bali-asociados-presentation"
-  />
+  <img class="home-banner-image-desktop" [src]="images[0]" alt="bali-asociados-presentation" />
+
+  <div class="hero">
+    @for(img of images; track $index) {
+    <img
+      class="home-banner-image-mobile"
+      [src]="img"
+      alt="bali-asociados-presentation"
+      [class.show]="(image$ | async) === img"
+    />
+    }
+  </div>
+
   <div class="home-banner-text">
     <h1 class="home-title">Un equipo para facilitar tu día a día</h1>
     <ul>
       <li>
         <h2 class="home-subtitle">
-          Asesoría <span>{{ asesoria$ | async }}</span>
+          Asesoría
+          <span class="word-wrapper">
+            @for (word of asesorias; track $index) {
+            <span class="word" [class.show]="$index === (asesoriaIndex$ | async)">
+              {{ word }}
+            </span>
+            }
+          </span>
         </h2>
       </li>
       <li><h2 class="home-subtitle">Consultoría para empresas y autónomos</h2></li>

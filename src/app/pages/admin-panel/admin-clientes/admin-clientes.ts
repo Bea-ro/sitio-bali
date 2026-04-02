@@ -95,10 +95,11 @@ export class AdminClientes implements OnInit {
   }
 
   public deleteCliente(clienteId: string) {
-    this.adminClientes.deregisterCliente$(clienteId).subscribe({
-      next: () => alert('Cliente borrado.'),
-      error: (message) => alert(message),
-    });
+    confirm('¿Estás seguro de eliminar este cliente?') &&
+      this.adminClientes.deregisterCliente$(clienteId).subscribe({
+        next: () => alert('Cliente borrado.'),
+        error: (message) => alert(message),
+      });
   }
 
   get totalItems() {

@@ -23,9 +23,10 @@ export class Admins implements OnInit {
   }
 
   public deleteAdmin(adminId: string) {
-    this.adminAdmins.deregisterAdmin$(adminId).subscribe({
-      next: () => alert('Administrador eliminado.'),
-      error: (message) => alert(message),
-    });
+    confirm('¿Estás seguro de eliminar este administrador?') &&
+      this.adminAdmins.deregisterAdmin$(adminId).subscribe({
+        next: () => alert('Administrador eliminado.'),
+        error: (message) => alert(message),
+      });
   }
 }

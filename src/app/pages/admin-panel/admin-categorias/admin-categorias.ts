@@ -65,7 +65,8 @@ export class AdminCategorias implements OnInit {
     this.newCategoryName = '';
   }
   public deleteCategory(id: string | undefined) {
-    id &&
+    confirm('¿Estás seguro de eliminar esta categoría?') &&
+      id &&
       this.adminCategories.deleteCategory$(id).subscribe({
         next: () => alert('Categoría eliminada.'),
         error: (message) => alert(message),

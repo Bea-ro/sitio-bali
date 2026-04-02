@@ -43,7 +43,8 @@ export class AdminNoticias implements OnInit {
   }
 
   public removeNoticia(noticiaId: string | undefined) {
-    noticiaId &&
+    confirm('¿Estás seguro de eliminar esta noticia?') &&
+      noticiaId &&
       this.adminNoticias.deleteNoticia$(noticiaId).subscribe({
         next: () => alert('Noticia eliminada.'),
         error: (message: string) => alert(message),

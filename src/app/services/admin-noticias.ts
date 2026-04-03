@@ -27,9 +27,9 @@ export class AdminNoticiasService {
         );
         this.noticias.set(lista);
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -47,9 +47,9 @@ export class AdminNoticiasService {
           this.noticias.set(lista.data);
           this.totalNoticias.set(lista.total);
         }),
-        catchError((message: string) => {
-          this.error.set(message);
-          return throwError(() => message);
+        catchError((err) => {
+          this.error.set(err.message);
+          return throwError(() => err.message);
         }),
         finalize(() => this.loading.set(false))
       );
@@ -73,9 +73,9 @@ export class AdminNoticiasService {
           noticias.map((noticia) => (noticia._id === id ? updatedNoticia : noticia))
         );
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       })
     );
   }

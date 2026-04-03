@@ -5,11 +5,10 @@ import { Category } from '../../../models/models';
 import { MatTableModule } from '@angular/material/table';
 import { AcceptCancelButtons } from '../../../shared/accept-cancel-buttons/accept-cancel-buttons';
 import { EditDeleteButtons } from '../../../shared/edit-delete-buttons/edit-delete-buttons';
-import { Spinner } from '../../../shared/spinner/spinner';
 
 @Component({
   selector: 'app-admin-categorias',
-  imports: [FormsModule, MatTableModule, AcceptCancelButtons, EditDeleteButtons, Spinner],
+  imports: [FormsModule, MatTableModule, AcceptCancelButtons, EditDeleteButtons],
   templateUrl: './admin-categorias.html',
   styleUrl: './admin-categorias.css',
 })

@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Cliente, UserDataLogin, UserLoginResponse } from '../models/models';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { catchError, finalize, tap, throwError } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -25,9 +25,9 @@ export class AdminClientesService {
       tap((lista) => {
         this.clientes.set(lista);
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -45,9 +45,9 @@ export class AdminClientesService {
           this.clientes.set(lista.data);
           this.totalClientes.set(lista.total);
         }),
-        catchError((message: string) => {
-          this.error.set(message);
-          return throwError(() => message);
+        catchError((err) => {
+          this.error.set(err.message);
+          return throwError(() => err.message);
         }),
         finalize(() => this.loading.set(false))
       );
@@ -66,9 +66,9 @@ export class AdminClientesService {
           clientes.map((cliente) => (cliente._id === id ? updatedCliente : cliente))
         );
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       })
     );
   }

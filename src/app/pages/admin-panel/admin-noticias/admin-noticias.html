@@ -57,11 +57,6 @@
       [totalItems]="totalItems"
       (pageChange)="onPageChange($event)"
     ></app-paginator>
-    @if (adminNoticias.loading()) {
-    <div class="loading-overlay">
-      <app-spinner></app-spinner>
-    </div>
-    }
   </div>
   }
 </main>

@@ -13,6 +13,7 @@ export class AdminAdmins {
   public admins = signal<Admin[]>([]);
   public error = signal<string | null>(null);
   public loading = signal(false);
+  public sessionExpired = signal(false);
 
   constructor(private http: HttpClient) {}
   public getAdmins$() {
@@ -25,9 +26,9 @@ export class AdminAdmins {
         );
         this.admins.set(lista);
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -52,11 +53,14 @@ export class AdminAdmins {
       const now = Math.floor(Date.now() / 1000);
       if (decoded.exp && decoded.exp < now) {
         localStorage.removeItem('userStored');
+        this.setSessionExpired();
         return false;
       }
+      this.unsetSessionExpired();
       return true;
     } catch {
       localStorage.removeItem('userStored');
+      //this.setSessionExpired();
       return false;
     }
   }
@@ -65,5 +69,13 @@ export class AdminAdmins {
     return this.http
       .delete<Admin>(`${this.API_URL}/admins/${id}`)
       .pipe(tap(() => this.admins.update((lista) => lista.filter((admin) => admin._id !== id))));
+  }
+
+  public setSessionExpired() {
+    this.sessionExpired.set(true);
+  }
+
+  public unsetSessionExpired() {
+    this.sessionExpired.set(false);
   }
 }

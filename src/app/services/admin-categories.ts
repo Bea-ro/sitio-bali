@@ -24,9 +24,9 @@ export class AdminCategories {
         lista.sort((a, b) => a.category.localeCompare(b.category));
         this.categories.set(lista);
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -47,9 +47,9 @@ export class AdminCategories {
         categories.sort((a, b) => a.localeCompare(b));
         this.categoriesUsed.set(categories);
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       }),
       finalize(() => this.loading.set(false))
     );
@@ -62,9 +62,9 @@ export class AdminCategories {
           [...categories, newCategory].sort((a, b) => a.category.localeCompare(b.category))
         );
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       })
     );
   }
@@ -76,9 +76,9 @@ export class AdminCategories {
           categories.map((category) => (category._id === id ? updatedCategory : category))
         );
       }),
-      catchError((message: string) => {
-        this.error.set(message);
-        return throwError(() => message);
+      catchError((err) => {
+        this.error.set(err.message);
+        return throwError(() => err.message);
       })
     );
   }

@@ -1,3 +1,10 @@
 <app-aside></app-aside>
 <router-outlet />
 <app-bottom-menu></app-bottom-menu>
+@if (adminAdmins.sessionExpired()) {
+<app-overlay></app-overlay>
+} @else if (isLoading()) {
+<div class="loading-overlay">
+  <app-spinner></app-spinner>
+</div>
+}

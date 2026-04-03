@@ -8,7 +8,6 @@ import { DatePipe } from '../../../pipes/date-pipe';
 import { Paginator } from '../../../shared/paginator/paginator';
 import { Search } from '../../../shared/search/search';
 import { EditDeleteButtons } from '../../../shared/edit-delete-buttons/edit-delete-buttons';
-import { Spinner } from '../../../shared/spinner/spinner';
 
 @Component({
   selector: 'app-admin-noticias',
@@ -21,7 +20,6 @@ import { Spinner } from '../../../shared/spinner/spinner';
     Paginator,
     Search,
     EditDeleteButtons,
-    Spinner,
   ],
   templateUrl: './admin-noticias.html',
   styleUrl: './admin-noticias.css',

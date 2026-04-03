@@ -6,7 +6,6 @@ import { DatePipe } from '../../../pipes/date-pipe';
 import { Paginator } from '../../../shared/paginator/paginator';
 import { Search } from '../../../shared/search/search';
 import { EditDeleteButtons } from '../../../shared/edit-delete-buttons/edit-delete-buttons';
-import { Spinner } from '../../../shared/spinner/spinner';
 import { Cliente, ClienteForm } from '../../../models/models';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { existingEntryValidator } from '../../../validators/existing.validator';
@@ -23,7 +22,6 @@ import { acceptPath, cancelPath } from '../../../data/icon-paths';
     Paginator,
     Search,
     EditDeleteButtons,
-    Spinner,
     ReactiveFormsModule,
     AcceptCancelButtons,
   ],

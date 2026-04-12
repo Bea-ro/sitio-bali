@@ -32,7 +32,14 @@ export class AdminClientes implements OnInit {
   public displayedColumns = ['name', 'cif', 'email', 'date', 'active', 'edition'];
   public page: number = 0;
   public pageSize: number = 2;
-  public filterText: string = '';
+  filters: {
+    search: string;
+    active: '' | true | false;
+  } = {
+    search: '',
+    active: '',
+  };
+
   public editingClienteId: string = '';
   public editingClienteFields!: FormGroup<ClienteForm>;
 
@@ -46,7 +53,7 @@ export class AdminClientes implements OnInit {
   }
 
   public getClientes() {
-    this.adminClientes.getClientesPaginated$(this.page, this.pageSize, this.filterText).subscribe();
+    this.adminClientes.getClientesPaginated$(this.page, this.pageSize, this.filters).subscribe();
   }
 
   public editCliente(cliente: Cliente) {
@@ -110,9 +117,16 @@ export class AdminClientes implements OnInit {
     this.getClientes();
   }
 
-  public onInputChange(event: { filter: string }) {
+  public onSearchChange(event: { filter: string }) {
     this.page = 0;
-    this.filterText = event.filter;
+    this.filters.search = event.filter.trim().toLowerCase();
+    this.getClientes();
+  }
+
+  public onStatusChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.page = 0;
+    value === '' ? (this.filters.active = '') : (this.filters.active = value === 'true');
     this.getClientes();
   }
 }

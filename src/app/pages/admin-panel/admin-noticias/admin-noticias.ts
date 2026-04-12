@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Button } from '../../../shared/button/button';
@@ -8,6 +8,8 @@ import { DatePipe } from '../../../pipes/date-pipe';
 import { Paginator } from '../../../shared/paginator/paginator';
 import { Search } from '../../../shared/search/search';
 import { EditDeleteButtons } from '../../../shared/edit-delete-buttons/edit-delete-buttons';
+import { FormsModule } from '@angular/forms';
+import { AdminCategories } from '../../../services/admin-categories';
 
 @Component({
   selector: 'app-admin-noticias',
@@ -20,6 +22,7 @@ import { EditDeleteButtons } from '../../../shared/edit-delete-buttons/edit-dele
     Paginator,
     Search,
     EditDeleteButtons,
+    FormsModule,
   ],
   templateUrl: './admin-noticias.html',
   styleUrl: './admin-noticias.css',
@@ -30,10 +33,18 @@ export class AdminNoticias implements OnInit {
   public pageSize: number = 2;
   public filterText: string = '';
 
-  constructor(public adminNoticias: AdminNoticiasService, private router: Router) {}
+  public filterCategory = signal<string | null>(null);
+  public filterDate = signal<string | null>(null);
+
+  constructor(
+    public adminNoticias: AdminNoticiasService,
+    public adminCategories: AdminCategories,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getNoticias();
+    this.adminCategories.getCategories$().subscribe();
   }
 
   public getNoticias() {
@@ -67,4 +78,17 @@ export class AdminNoticias implements OnInit {
     this.filterText = event.filter;
     this.getNoticias();
   }
+
+  public filteredNoticias = computed(() => {
+    return this.adminNoticias.noticias().filter((noticia) => {
+      const category = this.filterCategory();
+      const matchCategory = category ? noticia.category === category : true;
+
+      const date = this.filterDate();
+      const fragment = noticia.date.split(' ');
+      const matchDate = date ? fragment[1] + ' ' + fragment[2] === date : true;
+
+      return matchCategory && matchDate;
+    });
+  });
 }

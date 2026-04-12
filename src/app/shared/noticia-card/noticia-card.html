@@ -18,7 +18,7 @@
   <a [href]="noticia.link">
     <h4 class="noticia-title">{{ noticia.title }}</h4>
     <div class="noticia-date-and-category">
-      <p>{{ noticia.pubDate | date : 'long' }}</p>
+      <p>{{ noticia.pubDate | date : 'monthText' }}</p>
       <p class="noticia-category">{{ noticia.category }}</p>
     </div>
     <p class="noticia-intro" [innerHTML]="`${noticiaIntro}...`"></p>

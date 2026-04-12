@@ -33,12 +33,20 @@ export class AdminClientesService {
     );
   }
 
-  public getClientesPaginated$(page: number, pageSize: number, filter: string) {
+  public getClientesPaginated$(
+    page: number,
+    pageSize: number,
+    filters: { search: string; active: boolean | '' }
+  ) {
     this.loading.set(true);
     this.error.set(null);
     return this.http
       .get<{ data: Cliente[]; total: number }>(`${this.API_URL}/clientes`, {
-        params: { page: page.toString(), pageSize: pageSize.toString(), filter: filter },
+        params: {
+          page: page.toString(),
+          pageSize: pageSize.toString(),
+          ...filters,
+        },
       })
       .pipe(
         tap((lista) => {

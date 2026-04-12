@@ -5,14 +5,22 @@
 
   @if (adminClientes.error()) {
   <p class="server-error-message">{{ adminClientes.error() }}</p>
-  } @else if(adminClientes.clientes().length === 0 && filterText === '' && !adminClientes.loading())
-  {
+  } @else if(adminClientes.clientes().length === 0 && filters.search === '' &&
+  !adminClientes.loading()) {
   <p class="no-elements-message">No hay clientes dados de alta en este momento.</p>
   }
-  <app-search (inputChange)="onInputChange($event)" [searchTerm]="'nombre'"></app-search>
 
-  @if(adminClientes.clientes().length === 0 && filterText !== ''){
-  <p class="no-elements-message">No hay resultados para "{{ filterText }}".</p>
+  <div class="filterFields">
+    <app-search (inputChange)="onSearchChange($event)" [searchTerm]="'nombre o CIF'"></app-search>
+    <select class="form-field" (change)="onStatusChange($event)">
+      <option value="">Todos</option>
+      <option value="true">Activo</option>
+      <option value="false">Inactivo</option>
+    </select>
+  </div>
+
+  @if(adminClientes.clientes().length === 0 && filters.search !== ''){
+  <p class="no-elements-message">No hay resultados para "{{ filters.search }}".</p>
   } @if(!adminClientes.error()) {
   <div class="table-wrapper">
     <table mat-table [dataSource]="adminClientes.clientes()" class="table">

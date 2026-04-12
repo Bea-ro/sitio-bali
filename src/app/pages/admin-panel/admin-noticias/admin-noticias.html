@@ -12,14 +12,35 @@
   !adminNoticias.loading()){
   <p class="no-elements-message">No hay noticias publicadas en este momento.</p>
   }
+  <div class="filterFields">
+    <app-search (inputChange)="onInputChange($event)" [searchTerm]="'título'"></app-search>
 
-  <app-search (inputChange)="onInputChange($event)" [searchTerm]="'título'"></app-search>
+    <select
+      #categorySelectEl
+      class="form-field"
+      (change)="filterCategory.set(categorySelectEl.value || null)"
+    >
+      <option value="">Todas las categorías</option>
+      @for(category of adminCategories.categories(); track $index) {
+      <option [value]="category.category">{{ category.category }}</option>
+      }
+    </select>
+
+    <select #dateSelectEl class="form-field" (change)="filterDate.set(dateSelectEl.value || null)">
+      <option value="">Todas las fechas</option>
+      @for(noticia of adminNoticias.noticias(); track $index) {
+      <option [value]="noticia.date | date : 'monthYear'">
+        {{ noticia.date | date : 'monthYear' }}
+      </option>
+      }
+    </select>
+  </div>
 
   @if(adminNoticias.noticias().length === 0 && filterText !== ''){
   <p class="no-elements-message">No hay resultados para "{{ filterText }}".</p>
   } @if(!adminNoticias.error()) {
   <div class="table-wrapper">
-    <table mat-table [dataSource]="adminNoticias.noticias()" class="table">
+    <table mat-table [dataSource]="filteredNoticias()" class="table">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Título</th>
         <td mat-cell *matCellDef="let noticia">

@@ -2,14 +2,26 @@
   <h1 class="page-title centered-text">Noticias Bali Asociados</h1>
   <h2 class="page-subtitle centered-text">Siempre al día contigo</h2>
   <div class="noticias-content-container">
-    <ul class="noticias-cards">
-      @for(noticia of getNoticias.noticias() | filter: selectedCategory; track noticia._id) {
-      <app-noticia-card [noticia]="noticia"></app-noticia-card>
+    <div class="noticias-list-and-button">
+      <ul class="noticias-cards">
+        @for(noticia of visibleNoticias(); track noticia._id) {
+        <app-noticia-card [noticia]="noticia"></app-noticia-card>
+        }
+      </ul>
+
+      @if(visibleNoticias().length < getNoticias.noticias().length) {
+      <button
+        class="button"
+        (click)="loadMore()"
+        [disabled]="visibleNoticias().length >= getNoticias.noticias().length"
+      >
+        Ver más
+      </button>
       }
-    </ul>
+    </div>
     <aside class="noticias-aside">
       <app-categories-menu
-        [activeCategory]="selectedCategory"
+        [activeCategory]="selectedCategory()"
         (selectedCategory)="onSelectedCategoryChange($event)"
       ></app-categories-menu>
     </aside>
